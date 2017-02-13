@@ -1,18 +1,25 @@
 var fs = require("fs");
 var _ = require('lodash');
 
-const leagueBA = 0.255 + 0.11;
+//the league's average calculated each year.
+//The ".011" added reflects the frequency that Groundball A++ will also become hits.
+//2016 stats
+const NLBA = 0.254 + 0.011;
+const ALBA = 0.257 + 0.011;
+const MLBBA = 0.255 + 0.011; // just use this for now
+const testBA = 0.265 + 0.011; // for Cal Ripkin testing only
 
 var content = fs.readFileSync("2016-standard-batting.json");
 var batting_stats = JSON.parse(content);
 
-var playerObj = _.find(batting_stats, { 'Name': "Cal Ripkin"});
+var player_stats = _.find(batting_stats, { 'Name': "Mike Trout"});
 
 //console.log(playerObj['2B']);
 //console.log(somAst(playerObj));
 
-var player = playerObj;
+var player = player_stats;
 
+//format a stat block in the console
 var testNumb = somW(player) + somHBP(player) + somH(player) + (somD(player)/20) + (somT(player)/20) + (somHR(player)/20) + somK(player) + somGBA(player) + somGBB(player);
 console.log("\n" + player.Name, "\n===========================\n",
 	"walk chances: " + somW(player) + "\n\n", 
@@ -27,7 +34,7 @@ console.log("\n" + player.Name, "\n===========================\n",
 	);
 console.log(testNumb);
 
-//som's own plate appearance number, testing only
+//som's own "plate appearance" number, testing only, not for use
 function somPA(player) {
 	var AB = _.toFinite(player.AB);
 	var W = _.toFinite(player.BB);
@@ -63,10 +70,20 @@ function somHBP(player) {
 
 //batter's hit. returns chances
 function somH(player) {
-
 	var W = somW(player);
 	var HBP = somHBP(player);
 	var BA = _.toFinite(player.BA);
+	var LG = player.Lg;
+	var leagueBA = MLBBA;
+
+	//find the right batting average
+	if (LG == "NL") {
+		leagueBA = NLBA;
+	} else if (LG == "AL") {
+		leagueBA = ALBA;
+	}
+
+	console.log("battin avg. ", LG, leagueBA);
 
 	var hit = (( BA - leagueBA ) + BA ) * ( 108 - ( W + HBP ));
 
@@ -83,6 +100,7 @@ function somD(player) {
 
 	var doubles = ( 4320 * second_bases ) / ( AB + ( W - IW ) + HBP ) - 90;
 
+	//can't have negative chances on a card. 
 	if (doubles < 0) {
 		doubles = 0;
 	}
@@ -100,6 +118,7 @@ function somT(player) {
 
 	var triples = ( 4320 * third_bases ) / ( AB + ( W - IW ) + HBP ) - 15;
 
+	//can't have negative chances on a card. 
 	if (triples < 0) {
 		triples = 0;
 	}
@@ -107,7 +126,7 @@ function somT(player) {
 	return triples;
 }
 
-//batter's home run
+//batter's home run. returns subchances
 function somHR(player) {
 	var HR = _.toFinite(player.HR);
 	var AB = _.toFinite(player.AB);
@@ -117,6 +136,7 @@ function somHR(player) {
 
 	var home_runs = ( 4320 * HR ) / ( AB + ( W - IW ) + HBP ) - 50;
 
+	//can't have negative chances on a card. 
 	if (home_runs < 0) {
 		home_runs = 0;
 	}
@@ -150,7 +170,6 @@ function somGBA(player) {
 	var IW = _.toFinite(player.IBB);
 	var HBP = _.toFinite(player.HBP);
 
-
 	var ground_ball_A = ( 1140 * DP ) / ( AB + ( W - IW ) + HBP );
 
 	return ground_ball_A;
@@ -180,6 +199,7 @@ function som1SB(player) {
 		var first_stolen_base = (( SB / ( SB + CS )) + 0.13 ) * 20;
 	}
 
+	//always room for error. 5% in fact
 	if (first_stolen_base > 20) {
 		first_stolen_base = 19;
 	}
