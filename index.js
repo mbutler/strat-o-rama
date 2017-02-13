@@ -12,7 +12,7 @@ const testBA = 0.265 + 0.011; // for Cal Ripkin testing only
 var content = fs.readFileSync("2016-standard-batting.json");
 var batting_stats = JSON.parse(content);
 
-var player_stats = _.find(batting_stats, { 'Name': "Mike Trout"});
+var player_stats = _.find(batting_stats, { 'Name': "Cal Ripkin"});
 
 //console.log(playerObj['2B']);
 //console.log(somAst(playerObj));
@@ -53,7 +53,12 @@ function somW(player) {
 
 	var walk = (((W - IW) * 216) / (AB + ( W - IW) + HBP)) - 9;
 
-	return walk;
+	//can't have negative chances on a card.
+	if (walk < 0) {
+		walk = 0;
+	}
+
+	return _.round(walk);
 }
 
 //batter's hit by pitch. returns chances
@@ -65,7 +70,12 @@ function somHBP(player) {
 
 	var hit_by_pitch = ((HBP * 216) / (AB + (W - IW) + HBP));
 
-	return hit_by_pitch;
+	//can't have negative chances on a card.
+	if (hit_by_pitch < 0) {
+		hit_by_pitch = 0;
+	}
+
+	return _.round(hit_by_pitch);
 }
 
 //batter's hit. returns chances
@@ -83,11 +93,14 @@ function somH(player) {
 		leagueBA = ALBA;
 	}
 
-	console.log("battin avg. ", LG, leagueBA);
-
 	var hit = (( BA - leagueBA ) + BA ) * ( 108 - ( W + HBP ));
 
-	return hit;
+	//can't have negative chances on a card.
+	if (hit < 0) {
+		hit = 0;
+	}
+
+	return _.round(hit, 2);
 }
 
 //batter's double. returns subchances
@@ -105,7 +118,7 @@ function somD(player) {
 		doubles = 0;
 	}
 
-	return doubles;
+	return _.round(doubles);
 }
 
 //batter's triple. returns subchances
@@ -123,7 +136,7 @@ function somT(player) {
 		triples = 0;
 	}
 
-	return triples;
+	return _.round(triples);
 }
 
 //batter's home run. returns subchances
@@ -141,7 +154,7 @@ function somHR(player) {
 		home_runs = 0;
 	}
 
-	return home_runs;
+	return _.round(home_runs);
 }
 
 //batter's strike out. returns chances
@@ -159,7 +172,7 @@ function somK(player) {
 		strike_out = 0;
 	}
 
-	return strike_out;
+	return _.round(strike_out);
 }
 
 //batter's ground ball A. returns chances
@@ -172,7 +185,7 @@ function somGBA(player) {
 
 	var ground_ball_A = ( 1140 * DP ) / ( AB + ( W - IW ) + HBP );
 
-	return ground_ball_A;
+	return _.round(ground_ball_A);
 }
 
 //batter's ground ball B. returns chances.
@@ -185,7 +198,7 @@ function somGBB(player) {
 		ground_ball_B = 0;
 	}
 
-	return ground_ball_B;
+	return _.round(ground_ball_B);
 }
 
 //runner's first stolen base. returns upper value of a d20 roll
