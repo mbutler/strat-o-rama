@@ -12,7 +12,7 @@ const testBA = 0.265 + 0.011; // for Cal Ripkin testing only
 var content = fs.readFileSync("2016-standard-batting.json");
 var batting_stats = JSON.parse(content);
 
-var player_stats = _.find(batting_stats, { 'Name': "Brad Miller"});
+var player_stats = _.find(batting_stats, { 'Name': "Billy Hamilton"});
 
 //console.log(playerObj['2B']);
 //console.log(somAst(playerObj));
@@ -33,7 +33,7 @@ console.log("\n" + player.Name, "\n===========================\n",
 	"ground ball B chances: " + somGBB(player) + "\n\n",
 	"steal rating: " + som1SB(player) + "\n\n",
 	//"second stolen base: " + som2SB(player) + "\n\n",
-	"base stealing lead chances: " + somSBLead(player) + "\n\n",
+	//"base stealing lead chances: " + somSBLead(player) + "\n\n",
 	"flyout A: " + somFlyA(player) + "\n\n",
 	"flyout B: " + somFlyB(player) + "\n\n"
 	);
@@ -209,37 +209,38 @@ function somGBB(player) {
 //runner's first stolen base. returns steal rating.
 function som1SB(player) {
 	var SB = _.toFinite(player.SB);
-	var first_stolen_base;
 
-	if (SB >= 0 && SB < 3) {
-		first_stolen_base = "E";
-		return first_stolen_base;
-	} else if (SB >= 3 && SB < 6) {
-		first_stolen_base = "D";
-		return first_stolen_base;
-	} else if (SB >= 6 && SB < 10) {
-		first_stolen_base = "C";
-		return first_stolen_base;
-	} else if (SB >= 10 && SB < 24) {
-		first_stolen_base = "B";
-		return first_stolen_base;
-	} else if (SB >= 24 && SB < 35) {
-		first_stolen_base = "A";
-		return first_stolen_base;
-	} else if (SB >=35 && SB < 90) {
-		first_stolen_base = "AA";
-		return first_stolen_base;
-	} else if (SB >= 90) {
-		first_stolen_base = "AAA";
-		return first_stolen_base;
+	if (_.inRange(SB, 0, 3)) {
+		return "E";
 	}
 
-	//first_stolen_base = (( SB / ( SB + CS )) + 0.13 ) * 20;
+	if (_.inRange(SB, 3, 6)) {
+		return "D";
+	}
 
-	//first_stolen_base = _.round(first_stolen_base);
+	if (_.inRange(SB, 6, 10)) {
+		return "C";
+	}
 
-	//returns the ceiling of a 1d20 roll. e.g. 15 is a 1-15 success
-	//return first_stolen_base;
+	if (_.inRange(SB, 10, 24)) {
+		return "B";
+	}
+
+	if (_.inRange(SB, 24, 35)) {
+		return "A";
+	}
+
+	if (_.inRange(SB, 35, 90)) {
+		return "AA";
+	}
+
+	if (_.inRange(SB, 90, Infinity)) {
+		return "AAA";
+	}
+
+	//other formula
+	//(( SB / ( SB + CS )) + 0.13 ) * 20;
+	
 }
 
 //runner's second stolen base. returns upper value of a d20 roll
