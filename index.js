@@ -12,7 +12,7 @@ const testBA = 0.265 + 0.011; // for Cal Ripkin testing only
 var content = fs.readFileSync("2016-standard-batting.json");
 var batting_stats = JSON.parse(content);
 
-var player_stats = _.find(batting_stats, { 'Name': "Cal Ripkin"});
+var player_stats = _.find(batting_stats, { 'Name': "Brad Miller"});
 
 //console.log(playerObj['2B']);
 //console.log(somAst(playerObj));
@@ -30,7 +30,12 @@ console.log("\n" + player.Name, "\n===========================\n",
 	"home run chances: " + (somHR(player)/20) + " | subchances: " + somHR(player) + "\n\n",
 	"strikeout chances: " + somK(player) + "\n\n",
 	"ground ball A chances: " + somGBA(player) + "\n\n",
-	"ground ball B chances: " + somGBB(player) + "\n\n"
+	"ground ball B chances: " + somGBB(player) + "\n\n",
+	"steal rating: " + som1SB(player) + "\n\n",
+	//"second stolen base: " + som2SB(player) + "\n\n",
+	"base stealing lead chances: " + somSBLead(player) + "\n\n",
+	"flyout A: " + somFlyA(player) + "\n\n",
+	"flyout B: " + somFlyB(player) + "\n\n"
 	);
 console.log(testNumb);
 
@@ -201,26 +206,40 @@ function somGBB(player) {
 	return _.round(ground_ball_B);
 }
 
-//runner's first stolen base. returns upper value of a d20 roll
+//runner's first stolen base. returns steal rating.
 function som1SB(player) {
 	var SB = _.toFinite(player.SB);
-	var CS = _.toFinite(player.CS);
+	var first_stolen_base;
 
-	if (SB == 0 && CS == 0) {
-		var first_stolen_base = 0.13 * 20;
-	} else {
-		var first_stolen_base = (( SB / ( SB + CS )) + 0.13 ) * 20;
+	if (SB >= 0 && SB < 3) {
+		first_stolen_base = "E";
+		return first_stolen_base;
+	} else if (SB >= 3 && SB < 6) {
+		first_stolen_base = "D";
+		return first_stolen_base;
+	} else if (SB >= 6 && SB < 10) {
+		first_stolen_base = "C";
+		return first_stolen_base;
+	} else if (SB >= 10 && SB < 24) {
+		first_stolen_base = "B";
+		return first_stolen_base;
+	} else if (SB >= 24 && SB < 35) {
+		first_stolen_base = "A";
+		return first_stolen_base;
+	} else if (SB >=35 && SB < 90) {
+		first_stolen_base = "AA";
+		return first_stolen_base;
+	} else if (SB >= 90) {
+		first_stolen_base = "AAA";
+		return first_stolen_base;
 	}
 
-	//always room for error. 5% in fact
-	if (first_stolen_base > 20) {
-		first_stolen_base = 19;
-	}
+	//first_stolen_base = (( SB / ( SB + CS )) + 0.13 ) * 20;
 
-	first_stolen_base = _.round(first_stolen_base);
+	//first_stolen_base = _.round(first_stolen_base);
 
 	//returns the ceiling of a 1d20 roll. e.g. 15 is a 1-15 success
-	return first_stolen_base;
+	//return first_stolen_base;
 }
 
 //runner's second stolen base. returns upper value of a d20 roll
@@ -262,6 +281,20 @@ function somAst(player) {
 	} else {
 		//console.log(SB1 + SBLead);
 		return false;
+	}
+}
+
+function somFlyB(player) {
+	return 11;
+}
+
+function somFlyA(player) {
+	var HR = somHR(player);
+
+	if (HR >= 120) {
+		return 1;
+	} else {
+		return 0;
 	}
 }
 
