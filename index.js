@@ -28,8 +28,7 @@ var player_batting = player_batting_stats;
 var player_fielding = player_fielding_stats;
 
 //format a stat block in the console
-var testNumb = somW(player_batting) + somHBP(player_batting) + somH(player_batting) + (somD(player_batting)/20) + (somT(player_batting)/20) + (somHR(player_batting)/20) + somK(player_batting) + somGBA(player_batting) + somGBB(player_batting);
-console.log("\n" + player_batting.Name, somPos(player_fielding), "\n===========================\n",
+/*console.log("\n" + player_batting.Name, somPos(player_fielding), "\n===========================\n",
 	"walk chances: " + somW(player_batting) + "\n\n", 
 	"hit by pitch chances: " + somHBP(player_batting) + "\n\n", 
 	"hit chances: " + somH(player_batting) + "\n\n", 
@@ -46,7 +45,9 @@ console.log("\n" + player_batting.Name, somPos(player_fielding), "\n============
 	"flyout B: " + somFlyB(player_batting) + "\n\n",
 	"errors: " + somE(player_fielding) + "\n\n",
 	"range: " + somRange(player_fielding) + "\n\n"
-	);
+	);*/
+
+	console.log(factors(129));
 
 //som's own "plate appearance" number, testing only, not for use
 function somPA(player_batting) {
@@ -393,4 +394,30 @@ function somPos(player_fielding) {
 	return positions;
 
 }
+
+function factors(num) {
+    var half = Math.floor(num / 2), // Ensures a whole number <= num.
+        str = '1', // 1 will be a part of every solution.
+        i, j;
+	var factorList = [];
+	let arr = [];
+
+    // Determine out increment value for the loop and starting point.
+    num % 2 === 0 ? (i = 2, j = 1) : (i = 3, j = 2);
+
+    for (i; i <= half; i += j) {
+		if (num % i === 0) {factorList.push(i)}        
+    }
+    
+	//let factors = _.filter(str, function(o) { if (o >= 2 && o <=12) return o; });
+	console.log(factorList);
+	let factors = _.forEach(factorList, function(value) {		
+		console.log(value);
+		if (value >= 2 && value <= 12) { arr.push(value)}
+		
+	})
+
+	return arr;
+}
+
 

@@ -1,6 +1,54 @@
 dividing (sub)chances
 
-priority chart:
+{
+    col1: {
+        '2': {subchances: 20, result: ""},
+        '3': {subchances: 40, result: ""},
+        '4': {subchances: 60, result: ""},
+        '5': {subchances: 80, result: ""},
+        '6': {subchances: 100, result: ""},
+        '7': {subchances: 120, result: ""},
+        '8': {subchances: 100, result: ""},
+        '9': {subchances: 80, result: ""},
+        '10': {subchances: 60, result: ""},
+        '11': {subchances: 40, result: ""},
+        '12': {subchances: 20, result: ""}
+    },
+    col2: {
+        '2': {subchances: 20, result: ""},
+        '3': {subchances: 40, result: ""},
+        '4': {subchances: 60, result: ""},
+        '5': {subchances: 80, result: ""},
+        '6': {subchances: 100, result: ""},
+        '7': {subchances: 120, result: ""},
+        '8': {subchances: 100, result: ""},
+        '9': {subchances: 80, result: ""},
+        '10': {subchances: 60, result: ""},
+        '11': {subchances: 40, result: ""},
+        '12': {subchances: 20, result: ""}
+    },
+    col3: {
+        '2': {subchances: 20, result: ""},
+        '3': {subchances: 40, result: ""},
+        '4': {subchances: 60, result: ""},
+        '5': {subchances: 80, result: ""},
+        '6': {subchances: 100, result: ""},
+        '7': {subchances: 120, result: ""},
+        '8': {subchances: 100, result: ""},
+        '9': {subchances: 80, result: ""},
+        '10': {subchances: 60, result: ""},
+        '11': {subchances: 40, result: ""},
+        '12': {subchances: 20, result: ""}
+    }
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -18,10 +66,7 @@ flyball B       1st half only                       batter may get 1 flyball A
 groundball A    never
 groundball B    never
 lineout         1st half                            only result on single/out split, solid lineout is filler
-popout/foulout  never                               filler  
-
-
-
+popout/foulout  never                               filler
 
 DICE ROLL   CHANCES     SUBCHANCES
 2           1 chance    20 subchances
