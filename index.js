@@ -29,7 +29,7 @@ var player_fielding = player_fielding_stats;
 
 //format a stat block in the console
 var testNumb = somW(player_batting) + somHBP(player_batting) + somH(player_batting) + (somD(player_batting)/20) + (somT(player_batting)/20) + (somHR(player_batting)/20) + somK(player_batting) + somGBA(player_batting) + somGBB(player_batting);
-console.log("\n" + player_batting.Name, "\n===========================\n",
+console.log("\n" + player_batting.Name, somPos(player_fielding), "\n===========================\n",
 	"walk chances: " + somW(player_batting) + "\n\n", 
 	"hit by pitch chances: " + somHBP(player_batting) + "\n\n", 
 	"hit chances: " + somH(player_batting) + "\n\n", 
@@ -39,7 +39,7 @@ console.log("\n" + player_batting.Name, "\n===========================\n",
 	"strikeout chances: " + somK(player_batting) + "\n\n",
 	"ground ball A chances: " + somGBA(player_batting) + "\n\n",
 	"ground ball B chances: " + somGBB(player_batting) + "\n\n",
-	"steal rating: " + som1SB(player_batting) + "\n\n",
+	"steal rating: " + somSteal(player_batting) + "\n\n",
 	//"second stolen base: " + som2SB(player_batting) + "\n\n",
 	//"base stealing lead chances: " + somSBLead(player_batting) + "\n\n",
 	"flyout A: " + somFlyA(player_batting) + "\n\n",
@@ -255,8 +255,15 @@ function somGBB(player_batting) {
 	return _.round(ground_ball_B);
 }
 
-//runner's first stolen base. returns steal rating.
-function som1SB(player_batting) {
+//runner's first stolen base. returns upper limit of 1d20
+function som1SB(player_batting) {	
+
+	//(( SB / ( SB + CS )) + 0.13 ) * 20;
+	
+}
+
+//runner's steal rating based on simplified chart
+function somSteal(player_batting) {
 	var SB = _.toFinite(player_batting.SB);
 
 	if (_.inRange(SB, 0, 3)) {
@@ -286,10 +293,6 @@ function som1SB(player_batting) {
 	if (_.inRange(SB, 90, Infinity)) {
 		return "AAA";
 	}
-
-	//other formula
-	//(( SB / ( SB + CS )) + 0.13 ) * 20;
-	
 }
 
 //runner's second stolen base. returns upper value of a d20 roll
@@ -379,5 +382,15 @@ function somRange(player_fielding) {
 	if (_.inRange(rdrs, -Infinity, -10)) {
 		return 5;
 	}
+}
+
+//player's positions. Returns an array of positions ranked by frequency
+function somPos(player_fielding) {
+	var pos = player_fielding['Pos Summary'];
+
+	var positions = _.split(pos, "-");
+
+	return positions;
+
 }
 
