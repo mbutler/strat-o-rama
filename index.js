@@ -9,52 +9,66 @@ const ALBA = 0.257 + 0.011;
 const MLBBA = 0.255 + 0.011; // just use this for now
 const testBA = 0.265 + 0.011; // for Cal Ripkin testing only
 
-var content = fs.readFileSync("2016-standard-batting.json");
-var batting_stats = JSON.parse(content);
+var batting_data = fs.readFileSync("2016-standard-batting.json");
+var fielding_data = fs.readFileSync("2016-standard-fielding.json");
+var batting_stats = JSON.parse(batting_data);
+var fielding_stats = JSON.parse(fielding_data);
 
-var player_stats = _.find(batting_stats, { 'Name': "Billy Hamilton"});
+//var current_player_name = {'Name': "Kris Bryant"};
+//var current_player_name = {'Name': "Freddie Freeman"};
+var current_player_name = {'Name': "Stephen Vogt"};
 
-//console.log(playerObj['2B']);
-//console.log(somAst(playerObj));
+var player_batting_stats = _.find(batting_stats, current_player_name);
+var player_fielding_stats = _.find(fielding_stats, current_player_name);
 
-var player = player_stats;
+//console.log(player_battingObj['2B']);
+//console.log(somAst(player_battingObj));
+
+var player_batting = player_batting_stats;
+var player_fielding = player_fielding_stats;
 
 //format a stat block in the console
-var testNumb = somW(player) + somHBP(player) + somH(player) + (somD(player)/20) + (somT(player)/20) + (somHR(player)/20) + somK(player) + somGBA(player) + somGBB(player);
-console.log("\n" + player.Name, "\n===========================\n",
-	"walk chances: " + somW(player) + "\n\n", 
-	"hit by pitch chances: " + somHBP(player) + "\n\n", 
-	"hit chances: " + somH(player) + "\n\n", 
-	"double chances: " + (somD(player)/20) + " | subchances: " + somD(player) + "\n\n", 
-	"triple chances: " + (somT(player)/20) + " | subchances: " + somT(player) + "\n\n",
-	"home run chances: " + (somHR(player)/20) + " | subchances: " + somHR(player) + "\n\n",
-	"strikeout chances: " + somK(player) + "\n\n",
-	"ground ball A chances: " + somGBA(player) + "\n\n",
-	"ground ball B chances: " + somGBB(player) + "\n\n",
-	"steal rating: " + som1SB(player) + "\n\n",
-	//"second stolen base: " + som2SB(player) + "\n\n",
-	//"base stealing lead chances: " + somSBLead(player) + "\n\n",
-	"flyout A: " + somFlyA(player) + "\n\n",
-	"flyout B: " + somFlyB(player) + "\n\n"
+var testNumb = somW(player_batting) + somHBP(player_batting) + somH(player_batting) + (somD(player_batting)/20) + (somT(player_batting)/20) + (somHR(player_batting)/20) + somK(player_batting) + somGBA(player_batting) + somGBB(player_batting);
+console.log("\n" + player_batting.Name, "\n===========================\n",
+	"walk chances: " + somW(player_batting) + "\n\n", 
+	"hit by pitch chances: " + somHBP(player_batting) + "\n\n", 
+	"hit chances: " + somH(player_batting) + "\n\n", 
+	"double chances: " + (somD(player_batting)/20) + " | subchances: " + somD(player_batting) + "\n\n", 
+	"triple chances: " + (somT(player_batting)/20) + " | subchances: " + somT(player_batting) + "\n\n",
+	"home run chances: " + (somHR(player_batting)/20) + " | subchances: " + somHR(player_batting) + "\n\n",
+	"strikeout chances: " + somK(player_batting) + "\n\n",
+	"ground ball A chances: " + somGBA(player_batting) + "\n\n",
+	"ground ball B chances: " + somGBB(player_batting) + "\n\n",
+	"steal rating: " + som1SB(player_batting) + "\n\n",
+	//"second stolen base: " + som2SB(player_batting) + "\n\n",
+	//"base stealing lead chances: " + somSBLead(player_batting) + "\n\n",
+	"flyout A: " + somFlyA(player_batting) + "\n\n",
+	"flyout B: " + somFlyB(player_batting) + "\n\n",
+	"errors: " + somE(player_fielding) + "\n\n",
+	"range: " + somRange(player_fielding) + "\n\n"
 	);
-console.log(testNumb);
 
 //som's own "plate appearance" number, testing only, not for use
-function somPA(player) {
-	var AB = _.toFinite(player.AB);
-	var W = _.toFinite(player.BB);
-	var IW = _.toFinite(player.IBB);
-	var HBP = _.toFinite(player.HBP);
+function somPA(player_batting) {
+	var AB = _.toFinite(player_batting.AB);
+	var W = _.toFinite(player_batting.BB);
+	var IW = _.toFinite(player_batting.IBB);
+	var HBP = _.toFinite(player_batting.HBP);
 
 	return ( AB + ( W - IW ) + HBP );
 }
 
 //batter's walk. returns chances
-function somW(player) {	
-	var W = _.toFinite(player.BB);
-	var IW = _.toFinite(player.IBB);
-	var AB = _.toFinite(player.AB);
-	var HBP = _.toFinite(player.HBP);
+function somW(player_batting) {	
+	var W = _.toFinite(player_batting.BB);
+	var IW = _.toFinite(player_batting.IBB);
+	var AB = _.toFinite(player_batting.AB);
+	var HBP = _.toFinite(player_batting.HBP);
+
+	//can't divide by zero
+	if (W == 0) {
+		return 0;
+	}
 
 	var walk = (((W - IW) * 216) / (AB + ( W - IW) + HBP)) - 9;
 
@@ -67,11 +81,16 @@ function somW(player) {
 }
 
 //batter's hit by pitch. returns chances
-function somHBP(player) {
-	var W = _.toFinite(player.BB);
-	var IW = _.toFinite(player.IBB);
-	var AB = _.toFinite(player.AB);
-	var HBP = _.toFinite(player.HBP);
+function somHBP(player_batting) {
+	var W = _.toFinite(player_batting.BB);
+	var IW = _.toFinite(player_batting.IBB);
+	var AB = _.toFinite(player_batting.AB);
+	var HBP = _.toFinite(player_batting.HBP);
+
+	//can't divide by zero
+	if (HBP == 0) {
+		return 0;
+	}
 
 	var hit_by_pitch = ((HBP * 216) / (AB + (W - IW) + HBP));
 
@@ -84,12 +103,17 @@ function somHBP(player) {
 }
 
 //batter's hit. returns chances
-function somH(player) {
-	var W = somW(player);
-	var HBP = somHBP(player);
-	var BA = _.toFinite(player.BA);
-	var LG = player.Lg;
+function somH(player_batting) {
+	var W = somW(player_batting);
+	var HBP = somHBP(player_batting);
+	var BA = _.toFinite(player_batting.BA);
+	var LG = player_batting.Lg;
 	var leagueBA = MLBBA;
+
+	//can't divide by zero
+	if (BA == 0) {
+		return 0;
+	}
 
 	//find the right batting average
 	if (LG == "NL") {
@@ -109,12 +133,17 @@ function somH(player) {
 }
 
 //batter's double. returns subchances
-function somD(player) {
-	var second_bases = _.toFinite(player['2B']);
-	var AB = _.toFinite(player.AB);
-	var W = _.toFinite(player.BB);
-	var IW = _.toFinite(player.IBB);
-	var HBP = _.toFinite(player.HBP);
+function somD(player_batting) {
+	var second_bases = _.toFinite(player_batting['2B']);
+	var AB = _.toFinite(player_batting.AB);
+	var W = _.toFinite(player_batting.BB);
+	var IW = _.toFinite(player_batting.IBB);
+	var HBP = _.toFinite(player_batting.HBP);
+
+	//can't divide by zero
+	if (second_bases == 0) {
+		return 0;
+	}
 
 	var doubles = ( 4320 * second_bases ) / ( AB + ( W - IW ) + HBP ) - 90;
 
@@ -127,12 +156,17 @@ function somD(player) {
 }
 
 //batter's triple. returns subchances
-function somT(player) {
-	var third_bases = _.toFinite(player['3B']);
-	var AB = _.toFinite(player.AB);
-	var W = _.toFinite(player.BB);
-	var IW = _.toFinite(player.IBB);
-	var HBP = _.toFinite(player.HBP);
+function somT(player_batting) {
+	var third_bases = _.toFinite(player_batting['3B']);
+	var AB = _.toFinite(player_batting.AB);
+	var W = _.toFinite(player_batting.BB);
+	var IW = _.toFinite(player_batting.IBB);
+	var HBP = _.toFinite(player_batting.HBP);
+
+	//can't divide by zero
+	if (third_bases == 0) {
+		return 0;
+	}
 
 	var triples = ( 4320 * third_bases ) / ( AB + ( W - IW ) + HBP ) - 15;
 
@@ -145,12 +179,17 @@ function somT(player) {
 }
 
 //batter's home run. returns subchances
-function somHR(player) {
-	var HR = _.toFinite(player.HR);
-	var AB = _.toFinite(player.AB);
-	var W = _.toFinite(player.BB);
-	var IW = _.toFinite(player.IBB);
-	var HBP = _.toFinite(player.HBP);
+function somHR(player_batting) {
+	var HR = _.toFinite(player_batting.HR);
+	var AB = _.toFinite(player_batting.AB);
+	var W = _.toFinite(player_batting.BB);
+	var IW = _.toFinite(player_batting.IBB);
+	var HBP = _.toFinite(player_batting.HBP);
+
+	//can't divide by zero
+	if (HR == 0) {
+		return 0;
+	}
 
 	var home_runs = ( 4320 * HR ) / ( AB + ( W - IW ) + HBP ) - 50;
 
@@ -163,12 +202,17 @@ function somHR(player) {
 }
 
 //batter's strike out. returns chances
-function somK(player) {
-	var K = _.toFinite(player.SO);
-	var AB = _.toFinite(player.AB);
-	var W = _.toFinite(player.BB);
-	var IW = _.toFinite(player.IBB);
-	var HBP = _.toFinite(player.HBP);
+function somK(player_batting) {
+	var K = _.toFinite(player_batting.SO);
+	var AB = _.toFinite(player_batting.AB);
+	var W = _.toFinite(player_batting.BB);
+	var IW = _.toFinite(player_batting.IBB);
+	var HBP = _.toFinite(player_batting.HBP);
+
+	//can't divide by zero
+	if (K == 0) {
+		return 0;
+	}
 
 	var strike_out = (( K * 216 ) / ( AB + ( W - IW ) + HBP )) - 17;
 
@@ -181,12 +225,17 @@ function somK(player) {
 }
 
 //batter's ground ball A. returns chances
-function somGBA(player) {
-	var DP = _.toFinite(player.GDP);
-	var AB = _.toFinite(player.AB);
-	var W = _.toFinite(player.BB);
-	var IW = _.toFinite(player.IBB);
-	var HBP = _.toFinite(player.HBP);
+function somGBA(player_batting) {
+	var DP = _.toFinite(player_batting.GDP);
+	var AB = _.toFinite(player_batting.AB);
+	var W = _.toFinite(player_batting.BB);
+	var IW = _.toFinite(player_batting.IBB);
+	var HBP = _.toFinite(player_batting.HBP);
+
+	//can't divide by zero
+	if (DP == 0) {
+		return 0;
+	}
 
 	var ground_ball_A = ( 1140 * DP ) / ( AB + ( W - IW ) + HBP );
 
@@ -194,8 +243,8 @@ function somGBA(player) {
 }
 
 //batter's ground ball B. returns chances.
-function somGBB(player) {
-	var GBA = somGBA(player);
+function somGBB(player_batting) {
+	var GBA = somGBA(player_batting);
 
 	var ground_ball_B = 31 - GBA;
 
@@ -207,8 +256,8 @@ function somGBB(player) {
 }
 
 //runner's first stolen base. returns steal rating.
-function som1SB(player) {
-	var SB = _.toFinite(player.SB);
+function som1SB(player_batting) {
+	var SB = _.toFinite(player_batting.SB);
 
 	if (_.inRange(SB, 0, 3)) {
 		return "E";
@@ -244,8 +293,8 @@ function som1SB(player) {
 }
 
 //runner's second stolen base. returns upper value of a d20 roll
-function som2SB(player) {
-	var SB1 = som1SB(player);
+function som2SB(player_batting) {
+	var SB1 = som1SB(player_batting);
 
 	var second_stolen_base = (SB1 - ( SB1 / 3 )) + 1;
 
@@ -255,16 +304,16 @@ function som2SB(player) {
 }
 
 //runner's stolen base lead
-function somSBLead(player) {
-	var SB = _.toFinite(player.SB);
-	var CS = _.toFinite(player.CS);
-	var H = _.toFinite(player.H);
-	var W = _.toFinite(player.BB);
-	var IW = _.toFinite(player.IBB);
-	var HBP = _.toFinite(player.HBP);
-	var second_bases = _.toFinite(player['2B']);
-	var third_bases = _.toFinite(player['3B']);
-	var HR = _.toFinite(player.HR);
+function somSBLead(player_batting) {
+	var SB = _.toFinite(player_batting.SB);
+	var CS = _.toFinite(player_batting.CS);
+	var H = _.toFinite(player_batting.H);
+	var W = _.toFinite(player_batting.BB);
+	var IW = _.toFinite(player_batting.IBB);
+	var HBP = _.toFinite(player_batting.HBP);
+	var second_bases = _.toFinite(player_batting['2B']);
+	var third_bases = _.toFinite(player_batting['3B']);
+	var HR = _.toFinite(player_batting.HR);
 
 	var lead_chances = (36 * ( SB + CS )) / ((( H + ( W - IW ) + HBP ) * .85 ) - ( second_bases + third_bases + HR ));
 
@@ -272,9 +321,9 @@ function somSBLead(player) {
 }
 
 //runner's asterisk. returns boolean
-function somAst(player) {
-	var SB1 = som1SB(player);
-	var SBLead = somSBLead(player);
+function somAst(player_batting) {
+	var SB1 = som1SB(player_batting);
+	var SBLead = somSBLead(player_batting);
 
 	if ((SB1 + SBLead) > 24) {
 		//console.log(SB1 + SBLead);
@@ -285,17 +334,50 @@ function somAst(player) {
 	}
 }
 
-function somFlyB(player) {
+function somFlyB(player_batting) {
 	return 11;
 }
 
-function somFlyA(player) {
-	var HR = somHR(player);
+function somFlyA(player_batting) {
+	var HR = somHR(player_batting);
 
 	if (HR >= 120) {
 		return 1;
 	} else {
 		return 0;
+	}
+}
+
+function somE(player_fielding) {
+	var innings = _.toFinite(player_fielding.Inn);
+	var errors = _.toFinite(player_fielding['E']);
+
+	var err = (errors * 1458) / innings;
+
+	return _.round(err);
+}
+
+function somRange(player_fielding) {
+	var rdrs = _.toFinite(player_fielding.Rdrs);
+
+	if (_.inRange(rdrs, 12, Infinity)) {
+		return 1;
+	}
+
+	if (_.inRange(rdrs, 2, 12)) {
+		return 2;
+	}
+
+	if (_.inRange(rdrs, -1, 2)) {
+		return 3;
+	}
+
+	if (_.inRange(rdrs, -10, -1)) {
+		return 4;
+	}
+
+	if (_.inRange(rdrs, -Infinity, -10)) {
+		return 5;
 	}
 }
 
