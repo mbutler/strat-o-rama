@@ -1,0 +1,40 @@
+dividing (sub)chances
+
+priority chart:
+
+
+
+RESULT          SPLIT                               NOTES
+homerun         1st half only   
+triple          1st half unless after HR
+double          1st half only unless after 3B/HR
+single          never
+walk            never                               begin at walk slot unless hits use it
+hbp             never  
+plus injury     never                               always on card
+max lineout     never
+strikeout       never                               use up Ks before other outs
+flyball B       1st half only                       batter may get 1 flyball A 
+groundball A    never
+groundball B    never
+lineout         1st half                            only result on single/out split, solid lineout is filler
+popout/foulout  never                               filler  
+
+
+
+
+DICE ROLL   CHANCES     SUBCHANCES
+2           1 chance    20 subchances
+3           2 chances   40 subchances
+4           3 chances   60 subchances
+5           4 chances   80 subchances
+6           5 chances   100 subchances
+7           6 chances   120 subchances
+8           5 chances   100 subchances
+9           4 chances   80 subchances
+10          3 chances   60 subchances
+11          2 chances   40 subchances
+12          1 chance    20 subchances
+TOTAL       36 chances  720 subchances
+
+    x 6 columns = 4,320 subchances
