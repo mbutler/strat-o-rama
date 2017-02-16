@@ -1,4 +1,9 @@
-dividing (sub)chances
+d20 rolls are worth the 2d6 roll minus 1
+e.g.    1 on a d20 in '7' is worth 6 subchances
+        1 on a d20 in '2' is worth 1 subchance
+        1 on a d20 in '4' is worth 3 subchances
+
+        
 
 {
     col1: {
