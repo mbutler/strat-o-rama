@@ -14,9 +14,9 @@ var fielding_data = fs.readFileSync("2016-standard-fielding.json");
 var batting_stats = JSON.parse(batting_data);
 var fielding_stats = JSON.parse(fielding_data);
 
-//var current_player_name = {'Name': "Kris Bryant"};
+var current_player_name = {'Name': "Hyun Soo Kim"};
 //var current_player_name = {'Name': "Freddie Freeman"};
-var current_player_name = {'Name': "Stephen Vogt"};
+//var current_player_name = {'Name': "Stephen Vogt"};
 
 var player_batting_stats = _.find(batting_stats, current_player_name);
 var player_fielding_stats = _.find(fielding_stats, current_player_name);
@@ -47,7 +47,22 @@ var player_fielding = player_fielding_stats;
 	"range: " + somRange(player_fielding) + "\n\n"
 	);*/
 
-	console.log(factors(129));
+console.log("\n" + player_batting.Name, somPos(player_fielding), "\n===========================\n",
+	"walk: " + somW(player_batting) * 20 + "\n\n", 
+	"hit by pitch: " + somHBP(player_batting) * 20 + "\n\n", 
+	"hit: " + somH(player_batting) * 20 + "\n\n", 
+	"double: " + somD(player_batting) + "\n\n", 
+	"triple: " + somT(player_batting) + "\n\n",
+	"home run: " + somHR(player_batting) + "\n\n",
+	"strikeout: " + somK(player_batting) * 20 + "\n\n",
+	"ground ball A: " + somGBA(player_batting) * 20 + "\n\n",
+	"ground ball B: " + somGBB(player_batting) * 20 + "\n\n",
+	"steal rating: " + somSteal(player_batting) + "\n\n",	
+	"flyout A: " + somFlyA(player_batting) * 20 + "\n\n",
+	"flyout B: " + somFlyB(player_batting) * 20 + "\n\n"	
+	);
+
+//console.log(factors(66));
 
 //som's own "plate appearance" number, testing only, not for use
 function somPA(player_batting) {
@@ -130,7 +145,7 @@ function somH(player_batting) {
 		hit = 0;
 	}
 
-	return _.round(hit, 2);
+	return _.round(hit);
 }
 
 //batter's double. returns subchances
@@ -396,25 +411,27 @@ function somPos(player_fielding) {
 }
 
 function factors(num) {
-    var half = Math.floor(num / 2), // Ensures a whole number <= num.
-        str = '1', // 1 will be a part of every solution.
-        i, j;
-	var factorList = [];
-	let arr = [];
+    const half = _.round(num); // Ensures a whole number
+    const factorList = [];
+	const arr = [];
+	let i;
+    let j;
+    let factors;
 
     // Determine out increment value for the loop and starting point.
     num % 2 === 0 ? (i = 2, j = 1) : (i = 3, j = 2);
 
     for (i; i <= half; i += j) {
-		if (num % i === 0) {factorList.push(i)}        
+		if (num % i === 0) factorList.push(i);       
     }
     
-	//let factors = _.filter(str, function(o) { if (o >= 2 && o <=12) return o; });
 	console.log(factorList);
-	let factors = _.forEach(factorList, function(value) {		
-		console.log(value);
+
+	factors = _.forEach(factorList, function(value) {
+
+		//make sure divisors are in the 2d6 dice range
 		if (value >= 2 && value <= 12) { arr.push(value)}
-		
+
 	})
 
 	return arr;

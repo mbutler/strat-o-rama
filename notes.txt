@@ -3,8 +3,6 @@ e.g.    1 on a d20 in '7' is worth 6 subchances
         1 on a d20 in '2' is worth 1 subchance
         1 on a d20 in '4' is worth 3 subchances
 
-        
-
 {
     col1: {
         '2': {subchances: 20, result: ""},
