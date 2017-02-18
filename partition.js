@@ -62,11 +62,11 @@ var card =
 
  hit: 620
 
- double: 110
 
- triple: 0
 
- home run: 25
+
+
+
 
  strikeout: 300
 
@@ -84,9 +84,18 @@ var card =
 
 
 
-let homers = 199
+let homers = 25
+let triples = 0
+let doubles = 110
+let singles = 620
 let walks = 280
-let hits = 620
+let hbp = 60
+let strikeouts = 300
+let gba = 340
+let gbb = 280
+let flya = 0
+let flyb = 120
+
 
 //returns the object that is the best choice for what to subtract subchances
 //handle all subtractions and result setting outside this function in a while loop
@@ -136,7 +145,7 @@ function assignStat(total, text, split = false) {
             //subtract the amount from the entry          
             entry.subchances -= total
             //find upper value of the d20 roll
-            let upper_range = ( ( total_subchances - entry.subchances) / total_subchances ) * 20
+            let upper_range =_.round( ( ( total_subchances - entry.subchances) / total_subchances ) * 20 )
 
             //add the label
             if ( upper_range == 1 ) {
@@ -153,8 +162,17 @@ function assignStat(total, text, split = false) {
 }
 
 homers = assignStat(homers, "homerun")
+triples = assignStat(triples, "triple")
+doubles = assignStat(doubles, "double")
+singles = assignStat(singles, "single")
 walks = assignStat(walks, "walk")
-hits = assignStat(hits, "single")
+hbp = assignStat(hbp, "hit by pitch")
+strikeouts = assignStat(strikeouts, "strikeout")
+gba = assignStat(gba, "ground ball A")
+gbb = assignStat(gbb, "ground ball B")
+flya = assignStat(flya, "flyball A")
+flyb = assignStat(flyb, "flyball B")
+
 
 console.log(card)
 
