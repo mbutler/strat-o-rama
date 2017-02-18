@@ -72,6 +72,14 @@ e.g.    1 on a d20 in '7' is worth 6 subchances
             }
 
 
+                         //add the label
+            if ( spread == 1 ) {
+                entry.result.push( text + " 1" )
+            } else {
+                entry.result.push( text + " 1-" + spread )
+            } 
+
+
 
 
 
@@ -112,3 +120,4 @@ DICE ROLL   CHANCES     SUBCHANCES
 TOTAL       36 chances  720 subchances
 
     x 6 columns = 4,320 subchances
+    x 3 columns = 2,160 subchances
