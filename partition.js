@@ -1,92 +1,45 @@
 var _ = require('lodash');
 
-//old
-function getSubchancesList() {
-    var subchances_list = [];
-
-    //loop through all 3 columns
-    for (let i = 1; i <= 3; i++) {
-        var column = _.get(card, 'col' + i);
-
-        //loop through each dice result in a column
-        for (let j = 2; j <= 12; j++) {
-            
-            var die_result = _.get(column, j)
-
-            subchances_list.push(die_result.subchances);                
-        }    
-    }
-
-    return subchances_list
-}
-
 var card = 
 [
-    {name: '1-2', subchances: 0, result: [], index: 0},
-    {name: '1-3', subchances: 40, result: [], index: 1},
-    {name: '1-4', subchances: 60, result: [], index: 2},
-    {name: '1-5', subchances: 80, result: [], index: 3},
-    {name: '1-6', subchances: 100, result: [], index: 4},
-    {name: '1-7', subchances: 120, result: [], index: 5},
-    {name: '1-8', subchances: 100, result: [], index: 6},
-    {name: '1-9', subchances: 80, result: [], index: 7},
-    {name: '1-10', subchances: 60, result: [], index: 8},
-    {name: '1-11', subchances: 40, result: [], index: 9},
-    {name: '1-12', subchances: 20, result: [], index: 10},
-    {name: '2-2', subchances: 20, result: [], index: 11},
-    {name: '2-3', subchances: 40, result: [], index: 12},
-    {name: '2-4', subchances: 60, result: [], index: 13},
-    {name: '2-6', subchances: 80, result: [], index: 14},
-    {name: '2-6', subchances: 100, result: [], index: 15},
-    {name: '2-7', subchances: 120, result: [], index: 16},
-    {name: '2-8', subchances: 100, result: [], index: 17},
-    {name: '2-9', subchances: 80, result: [], index: 18},
-    {name: '2-10', subchances: 60, result: [], index: 19},
-    {name: '2-11', subchances: 40, result: [], index: 20},
-    {name: '2-12', subchances: 20, result: [], index: 21},
-    {name: '3-2', subchances: 20, result: [], index: 22},
-    {name: '3-3', subchances: 40, result: [], index: 23},
-    {name: '3-4', subchances: 60, result: [], index: 24},
-    {name: '3-5', subchances: 80, result: [], index: 25},
-    {name: '3-6', subchances: 100, result: [], index: 26},
-    {name: '3-7', subchances: 120, result: [], index: 27},
-    {name: '3-8', subchances: 100, result: [], index: 28},
-    {name: '3-9', subchances: 80, result: [], index: 29},
-    {name: '3-10', subchances: 60, result: [], index: 30},
-    {name: '3-11', subchances: 40, result: [], index: 31},
-    {name: '3-12', subchances: 20, result: [], index: 32}   
+    {name: '1-2', subchances: 0, total: 20, result: ['line out into as many outs as possible'], index: 0},
+    {name: '1-3', subchances: 40, total: 40, result: [], index: 1},
+    {name: '1-4', subchances: 60, total: 60, result: [], index: 2},
+    {name: '1-5', subchances: 80, total: 80, result: [], index: 3},
+    {name: '1-6', subchances: 100, total: 100, result: [], index: 4},
+    {name: '1-7', subchances: 120, total: 120, result: [], index: 5},
+    {name: '1-8', subchances: 100, total: 100, result: [], index: 6},
+    {name: '1-9', subchances: 80, total: 80, result: [], index: 7},
+    {name: '1-10', subchances: 60, total: 60, result: [], index: 8},
+    {name: '1-11', subchances: 40, total: 40, result: [], index: 9},
+    {name: '1-12', subchances: 20, total: 20, result: [], index: 10},
+    {name: '2-2', subchances: 20, total: 20, result: [], index: 11},
+    {name: '2-3', subchances: 40, total: 40, result: [], index: 12},
+    {name: '2-4', subchances: 60, total: 60, result: [], index: 13},
+    {name: '2-5', subchances: 80, total: 80, result: [], index: 14},
+    {name: '2-6', subchances: 100, total: 100, result: [], index: 15},
+    {name: '2-7', subchances: 120, total: 120, result: [], index: 16},
+    {name: '2-8', subchances: 100, total: 100, result: [], index: 17},
+    {name: '2-9', subchances: 80, total: 80, result: [], index: 18},
+    {name: '2-10', subchances: 60, total: 60, result: [], index: 19},
+    {name: '2-11', subchances: 40, total: 40, result: [], index: 20},
+    {name: '2-12', subchances: 20, total: 20, result: [], index: 21},
+    {name: '3-2', subchances: 20, total: 20, result: [], index: 22},
+    {name: '3-3', subchances: 40, total: 40, result: [], index: 23},
+    {name: '3-4', subchances: 60, total: 60, result: [], index: 24},
+    {name: '3-5', subchances: 80, total: 80, result: [], index: 25},
+    {name: '3-6', subchances: 100, total: 100, result: [], index: 26},
+    {name: '3-7', subchances: 120, total: 120, result: [], index: 27},
+    {name: '3-8', subchances: 100, total: 100, result: [], index: 28},
+    {name: '3-9', subchances: 80, total: 80, result: [], index: 29},
+    {name: '3-10', subchances: 60, total: 60, result: [], index: 30},
+    {name: '3-11', subchances: 40, total: 40, result: [], index: 31},
+    {name: '3-12', subchances: 20, total: 20, result: [], index: 32}   
 ]
-/* walk: 280
-
- hit by pitch: 60
-
- hit: 620
-
-
-
-
-
-
-
- strikeout: 300
-
- ground ball A: 340
-
- ground ball B: 280
-
- steal rating: E
-
- flyout A: 0
-
- flyout B: 220*/
-
-
-
-
 
 let homers = 25
-let triples = 0
-let doubles = 110
+let triples = 1
+let doubles = 120
 let singles = 620
 let walks = 280
 let hbp = 60
@@ -94,7 +47,7 @@ let strikeouts = 300
 let gba = 340
 let gbb = 280
 let flya = 0
-let flyb = 120
+let flyb = 109
 
 
 //returns the object that is the best choice for what to subtract subchances
@@ -129,7 +82,8 @@ function findBestEntry(current_stat) {
 function assignStat(total, text, split = false) {
     while (total > 0) {
         var entry = findBestEntry(total)
-        let total_subchances = entry.subchances
+        const total_subchances = entry.total
+        console.log("totals", total_subchances)
 
         if (entry.subchances <= total) {
             //it's less than total so just take the whole thing
@@ -140,19 +94,44 @@ function assignStat(total, text, split = false) {
             //it's more than the total so we have to split
             //get the roll by pulling it from the name
             let roll_label = _.split( entry.name, '-' )
+            console.log("roll label", roll_label)
             //turn the label into the integer and subtract 1 to determine the subchance value of each die increment
-            let roll_value = ( _.toInteger( roll_label[1] ) - 1 )
+            console.log("total subs",total_subchances)
+            let roll_value = (total_subchances / 10) / 2
+            console.log("roll value", roll_value)
             //subtract the amount from the entry          
             entry.subchances -= total
-            //find upper value of the d20 roll
-            let upper_range =_.round( ( ( total_subchances - entry.subchances) / total_subchances ) * 20 )
+            console.log("entry subs", entry.subchances)
+            //find upper value of the range (not the d20 roll)
+            var spread = _.round( ( total_subchances - entry.subchances) / roll_value )
 
-            //add the label
-            if ( upper_range == 1 ) {
-                entry.result.push( text + " 1" )
+            console.log('spread', spread)
+            //if it's the first split, it's a range of 1 to something        
+            if (entry.result[0] == undefined) {
+                if (spread == 1) {
+                    entry.result.push({'spread': spread, 'lower': 1, 'upper': 1, 'text': text + " 1"})
+                    console.log(entry.result)
+                } else {
+                    var upper_range = spread
+                    entry.result.push({'spread': spread, 'lower': 1, 'upper': upper_range, 'text': text + " 1-" + upper_range})
+                    console.log(entry.result)
+                }
             } else {
-                entry.result.push( text + " 1-" + upper_range )
-            } 
+                var last_entry = _.last(entry.result)                
+                var lower_range = last_entry.upper + 1              
+
+                if (spread == 1) {
+                    var upper_range = lower_range
+                    entry.result.push({'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range})
+                    console.log(entry.result)
+                } else {
+                    var upper_range = lower_range + spread
+                    if (upper_range > 20) {upper_range = 20}
+                    entry.result.push({'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range + "-" + upper_range})
+                    console.log(entry.result)
+                }
+                
+            }          
             
             total = 0      
         }
@@ -164,6 +143,7 @@ function assignStat(total, text, split = false) {
 homers = assignStat(homers, "homerun")
 triples = assignStat(triples, "triple")
 doubles = assignStat(doubles, "double")
+
 singles = assignStat(singles, "single")
 walks = assignStat(walks, "walk")
 hbp = assignStat(hbp, "hit by pitch")

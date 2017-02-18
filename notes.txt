@@ -45,6 +45,32 @@ e.g.    1 on a d20 in '7' is worth 6 subchances
     }
 }
 
+//add the label
+            if ( upper_range == 1 && entry.result[0] == undefined) {
+                entry.result.push( text + " 1" )
+            } else {
+                //check if there is a first range stored
+                if (entry.result[0] !== undefined && upper_range !==1) {
+                    //get first upper limit and add 1 to get lower limit of second range
+                    let roll_val = _.split( entry.result[0], '-')
+                    var lower_range = _.toInteger(_.last(roll_val)) + 1
+                    upper_range +=  _.toInteger(_.last(roll_val))
+                    entry.result.push( text + " " + lower_range + "-" + upper_range )
+                } else if (entry.result[0] !== undefined && upper_range == 1) {
+                    let roll_val = _.split( entry.result[0], '-')
+                    var lower_range = _.toInteger(_.last(roll_val)) + 1
+                    upper_range +=  _.toInteger(_.last(roll_val))
+                    entry.result.push( text + " " + lower_range )
+                } else {
+                    let roll_val = _.split( _.last(entry.result), '-')
+                    var lower_range = _.toInteger(roll_val) + 1
+                    upper_range +=  _.toInteger(_.last(roll_val))
+                    entry.result.push( text + " 1-" + upper_range )
+
+                }
+                
+            }
+
 
 
 
