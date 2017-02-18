@@ -37,18 +37,17 @@ var card =
     {name: '3-12', subchances: 20, total: 20, result: [], index: 32}   
 ]
 
-let homers = 25
+let homers = 125
 let triples = 1
 let doubles = 120
-let singles = 620
+let singles = 420
 let walks = 280
-let hbp = 60
+let hbp = 260
 let strikeouts = 300
 let gba = 340
 let gbb = 280
 let flya = 0
-let flyb = 109
-
+let flyb = 0
 
 //returns the object that is the best choice for what to subtract subchances
 //handle all subtractions and result setting outside this function in a while loop
@@ -82,7 +81,7 @@ function findBestEntry(current_stat) {
 function assignStat(total, text, split = false) {
     while (total > 0) {
         var entry = findBestEntry(total)
-        const total_subchances = entry.total
+        var total_subchances = entry.total
         console.log("totals", total_subchances)
 
         if (entry.subchances <= total) {
@@ -92,20 +91,15 @@ function assignStat(total, text, split = false) {
             entry.subchances = 0
         } else {
             //it's more than the total so we have to split
-            //get the roll by pulling it from the name
-            let roll_label = _.split( entry.name, '-' )
-            console.log("roll label", roll_label)
-            //turn the label into the integer and subtract 1 to determine the subchance value of each die increment
-            console.log("total subs",total_subchances)
+            //get the number of subchances per die increment
             let roll_value = (total_subchances / 10) / 2
-            console.log("roll value", roll_value)
+
             //subtract the amount from the entry          
             entry.subchances -= total
-            console.log("entry subs", entry.subchances)
+
             //find upper value of the range (not the d20 roll)
             var spread = _.round( ( total_subchances - entry.subchances) / roll_value )
 
-            console.log('spread', spread)
             //if it's the first split, it's a range of 1 to something        
             if (entry.result[0] == undefined) {
                 if (spread == 1) {
