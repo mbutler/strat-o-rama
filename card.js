@@ -3,7 +3,7 @@ var _ = require('lodash');
 function getCard(playerStatBlock) {
         var card = 
     [
-        {name: '1-2', subchances: 0, total: 20, result: ['line out into as many outs as possible'], index: 0},
+        {name: '1-2', subchances: 20, total: 20, result: [], index: 0},
         {name: '1-3', subchances: 40, total: 40, result: [], index: 1},
         {name: '1-4', subchances: 60, total: 60, result: [], index: 2},
         {name: '1-5', subchances: 80, total: 80, result: [], index: 3},
@@ -99,7 +99,7 @@ function getCard(playerStatBlock) {
             if (entry.subchances <= total) {
                 //it's less than total so just take the whole thing
                 total -= entry.subchances
-                entry.result.push(text)
+                entry.result.push({'text': text})
                 entry.subchances = 0
             } else {
                 //it's more than the total so we have to split
@@ -116,11 +116,11 @@ function getCard(playerStatBlock) {
                 if (entry.result[0] == undefined) {
                     if (spread == 1) {
                         entry.result.push({'spread': spread, 'lower': 1, 'upper': 1, 'text': text + " 1"})
-                        console.log(entry.result)
+                        //console.log(entry.result)
                     } else {
                         var upper_range = spread
                         entry.result.push({'spread': spread, 'lower': 1, 'upper': upper_range, 'text': text + " 1-" + upper_range})
-                        console.log(entry.result)
+                        //console.log(entry.result)
                     }
                 } else {
                     var last_entry = _.last(entry.result)                
@@ -129,13 +129,13 @@ function getCard(playerStatBlock) {
                     if (spread == 1) {
                         var upper_range = lower_range
                         entry.result.push({'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range})
-                        console.log(entry.result)
+                        //console.log(entry.result)
                     } else {
                         var upper_range = lower_range + spread
                         if (upper_range > 20) {upper_range = 20}
                         entry.subchances = 0
                         entry.result.push({'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range + "-" + upper_range})
-                        console.log(entry.result)
+                        //console.log(entry.result)
                     }
                     
                 }          
@@ -149,12 +149,12 @@ function getCard(playerStatBlock) {
 
 
 
-    homers = assignStat(homers, "homerun")
-    triples = assignStat(triples, "triple")
-    doubles = assignStat(doubles, "double")
-    singles = assignStat(singles, "single")
-    walks = assignStat(walks, "walk")
-    hbp = assignStat(hbp, "hit by pitch")
+    homers = assignStat(homers, "HOMERUN")
+    triples = assignStat(triples, "TRIPLE")
+    doubles = assignStat(doubles, "DOUBLE")
+    singles = assignStat(singles, "SINGLE")
+    walks = assignStat(walks, "WALK")
+    hbp = assignStat(hbp, "HIT BY PITCH")
     strikeouts = assignStat(strikeouts, "strikeout")
     gba = assignStat(gba, "ground ball A")
     gbb = assignStat(gbb, "ground ball B")

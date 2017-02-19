@@ -67,7 +67,7 @@ function getPlayer(playerName) {
 		{
 			'name': playerName,
 			'positions': somPos(player_fielding),
-			'avg': _.toFinite(player_batting.BA),
+			'avg': player_batting.BA,
 			'ab': _.toFinite(player_batting.AB),
 			'doubles': _.toFinite(player_batting['2B']),
 			'triples': _.toFinite(player_batting['3B']),
@@ -84,7 +84,8 @@ function getPlayer(playerName) {
 			'som_flya':somFlyA(player_batting) * 20,
 			'som_gba': somGBA(player_batting) * 20,
 			'som_gbb': somGBB(player_batting) * 20,
-			'som_steal':somSteal(player_batting)
+			'som_steal': somSteal(player_batting),
+			'som_run': somRun(player_batting)
 
 		}
 	
@@ -332,6 +333,38 @@ function getPlayer(playerName) {
 
 		if (_.inRange(SB, 90, Infinity)) {
 			return "AAA";
+		}
+	}
+
+	function somRun(player_batting) {
+		var SB = _.toFinite(player_batting.SB);
+
+		if (_.inRange(SB, 0, 3)) {
+			return "1-9";
+		}
+
+		if (_.inRange(SB, 3, 6)) {
+			return "1-10";
+		}
+
+		if (_.inRange(SB, 6, 10)) {
+			return "1-13";
+		}
+
+		if (_.inRange(SB, 10, 24)) {
+			return "1-15";
+		}
+
+		if (_.inRange(SB, 24, 35)) {
+			return "1-17";
+		}
+
+		if (_.inRange(SB, 35, 90)) {
+			return "1-18";
+		}
+
+		if (_.inRange(SB, 90, Infinity)) {
+			return "1-19";
 		}
 	}
 

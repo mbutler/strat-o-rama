@@ -9,6 +9,7 @@
   "author": "Matthew Butler",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "pdfkit": "^0.8.0"
   }
 }
