@@ -30,6 +30,7 @@ var doc = new PDFDocument({
 //output a pdf with player name as file name
 doc.pipe(fs.createWriteStream(_.snakeCase(player_stats.name) + '.pdf'))
 
+//add clip art
 doc.image('baseball.jpg', 150, 9, {fit: [30, 225]})
 
 //box 1
@@ -99,6 +100,7 @@ doc.fontSize(8)
 .text('running ' + player_stats.som_run, {align:'right'})
 
 //BATTING RECORD
+//label
 doc.fontSize(8)
 .font('Helvetica-Bold')
 .text('BATTING RECORD', 12, 311, {align:'center'})
@@ -157,6 +159,7 @@ doc.fontSize(8)
 .text(player_stats.rbi)
 
 
+/// RESULTS///
 
 //column 1
 //2
