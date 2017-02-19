@@ -1,8 +1,8 @@
 {
-  "name": "srat-o-rama",
+  "name": "stat-o-rama",
   "version": "1.0.0",
   "description": "predicting strat-o-matic cards",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
