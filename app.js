@@ -504,5 +504,5 @@ doc.fontSize(8)
 .text(text_list[32])
 
 
-
+console.log(player_stats.name + " card generated successfully.")
 doc.end()

@@ -83,12 +83,12 @@ function getCard(playerStatBlock, pitcher_flag) {
     //returns the object that is the best choice for what to subtract subchances
     //handle all subtractions and result setting outside this function in a while loop
     function findBestEntry(current_stat) {
-        let subchances_list = _.map(card, 'subchances')
+        let subchances_list = _.map(card, 'subchances')        
         let smallerNums = []
 
         //loops through all of the subchances and makes a list of subchances less than target
         _.forEach(subchances_list, function(value) {
-            if (value <= current_stat && value !== 0) {
+            if (value <= current_stat && value !== 0) {                
                 smallerNums.push(value)
             }
         })
@@ -109,16 +109,17 @@ function getCard(playerStatBlock, pitcher_flag) {
     }
 
 
-    function assignStat(total, text, split = false) {
+    function assignStat(total, text) {
         while (total > 0) {
             var entry = findBestEntry(total)
 
             if (entry == undefined) {
                 return
             }
+
             let total_subchances = entry.total
 
-            if (entry.subchances <= total) {
+            if (entry.subchances <= total && entry.subchances == entry.total) {
                 //it's less than total so just take the whole thing
                 total -= entry.subchances
                 entry.result.push({'text': text})
@@ -131,33 +132,36 @@ function getCard(playerStatBlock, pitcher_flag) {
                 //subtract the amount from the entry          
                 entry.subchances -= total
 
+                if(entry.subchances < 0) {
+                    entry.subchances = 0
+                }
+
                 //find upper value of the range (not the d20 roll)
                 var spread = _.round( ( total_subchances - entry.subchances) / roll_value )
-
                 //if it's the first split, it's a range of 1 to something        
                 if (entry.result[0] == undefined) {
                     if (spread == 1) {
                         entry.result.push({'spread': spread, 'lower': 1, 'upper': 1, 'text': text + " 1"})
-                        //console.log(entry.result)
                     } else {
                         var upper_range = spread
                         entry.result.push({'spread': spread, 'lower': 1, 'upper': upper_range, 'text': text + " 1-" + upper_range})
-                        //console.log(entry.result)
                     }
                 } else {
-                    var last_entry = _.last(entry.result)                
+                    //the second split
+                    var last_entry = _.last(entry.result)
                     var lower_range = last_entry.upper + 1              
 
                     if (spread == 1) {
                         var upper_range = lower_range
                         entry.result.push({'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range})
-                        //console.log(entry.result)
                     } else {
                         var upper_range = lower_range + spread
-                        if (upper_range > 20) {upper_range = 20}
-                        entry.subchances = 0
-                        entry.result.push({'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range + "-" + upper_range})
-                        //console.log(entry.result)
+                        if (upper_range > 20) {upper_range = 20; entry.subchances = 0}
+                        if (lower_range == upper_range) {
+                            entry.result.push({'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + upper_range})
+                        } else {
+                            entry.result.push({'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range + "-" + upper_range}) 
+                        }
                     }
                     
                 }          
