@@ -67,7 +67,7 @@ function getPlayer(playerName, pitcher_flag) {
 			'W': player_pitching_record.W,
 			'L': player_pitching_record.L,
 			'ERA': player_pitching_record.ERA,
-			'IP': player_pitching_record.IP,
+			'IP': _.round(player_pitching_record.IP),
 			'SO': player_pitching_record.SO,
 			'som_walk': somPW(player_pitching_record) * 20,
 			'som_single': somPH(player_pitching_record) * 20,
