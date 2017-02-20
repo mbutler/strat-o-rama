@@ -1,7 +1,9 @@
 var _ = require('lodash');
 
 function getCard(playerStatBlock) {
-        var card = 
+    var isPitcher = false
+
+    var card = 
     [
         {name: '1-2', subchances: 20, total: 20, result: [], index: 0},
         {name: '1-3', subchances: 40, total: 40, result: [], index: 1},
@@ -37,26 +39,46 @@ function getCard(playerStatBlock) {
         {name: '3-11', subchances: 40, total: 40, result: [], index: 31},
         {name: '3-12', subchances: 20, total: 20, result: [], index: 32}   
     ]
-    let stat_list = []
 
-    var homers = playerStatBlock.som_hr
-    var triples = playerStatBlock.som_triple
-    var doubles = playerStatBlock.som_double
-    var singles = playerStatBlock.som_single
-    var walks = playerStatBlock.som_walk
-    var hbp = playerStatBlock.som_hbp
-    var strikeouts = playerStatBlock.som_strikeout
-    var gba = playerStatBlock.som_gba
-    var gbb = playerStatBlock.som_gbb
-    var flya = playerStatBlock.som_flya
-    var flyb = playerStatBlock.som_flyb    
-    var pop1b = 100
-    var pop2b = 100
-    var pop3b = 100
-    var popCF = 100
-    var popLF = 100
-    var popRF = 100
-    var foul = 2160
+    if (playerStatBlock.positions[0] == "P") {
+        isPitcher = true
+
+        var walks = playerStatBlock.som_walk
+        var singles = playerStatBlock.som_single        
+        var gb_ss = playerStatBlock['som_gb-ss']
+        var gb_2b = playerStatBlock['som_gb-2b']
+        var gb_cf = playerStatBlock['som_gb-cf']
+        var gb_3b = playerStatBlock['som_gb-3b']
+        var fly_lf = playerStatBlock['som_fly-lf']
+        var fly_rf = playerStatBlock['som_fly-rf']
+        var strikeouts = playerStatBlock.som_strikeout
+        var homers = playerStatBlock.som_hr
+        var triples = playerStatBlock.som_triple
+        var doubles = playerStatBlock.som_double
+        var errors = playerStatBlock.som_errors
+        var balks = playerStatBlock.som_balks
+        var wild = playerStatBlock.som_wild
+        var foul = 2160
+    } else {
+        var homers = playerStatBlock.som_hr
+        var triples = playerStatBlock.som_triple
+        var doubles = playerStatBlock.som_double
+        var singles = playerStatBlock.som_single
+        var walks = playerStatBlock.som_walk
+        var hbp = playerStatBlock.som_hbp
+        var strikeouts = playerStatBlock.som_strikeout
+        var gba = playerStatBlock.som_gba
+        var gbb = playerStatBlock.som_gbb
+        var flya = playerStatBlock.som_flya
+        var flyb = playerStatBlock.som_flyb    
+        var pop1b = 100
+        var pop2b = 100
+        var pop3b = 100
+        var popCF = 100
+        var popLF = 100
+        var popRF = 100
+        var foul = 2160
+    }    
     
     //returns the object that is the best choice for what to subtract subchances
     //handle all subtractions and result setting outside this function in a while loop
@@ -147,29 +169,45 @@ function getCard(playerStatBlock) {
         return total 
     }
 
-
-
-    homers = assignStat(homers, "HOMERUN")
-    triples = assignStat(triples, "TRIPLE")
-    doubles = assignStat(doubles, "DOUBLE")
-    singles = assignStat(singles, "SINGLE")
-    walks = assignStat(walks, "WALK")
-    hbp = assignStat(hbp, "HIT BY PITCH")
-    strikeouts = assignStat(strikeouts, "strikeout")
-    gba = assignStat(gba, "ground ball A")
-    gbb = assignStat(gbb, "ground ball B")
-    flya = assignStat(flya, "flyball A")
-    flyb = assignStat(flyb, "flyball B")
-    pop1b = assignStat(pop1b, "popout(1b)")
-    pop2b = assignStat(pop2b, "popout(2b)")
-    pop3b = assignStat(pop3b, "popout(3b)")
-    popCF = assignStat(popCF, "popout(cf)")
-    popLF = assignStat(popLF, "popout(lf)")
-    popRF = assignStat(popRF, "popout(rf)")
-    foul = assignStat(foul, "foulout")
+    // should be listed in priority order as determined by articles
+    if (isPitcher == true) {
+        walks = assignStat(walks, "WALK")
+        singles = assignStat(singles, "SINGLE")
+        strikeouts = assignStat(strikeouts, "strikeout")
+        gb_ss = assignStat(gb_ss, "groundball(ss)A")
+        gb_2b = assignStat(gb_2b, "groundball(2b)C")
+        gb_cf = assignStat(gb_cf, "flyball(cf)C")
+        fly_lf = assignStat(fly_lf, "flyball(lf)C")
+        fly_rf = assignStat(fly_rf, "flyball(rf)C")
+        homers = assignStat(homers, "HOMERUN")
+        triples = assignStat(triples, "TRIPLE")
+        doubles = assignStat(doubles, "DOUBLE")
+        errors = assignStat(errors, "1 base error")
+        balks = assignStat(balks, "balk")
+        wild = assignStat(wild, "wild pitch")
+        foul = assignStat(foul, "foulout")
+    } else {
+        homers = assignStat(homers, "HOMERUN")
+        triples = assignStat(triples, "TRIPLE")
+        doubles = assignStat(doubles, "DOUBLE")
+        singles = assignStat(singles, "SINGLE")
+        walks = assignStat(walks, "WALK")
+        hbp = assignStat(hbp, "HIT BY PITCH")
+        strikeouts = assignStat(strikeouts, "strikeout")
+        gba = assignStat(gba, "ground ball A")
+        gbb = assignStat(gbb, "ground ball B")
+        flya = assignStat(flya, "flyball A")
+        flyb = assignStat(flyb, "flyball B")
+        pop1b = assignStat(pop1b, "popout(1b)")
+        pop2b = assignStat(pop2b, "popout(2b)")
+        pop3b = assignStat(pop3b, "popout(3b)")
+        popCF = assignStat(popCF, "popout(cf)")
+        popLF = assignStat(popLF, "popout(lf)")
+        popRF = assignStat(popRF, "popout(rf)")
+        foul = assignStat(foul, "foulout")
+    }    
 
     return card
-
 }
 
 module.exports = getCard

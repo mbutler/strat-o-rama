@@ -4,15 +4,19 @@ var player = require('./player')
 var card = require('./card')
 var PDFDocument = require('pdfkit')
 
-
 const arg_name = process.argv[2]
-
 
 var player_stats = player(arg_name)
 var player_card = card(player_stats)
-var text_list = []
+
+var isPitcher = false
+
+if (player_stats.positions[0] == "P") {
+  isPitcher = true
+}
 
 //loop through player card and make a list of all results
+var text_list = []
 _.forEach(player_card, function(value) {
 	var play = ''
   _.forEach(value['result'], function(result) {
@@ -91,72 +95,137 @@ doc.fontSize(8)
 .font('Helvetica')
 .text(player_stats.positions[0], {align:'center'})
 
-//stealing
-doc.fontSize(8)
-.moveUp()
-.font('Helvetica')
-.text('stealing-' + player_stats.som_steal, {align:'right'})
-.moveDown(0.2)
-.text('running ' + player_stats.som_run, {align:'right'})
 
-//BATTING RECORD
-//label
-doc.fontSize(8)
-.font('Helvetica-Bold')
-.text('BATTING RECORD', 12, 311, {align:'center'})
+if (isPitcher == true) {
+  //role
+  doc.fontSize(8)
+  .moveUp()
+  .font('Helvetica')
+  .text(player_stats.role, {align:'right'})
 
-//blue box
-doc.rect(9, 320, 198, 31)
-.fillOpacity(0.2)
-.fill('#cadcf9')
+  //PITCHING RECORD
+  //label
+  doc.fontSize(8)
+  .font('Helvetica-Bold')
+  .text('PITCHING RECORD', 12, 311, {align:'center'})
 
-//batting average
-doc.fontSize(8)
-.fill('black')
-.font('Helvetica')
-.text('AVG', 15, 326)
-.moveDown(0.2)
-.text(player_stats.avg)
+  //blue box
+  doc.rect(9, 320, 198, 31)
+  .fillOpacity(0.2)
+  .fill('#cadcf9')
 
-//at bats
-doc.fontSize(8)
-.fill('black')
-.font('Helvetica')
-.text('AB', 50, 326)
-.moveDown(0.2)
-.text(player_stats.ab)
+  //wins
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('W', 15, 326)
+  .moveDown(0.2)
+  .text(player_stats.W)
 
-//2B
-doc.fontSize(8)
-.fill('black')
-.font('Helvetica')
-.text('2B', 85, 326)
-.moveDown(0.2)
-.text(player_stats.doubles)
+  //losses
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('L', 55, 326)
+  .moveDown(0.2)
+  .text(player_stats.L)
 
-//3B
-doc.fontSize(8)
-.fill('black')
-.font('Helvetica')
-.text('3B', 120, 326)
-.moveDown(0.2)
-.text(player_stats.triples)
+  //ERA
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('ERA', 95, 326)
+  .moveDown(0.2)
+  .text(player_stats.ERA)
 
-//HR
-doc.fontSize(8)
-.fill('black')
-.font('Helvetica')
-.text('HR', 155, 326)
-.moveDown(0.2)
-.text(player_stats.homeruns)
+  //innings pitches
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('IP', 145, 326)
+  .moveDown(0.2)
+  .text(player_stats.IP)
 
-//RBI
-doc.fontSize(8)
-.fill('black')
-.font('Helvetica')
-.text('RBI', 185, 326)
-.moveDown(0.2)
-.text(player_stats.rbi)
+  //strike outs
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('SO', 185, 326)
+  .moveDown(0.2)
+  .text(player_stats.SO)
+} else {
+  //stealing
+  doc.fontSize(8)
+  .moveUp()
+  .font('Helvetica')
+  .text('stealing-' + player_stats.som_steal, {align:'right'})
+  .moveDown(0.2)
+  .text('running ' + player_stats.som_run, {align:'right'})
+
+  //BATTING RECORD
+  //label
+  doc.fontSize(8)
+  .font('Helvetica-Bold')
+  .text('BATTING RECORD', 12, 311, {align:'center'})
+
+  //blue box
+  doc.rect(9, 320, 198, 31)
+  .fillOpacity(0.2)
+  .fill('#cadcf9')
+
+  //batting average
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('AVG', 15, 326)
+  .moveDown(0.2)
+  .text(player_stats.avg)
+
+  //at bats
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('AB', 50, 326)
+  .moveDown(0.2)
+  .text(player_stats.ab)
+
+  //2B
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('2B', 85, 326)
+  .moveDown(0.2)
+  .text(player_stats.doubles)
+
+  //3B
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('3B', 120, 326)
+  .moveDown(0.2)
+  .text(player_stats.triples)
+
+  //HR
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('HR', 155, 326)
+  .moveDown(0.2)
+  .text(player_stats.homeruns)
+
+  //RBI
+  doc.fontSize(8)
+  .fill('black')
+  .font('Helvetica')
+  .text('RBI', 185, 326)
+  .moveDown(0.2)
+  .text(player_stats.rbi)
+}
+
+
+
+
+
 
 
 /// RESULTS///

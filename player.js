@@ -20,10 +20,18 @@ function getPlayer(playerName) {
 
 	if (player_fielding_stats['Pos Summary'] == "P") {
 		isPitcher = true
-		var pitching_data = fs.readFileSync("2016-standard-pitching.json")
+		//this set has data about how batters fared against the pitcher. doubles given up, etc
+		var pitching_data = fs.readFileSync("2016-batting-pitching.json")
 		var pitching_stats = JSON.parse(pitching_data)
 		var player_pitching_stats = _.find(pitching_stats, current_player_name)
 		var player_pitching = player_pitching_stats
+
+		//this set has data about ERA, errors, etc
+		var pitching_record_data = fs.readFileSync("2016-standard-pitching.json")
+		var pitching_record_stats = JSON.parse(pitching_record_data)
+		var player_pitching_record_stats = _.find(pitching_record_stats, current_player_name)
+		var player_pitching_record = player_pitching_record_stats
+
 		//might want batting stats too
 		var batting_data = fs.readFileSync("2016-standard-batting.json")
 		var batting_stats = JSON.parse(batting_data)
@@ -37,42 +45,50 @@ function getPlayer(playerName) {
 	var player_batting = player_batting_stats
 	var player_fielding = player_fielding_stats
 
-	//format a stat block in the console
-	/*console.log("\n" + player_batting.Name, somPos(player_fielding), "\n===========================\n",
-		"walk chances: " + somW(player_batting) + "\n\n", 
-		"hit by pitch chances: " + somHBP(player_batting) + "\n\n", 
-		"hit chances: " + somH(player_batting) + "\n\n", 
-		"double chances: " + (somD(player_batting)/20) + " | subchances: " + somD(player_batting) + "\n\n", 
-		"triple chances: " + (somT(player_batting)/20) + " | subchances: " + somT(player_batting) + "\n\n",
-		"home run chances: " + (somHR(player_batting)/20) + " | subchances: " + somHR(player_batting) + "\n\n",
-		"strikeout chances: " + somK(player_batting) + "\n\n",
-		"ground ball A chances: " + somGBA(player_batting) + "\n\n",
-		"ground ball B chances: " + somGBB(player_batting) + "\n\n",
-		"steal rating: " + somSteal(player_batting) + "\n\n",
-		//"second stolen base: " + som2SB(player_batting) + "\n\n",
-		//"base stealing lead chances: " + somSBLead(player_batting) + "\n\n",
-		"flyout A: " + somFlyA(player_batting) + "\n\n",
-		"flyout B: " + somFlyB(player_batting) + "\n\n",
-		"errors: " + somE(player_fielding) + "\n\n",
-		"range: " + somRange(player_fielding) + "\n\n"
-		)*/
+/*	console.log(
+		somPW(player_pitching_record), 
+		somPH(player_pitching_record), 
+		somPK(player_pitching_record), 
+		somPD(player_pitching), 
+		somPT(player_pitching), 
+		somPHR(player_pitching), 
+		somPE(player_pitching),
+		somPWP(player_pitching_record),
+		somBalk(player_pitching_record)
+	)*/
 
-	/*	console.log("\n" + player_batting.Name, somPos(player_fielding), "\n===========================\n",
-		"walk: " + somW(player_batting) * 20 + "\n\n", 
-		"hit by pitch: " + somHBP(player_batting) * 20 + "\n\n", 
-		"hit: " + somH(player_batting) * 20 + "\n\n", 
-		"double: " + somD(player_batting) + "\n\n", 
-		"triple: " + somT(player_batting) + "\n\n",
-		"home run: " + somHR(player_batting) + "\n\n",
-		"strikeout: " + somK(player_batting) * 20 + "\n\n",
-		"ground ball A: " + somGBA(player_batting) * 20 + "\n\n",
-		"ground ball B: " + somGBB(player_batting) * 20 + "\n\n",
-		"steal rating: " + somSteal(player_batting) + "\n\n",	
-		"flyout A: " + somFlyA(player_batting) * 20 + "\n\n",
-		"flyout B: " + somFlyB(player_batting) * 20 + "\n\n"	
-		)*/
+	var player
 
-	var player = 
+	if (isPitcher == true) {
+		var pitcher =
+		{
+			'name': playerName,
+			'positions': somPos(player_fielding),
+			'W': player_pitching_record.W,
+			'L': player_pitching_record.L,
+			'ERA': player_pitching_record.ERA,
+			'IP': player_pitching_record.IP,
+			'SO': player_pitching_record.SO,
+			'som_walk': somPW(player_pitching_record) * 20,
+			'som_single': somPH(player_pitching_record) * 20,
+			'som_double': somPD(player_pitching) * 20,
+			'som_triple': somPT(player_pitching) * 20,
+			'som_hr': somPHR(player_pitching) * 20,
+			'som_strikeout': somPK(player_pitching_record) * 20,
+			'som_gb-ss': 140,
+			'som_gb-2b': 120,
+			'som_gb-cf': 60,
+			'som_gb-3b': 60,
+			'som_fly-lf': 40,
+			'som_fly-rf': 40,
+			'som_errors': somPE(player_pitching),
+			'som_balks': somBalk(player_pitching_record) * 20,
+			'som_wild': somPWP(player_pitching_record) * 20,
+			'role': pitcherRole(player_pitching_record)
+		}
+		player = pitcher
+	} else {
+		var batter = 
 		{
 			'name': playerName,
 			'positions': somPos(player_fielding),
@@ -95,8 +111,9 @@ function getPlayer(playerName) {
 			'som_gbb': somGBB(player_batting) * 20,
 			'som_steal': somSteal(player_batting),
 			'som_run': somRun(player_batting)
-
 		}
+		player = batter
+	}	
 	
 	//som's own "plate appearance" number, testing only, not for use
 	function somPA(player_batting) {
@@ -473,7 +490,169 @@ function getPlayer(playerName) {
 		var positions = _.split(pos, "-")
 
 		return positions
+	}
 
+	//pitcher's walks given up. player_pitching_record. returns chances
+	function somPW(player_pitching) {
+		//(( W - IW ) * 216 ) / ( TBF - IW )) - 9
+		var W = _.toFinite(player_pitching.BB)
+		var IW = _.toFinite(player_pitching.IBB)
+		var TBF = _.toFinite(player_pitching.BF)
+
+		var walks = ((( W - IW ) * 216 ) / ( TBF - IW )) - 9
+
+		//can't have negative chances on a card.
+		if (walks < 0) {
+			walks = 0
+		}
+
+		return walks
+	}
+
+	//pitcher's hits given up. use player_pitching_record. returns chances
+	function somPH(player_pitching) {
+		//((( HIT / TBF ) * 216 ) - 29.4 ) + XF
+		var HIT = _.toFinite(player_pitching.H)
+		var TBF = _.toFinite(player_pitching.BF)
+
+		var hits = ((( HIT / TBF ) * 216 ) - 29.4 ) + 4.9
+
+		//can't have negative chances on a card.
+		if (hits < 0) {
+			hits = 0
+		}
+
+		return hits
+	}
+
+	//pitcher's doubles given up. use player_pitching. returns chances
+	function somPD(player_pitching) {
+		//	(( D * 216 ) / (TBF - IW )) - 90
+		var TBF = _.toFinite(player_pitching.PA)
+		var IW = _.toFinite(player_pitching.IBB)
+		var D = _.toFinite(player_pitching['2B'])
+
+		var doubles = (( D * 216 ) / (TBF - IW )) - 90
+
+		//can't have negative chances on a card.
+		if (doubles < 0) {
+			doubles = 0
+		}
+
+		return doubles		
+	}
+
+	//pitcher's triples given up. use player_pitching. returns chances
+	function somPT(player_pitching) {
+		// (( T * 216 ) / (TBF - IW )) - 15
+		var TBF = _.toFinite(player_pitching.PA)
+		var IW = _.toFinite(player_pitching.IBB)
+		var T = _.toFinite(player_pitching['3B'])
+
+		var triples = (( T * 216 ) / (TBF - IW )) - 15
+
+		//can't have negative chances on a card.
+		if (triples < 0) {
+			triples = 0
+		}
+
+		return triples
+	}
+
+	//pitcher's homeruns given up. use player_pitching. returns chances
+	function somPHR(player_pitching) {
+		// (( HR * 216 ) / (TBF - IW)) - 50
+		var TBF = _.toFinite(player_pitching.PA)
+		var IW = _.toFinite(player_pitching.IBB)
+		var HR = _.toFinite(player_pitching.HR)
+
+		var homeruns = (( HR * 216 ) / (TBF - IW)) - 50
+
+		//can't have negative chances on a card.
+		if (homeruns < 0) {
+			homeruns = 0
+		}
+
+		return homeruns
+	}
+
+	//pitcher's strikeouts given up. use player_pitching_record. returns chances
+	function somPK(player_pitching) {
+		// (( K * 216 ) / ( TBF - IW ))
+		var TBF = _.toFinite(player_pitching.BF)
+		var IW = _.toFinite(player_pitching.IBB)
+		var K = _.toFinite(player_pitching.SO)
+
+		var strikeouts = (( K * 216 ) / ( TBF - IW )) - 16
+
+		//can't have negative chances on a card.
+		if (strikeouts < 0) {
+			strikeouts = 0
+		}
+
+		return strikeouts
+	}
+
+	//pitcher's errors. use player_pitching. returns subchances
+	function somPE(player_pitching) {
+		var E = _.toFinite(player_pitching.ROE)
+		var IP = _.toFinite(player_pitching.IP)
+		//( E * 1458 ) / IP
+
+		var errors = ( E * 1458 ) / IP
+
+		//can't have negative chances on a card.
+		if (errors < 0) {
+			errors = 0
+		}
+
+		//every pitcher gets 120 subchances in basic game
+		errors = 120
+
+		return errors	
+	}
+
+	//pitcher's wild pitch. use player_pitching_record. Returns chances
+	function somPWP(player_pitching) {
+		//( WP * 200 ) / IP
+		var IP = _.toFinite(player_pitching.IP)
+		var WP = _.toFinite(player_pitching.WP)
+
+		var wildpitch = ( WP * 200 ) / IP
+
+		//can't have negative chances on card
+		if (wildpitch < 0) {
+			wildpitch = 0
+		}
+
+		return wildpitch
+	}
+
+	//balk. use player_pitching_record. returns chances
+	function somBalk(player_pitching) {
+		//( BALK * 290 ) / IP
+		var BK = _.toFinite(player_pitching.BK)
+		var IP = _.toFinite(player_pitching.IP)
+
+		var balk = ( BK * 290 ) / IP
+
+		//can't have negative chances on card
+		if (balk < 0) {
+			balk = 0
+		}
+
+		return balk
+	}
+
+	//pitcher's role. use player_pitching_record. returns starter or relief
+	function pitcherRole(player_pitching) {
+		var saves = player_pitching
+		
+		if (saves > 0) {
+			return "relief"
+		} else {
+			return "starter"
+		}
 	}
 
 	return player
