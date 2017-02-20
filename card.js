@@ -80,13 +80,13 @@ function getCard(playerStatBlock, pitcher_flag) {
         var foul = 2160
     }
 
-    //returns the object that is the best choice for what to subtract subchances
+    //returns the object that is the best choice to use and subtract subchances from
     //handle all subtractions and result setting outside this function in a while loop
     function findBestEntry(current_stat) {
         let subchances_list = _.map(card, 'subchances')
         let smallerNums = []
 
-        //loops through all of the subchances and makes a list of subchances less than target
+        //loops through all of the subchances and makes a list of entries with subchances less than the current_stat
         _.forEach(subchances_list, function(value) {
             if (value <= current_stat && value !== 0) {
                 smallerNums.push(value)
@@ -108,18 +108,19 @@ function getCard(playerStatBlock, pitcher_flag) {
         return matchingEntry
     }
 
-
+    //total is the players calculated subchances. text is how it should be displayed on the card
     function assignStat(total, text) {
         while (total > 0) {
             var entry = findBestEntry(total)
 
+            //when findBestEntry runs out of entries (and is done), it returns undefined
             if (entry == undefined) {
                 return
             }
 
             let total_subchances = entry.total
 
-            if (entry.subchances <= total && entry.subchances == entry.total) {
+            if (entry.subchances <= total && entry.subchances == total_subchances) {
                 //it's less than total so just take the whole thing
                 total -= entry.subchances
                 entry.result.push({ 'text': text })
@@ -136,41 +137,74 @@ function getCard(playerStatBlock, pitcher_flag) {
                     entry.subchances = 0
                 }
 
-                //find upper value of the range (not the d20 roll)
+                //find upper value of the d20 range
+                //there might be fixable rounding errors in the spread but we handle them later
                 var spread = _.round((total_subchances - entry.subchances) / roll_value)
 
                 //can't have a spread of zero
                 if (spread == 0) {
                     spread = 1
                 }
+
                 //if it's the first split, it's a range of 1 to something        
                 if (entry.result[0] == undefined) {
                     if (spread == 1) {
-                        entry.result.push({ 'spread': spread, 'lower': 1, 'upper': 1, 'text': text + " 1" })
+                        entry.result.push({
+                            'spread': spread,
+                            'lower': 1,
+                            'upper': 1,
+                            'text': text + " 1"
+                        })
                     } else {
                         var upper_range = spread
-                        entry.result.push({ 'spread': spread, 'lower': 1, 'upper': upper_range, 'text': text + " 1-" + upper_range })
+                        entry.result.push({
+                            'spread': spread,
+                            'lower': 1,
+                            'upper': upper_range,
+                            'text': text + " 1-" + upper_range
+                        })
                     }
                 } else {
                     //the second split
+                    //get the first split and start the second's spread 1 higher
                     var last_entry = _.last(entry.result)
                     var lower_range = last_entry.upper + 1
 
+                    //handle a single number spread
                     if (spread == 1) {
                         var upper_range = lower_range
-                        entry.result.push({ 'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range })
+                        entry.result.push({
+                            'spread': spread,
+                            'lower': lower_range,
+                            'upper': upper_range,
+                            'text': text + " " + lower_range
+                        })
                     } else {
                         var upper_range = lower_range + spread
 
+                        //for now, let's cheat and just truncate ranges that extend beyond 20
+                        //could probably be fixed somewhere in the findBestEntry function
+                        //or in the spread calculation
                         if (upper_range >= 20) {
                             upper_range = 20
                             entry.subchances = 0
                         }
 
+                        //since we truncated, we have to convert 20-20 to just 20
                         if (lower_range == upper_range) {
-                            entry.result.push({ 'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + upper_range })
+                            entry.result.push({
+                                'spread': spread,
+                                'lower': lower_range,
+                                'upper': upper_range,
+                                'text': text + " " + upper_range
+                            })
                         } else {
-                            entry.result.push({ 'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range + "-" + upper_range })
+                            entry.result.push({
+                                'spread': spread,
+                                'lower': lower_range,
+                                'upper': upper_range,
+                                'text': text + " " + lower_range + "-" + upper_range
+                            })
                         }
                     }
                 }
@@ -182,7 +216,7 @@ function getCard(playerStatBlock, pitcher_flag) {
         return total
     }
 
-    // should be listed in priority order as determined by articles
+    // should be listed in priority order as determined by Bruce Bundy articles
     if (isPitcher == true) {
         walks = assignStat(walks, "WALK")
         singles = assignStat(singles, "SINGLE")
