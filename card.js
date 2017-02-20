@@ -132,12 +132,17 @@ function getCard(playerStatBlock, pitcher_flag) {
                 //subtract the amount from the entry          
                 entry.subchances -= total
 
-                if(entry.subchances < 0) {
+                if (entry.subchances < 0) {
                     entry.subchances = 0
                 }
 
                 //find upper value of the range (not the d20 roll)
                 var spread = _.round( ( total_subchances - entry.subchances) / roll_value )
+
+                //can't have a spread of zero
+                if (spread == 0) {
+                    spread = 1
+                }
                 //if it's the first split, it's a range of 1 to something        
                 if (entry.result[0] == undefined) {
                     if (spread == 1) {
