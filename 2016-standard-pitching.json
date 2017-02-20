@@ -38,7 +38,7 @@
  },
  {
    "Rk": "1",
-   "Name": "Fernando Abad*",
+   "Name": "Fernando Abad",
    "Age": "30",
    "Tm": "TOT",
    "Lg": "AL",
@@ -75,7 +75,7 @@
  },
  {
    "Rk": "2",
-   "Name": "Fernando Abad*",
+   "Name": "Fernando Abad",
    "Age": "30",
    "Tm": "MIN",
    "Lg": "AL",
@@ -112,7 +112,7 @@
  },
  {
    "Rk": "3",
-   "Name": "Fernando Abad*",
+   "Name": "Fernando Abad",
    "Age": "30",
    "Tm": "BOS",
    "Lg": "AL",
@@ -260,7 +260,7 @@
  },
  {
    "Rk": "7",
-   "Name": "Andrew Albers*",
+   "Name": "Andrew Albers",
    "Age": "30",
    "Tm": "MIN",
    "Lg": "AL",
@@ -408,7 +408,7 @@
  },
  {
    "Rk": "11",
-   "Name": "Scott Alexander*",
+   "Name": "Scott Alexander",
    "Age": "26",
    "Tm": "KCR",
    "Lg": "AL",
@@ -519,7 +519,7 @@
  },
  {
    "Rk": "14",
-   "Name": "Dario Alvarez*",
+   "Name": "Dario Alvarez",
    "Age": "27",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -556,7 +556,7 @@
  },
  {
    "Rk": "15",
-   "Name": "Dario Alvarez*",
+   "Name": "Dario Alvarez",
    "Age": "27",
    "Tm": "ATL",
    "Lg": "NL",
@@ -593,7 +593,7 @@
  },
  {
    "Rk": "16",
-   "Name": "Dario Alvarez*",
+   "Name": "Dario Alvarez",
    "Age": "27",
    "Tm": "TEX",
    "Lg": "AL",
@@ -630,7 +630,7 @@
  },
  {
    "Rk": "17",
-   "Name": "Jose Alvarez*",
+   "Name": "Jose Alvarez",
    "Age": "27",
    "Tm": "LAA",
    "Lg": "AL",
@@ -704,7 +704,7 @@
  },
  {
    "Rk": "19",
-   "Name": "Brett Anderson*",
+   "Name": "Brett Anderson",
    "Age": "28",
    "Tm": "LAD",
    "Lg": "NL",
@@ -815,7 +815,7 @@
  },
  {
    "Rk": "22",
-   "Name": "Tyler Anderson*",
+   "Name": "Tyler Anderson",
    "Age": "26",
    "Tm": "COL",
    "Lg": "NL",
@@ -926,7 +926,7 @@
  },
  {
    "Rk": "25",
-   "Name": "Jayson Aquino*",
+   "Name": "Jayson Aquino",
    "Age": "23",
    "Tm": "BAL",
    "Lg": "AL",
@@ -1000,7 +1000,7 @@
  },
  {
    "Rk": "26",
-   "Name": "Elvis Araujo*",
+   "Name": "Elvis Araujo",
    "Age": "24",
    "Tm": "PHI",
    "Lg": "NL",
@@ -1222,7 +1222,7 @@
  },
  {
    "Rk": "32",
-   "Name": "Luis Avilan*",
+   "Name": "Luis Avilan",
    "Age": "26",
    "Tm": "LAD",
    "Lg": "NL",
@@ -1814,7 +1814,7 @@
  },
  {
    "Rk": "48",
-   "Name": "Antonio Bastardo*",
+   "Name": "Antonio Bastardo",
    "Age": "30",
    "Tm": "TOT",
    "Lg": "NL",
@@ -1851,7 +1851,7 @@
  },
  {
    "Rk": "49",
-   "Name": "Antonio Bastardo*",
+   "Name": "Antonio Bastardo",
    "Age": "30",
    "Tm": "NYM",
    "Lg": "NL",
@@ -1888,7 +1888,7 @@
  },
  {
    "Rk": "50",
-   "Name": "Antonio Bastardo*",
+   "Name": "Antonio Bastardo",
    "Age": "30",
    "Tm": "PIT",
    "Lg": "NL",
@@ -1999,7 +1999,7 @@
  },
  {
    "Rk": "52",
-   "Name": "Buddy Baumann*",
+   "Name": "Buddy Baumann",
    "Age": "28",
    "Tm": "SDP",
    "Lg": "NL",
@@ -2480,7 +2480,7 @@
  },
  {
    "Rk": "65",
-   "Name": "Ty Blach*",
+   "Name": "Ty Blach",
    "Age": "25",
    "Tm": "SFG",
    "Lg": "NL",
@@ -2628,7 +2628,7 @@
  },
  {
    "Rk": "69",
-   "Name": "Richard Bleier*",
+   "Name": "Richard Bleier",
    "Age": "29",
    "Tm": "NYY",
    "Lg": "AL",
@@ -2665,7 +2665,7 @@
  },
  {
    "Rk": "70",
-   "Name": "Jerry Blevins*",
+   "Name": "Jerry Blevins",
    "Age": "32",
    "Tm": "NYM",
    "Lg": "NL",
@@ -2776,7 +2776,7 @@
  },
  {
    "Rk": "73",
-   "Name": "Buddy Boshers*",
+   "Name": "Buddy Boshers",
    "Age": "28",
    "Tm": "MIN",
    "Lg": "AL",
@@ -2924,7 +2924,7 @@
  },
  {
    "Rk": "76",
-   "Name": "Matt Boyd*",
+   "Name": "Matt Boyd",
    "Age": "25",
    "Tm": "DET",
    "Lg": "AL",
@@ -3109,7 +3109,7 @@
  },
  {
    "Rk": "81",
-   "Name": "Jed Bradley*",
+   "Name": "Jed Bradley",
    "Age": "26",
    "Tm": "ATL",
    "Lg": "NL",
@@ -3146,7 +3146,7 @@
  },
  {
    "Rk": "82",
-   "Name": "Steven Brault*",
+   "Name": "Steven Brault",
    "Age": "24",
    "Tm": "PIT",
    "Lg": "NL",
@@ -3183,7 +3183,7 @@
  },
  {
    "Rk": "83",
-   "Name": "Craig Breslow*",
+   "Name": "Craig Breslow",
    "Age": "35",
    "Tm": "MIA",
    "Lg": "NL",
@@ -3294,7 +3294,7 @@
  },
  {
    "Rk": "86",
-   "Name": "Zach Britton*",
+   "Name": "Zach Britton",
    "Age": "28",
    "Tm": "BAL",
    "Lg": "AL",
@@ -3479,7 +3479,7 @@
  },
  {
    "Rk": "91",
-   "Name": "Ryan Buchter*",
+   "Name": "Ryan Buchter",
    "Age": "29",
    "Tm": "SDP",
    "Lg": "NL",
@@ -3516,7 +3516,7 @@
  },
  {
    "Rk": "92",
-   "Name": "Madison Bumgarner*",
+   "Name": "Madison Bumgarner",
    "Age": "26",
    "Tm": "SFG",
    "Lg": "NL",
@@ -3627,7 +3627,7 @@
  },
  {
    "Rk": "95",
-   "Name": "Sean Burnett*",
+   "Name": "Sean Burnett",
    "Age": "33",
    "Tm": "WSN",
    "Lg": "NL",
@@ -4145,7 +4145,7 @@
  },
  {
    "Rk": "108",
-   "Name": "Chris Capuano*",
+   "Name": "Chris Capuano",
    "Age": "37",
    "Tm": "MIL",
    "Lg": "NL",
@@ -4478,7 +4478,7 @@
  },
  {
    "Rk": "117",
-   "Name": "Brett Cecil*",
+   "Name": "Brett Cecil",
    "Age": "29",
    "Tm": "TOR",
    "Lg": "AL",
@@ -4515,7 +4515,7 @@
  },
  {
    "Rk": "118",
-   "Name": "Xavier Cedeno*",
+   "Name": "Xavier Cedeno",
    "Age": "29",
    "Tm": "TBR",
    "Lg": "AL",
@@ -4552,7 +4552,7 @@
  },
  {
    "Rk": "119",
-   "Name": "Hunter Cervenka*",
+   "Name": "Hunter Cervenka",
    "Age": "26",
    "Tm": "TOT",
    "Lg": "NL",
@@ -4589,7 +4589,7 @@
  },
  {
    "Rk": "120",
-   "Name": "Hunter Cervenka*",
+   "Name": "Hunter Cervenka",
    "Age": "26",
    "Tm": "ATL",
    "Lg": "NL",
@@ -4626,7 +4626,7 @@
  },
  {
    "Rk": "121",
-   "Name": "Hunter Cervenka*",
+   "Name": "Hunter Cervenka",
    "Age": "26",
    "Tm": "MIA",
    "Lg": "NL",
@@ -4848,7 +4848,7 @@
  },
  {
    "Rk": "126",
-   "Name": "Andrew Chafin*",
+   "Name": "Andrew Chafin",
    "Age": "26",
    "Tm": "ARI",
    "Lg": "NL",
@@ -4922,7 +4922,7 @@
  },
  {
    "Rk": "128",
-   "Name": "Aroldis Chapman*",
+   "Name": "Aroldis Chapman",
    "Age": "28",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -4959,7 +4959,7 @@
  },
  {
    "Rk": "129",
-   "Name": "Aroldis Chapman*",
+   "Name": "Aroldis Chapman",
    "Age": "28",
    "Tm": "NYY",
    "Lg": "AL",
@@ -4996,7 +4996,7 @@
  },
  {
    "Rk": "130",
-   "Name": "Aroldis Chapman*",
+   "Name": "Aroldis Chapman",
    "Age": "28",
    "Tm": "CHC",
    "Lg": "NL",
@@ -5033,7 +5033,7 @@
  },
  {
    "Rk": "131",
-   "Name": "Kevin Chapman*",
+   "Name": "Kevin Chapman",
    "Age": "28",
    "Tm": "HOU",
    "Lg": "AL",
@@ -5255,7 +5255,7 @@
  },
  {
    "Rk": "137",
-   "Name": "Wei-Yin Chen*",
+   "Name": "Wei-Yin Chen",
    "Age": "30",
    "Tm": "MIA",
    "Lg": "NL",
@@ -5292,7 +5292,7 @@
  },
  {
    "Rk": "138",
-   "Name": "Tony Cingrani*",
+   "Name": "Tony Cingrani",
    "Age": "26",
    "Tm": "CIN",
    "Lg": "NL",
@@ -5366,7 +5366,7 @@
  },
  {
    "Rk": "140",
-   "Name": "Alex Claudio*",
+   "Name": "Alex Claudio",
    "Age": "24",
    "Tm": "TEX",
    "Lg": "AL",
@@ -5699,7 +5699,7 @@
  },
  {
    "Rk": "149",
-   "Name": "Phil Coke*",
+   "Name": "Phil Coke",
    "Age": "33",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -5736,7 +5736,7 @@
  },
  {
    "Rk": "150",
-   "Name": "Phil Coke*",
+   "Name": "Phil Coke",
    "Age": "33",
    "Tm": "NYY",
    "Lg": "AL",
@@ -5810,7 +5810,7 @@
  },
  {
    "Rk": "151",
-   "Name": "Phil Coke*",
+   "Name": "Phil Coke",
    "Age": "33",
    "Tm": "PIT",
    "Lg": "NL",
@@ -6180,7 +6180,7 @@
  },
  {
    "Rk": "161",
-   "Name": "Gerardo Concepcion*",
+   "Name": "Gerardo Concepcion",
    "Age": "24",
    "Tm": "CHC",
    "Lg": "NL",
@@ -6217,7 +6217,7 @@
  },
  {
    "Rk": "162",
-   "Name": "Adam Conley*",
+   "Name": "Adam Conley",
    "Age": "26",
    "Tm": "MIA",
    "Lg": "NL",
@@ -6254,7 +6254,7 @@
  },
  {
    "Rk": "163",
-   "Name": "Patrick Corbin*",
+   "Name": "Patrick Corbin",
    "Age": "26",
    "Tm": "ARI",
    "Lg": "NL",
@@ -6476,7 +6476,7 @@
  },
  {
    "Rk": "169",
-   "Name": "Daniel Coulombe*",
+   "Name": "Daniel Coulombe",
    "Age": "26",
    "Tm": "OAK",
    "Lg": "AL",
@@ -6550,7 +6550,7 @@
  },
  {
    "Rk": "171",
-   "Name": "Kyle Crockett*",
+   "Name": "Kyle Crockett",
    "Age": "24",
    "Tm": "CLE",
    "Lg": "AL",
@@ -6698,7 +6698,7 @@
  },
  {
    "Rk": "175",
-   "Name": "Zac Curtis*",
+   "Name": "Zac Curtis",
    "Age": "23",
    "Tm": "ARI",
    "Lg": "NL",
@@ -6809,7 +6809,7 @@
  },
  {
    "Rk": "177",
-   "Name": "John Danks*",
+   "Name": "John Danks",
    "Age": "31",
    "Tm": "CHW",
    "Lg": "AL",
@@ -6957,7 +6957,7 @@
  },
  {
    "Rk": "181",
-   "Name": "Grant Dayton*",
+   "Name": "Grant Dayton",
    "Age": "28",
    "Tm": "LAD",
    "Lg": "NL",
@@ -7031,7 +7031,7 @@
  },
  {
    "Rk": "183",
-   "Name": "Jorge De La Rosa*",
+   "Name": "Jorge De La Rosa",
    "Age": "35",
    "Tm": "COL",
    "Lg": "NL",
@@ -7179,7 +7179,7 @@
  },
  {
    "Rk": "187",
-   "Name": "Pat Dean*",
+   "Name": "Pat Dean",
    "Age": "27",
    "Tm": "MIN",
    "Lg": "AL",
@@ -7327,7 +7327,7 @@
  },
  {
    "Rk": "191",
-   "Name": "Matt Dermody*",
+   "Name": "Matt Dermody",
    "Age": "25",
    "Tm": "TOR",
    "Lg": "AL",
@@ -7512,7 +7512,7 @@
  },
  {
    "Rk": "196",
-   "Name": "Ross Detwiler*",
+   "Name": "Ross Detwiler",
    "Age": "30",
    "Tm": "TOT",
    "Lg": "AL",
@@ -7549,7 +7549,7 @@
  },
  {
    "Rk": "197",
-   "Name": "Ross Detwiler*",
+   "Name": "Ross Detwiler",
    "Age": "30",
    "Tm": "CLE",
    "Lg": "AL",
@@ -7586,7 +7586,7 @@
  },
  {
    "Rk": "198",
-   "Name": "Ross Detwiler*",
+   "Name": "Ross Detwiler",
    "Age": "30",
    "Tm": "OAK",
    "Lg": "AL",
@@ -7660,7 +7660,7 @@
  },
  {
    "Rk": "200",
-   "Name": "Scott Diamond*",
+   "Name": "Scott Diamond",
    "Age": "29",
    "Tm": "TOR",
    "Lg": "AL",
@@ -7882,7 +7882,7 @@
  },
  {
    "Rk": "205",
-   "Name": "Jake Diekman*",
+   "Name": "Jake Diekman",
    "Age": "29",
    "Tm": "TEX",
    "Lg": "AL",
@@ -7956,7 +7956,7 @@
  },
  {
    "Rk": "207",
-   "Name": "Sean Doolittle*",
+   "Name": "Sean Doolittle",
    "Age": "29",
    "Tm": "OAK",
    "Lg": "AL",
@@ -8067,7 +8067,7 @@
  },
  {
    "Rk": "210",
-   "Name": "Brian Duensing*",
+   "Name": "Brian Duensing",
    "Age": "33",
    "Tm": "BAL",
    "Lg": "AL",
@@ -8141,7 +8141,7 @@
  },
  {
    "Rk": "212",
-   "Name": "Danny Duffy*",
+   "Name": "Danny Duffy",
    "Age": "27",
    "Tm": "KCR",
    "Lg": "AL",
@@ -8178,7 +8178,7 @@
  },
  {
    "Rk": "213",
-   "Name": "Zach Duke*",
+   "Name": "Zach Duke",
    "Age": "33",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -8215,7 +8215,7 @@
  },
  {
    "Rk": "214",
-   "Name": "Zach Duke*",
+   "Name": "Zach Duke",
    "Age": "33",
    "Tm": "CHW",
    "Lg": "AL",
@@ -8252,7 +8252,7 @@
  },
  {
    "Rk": "215",
-   "Name": "Zach Duke*",
+   "Name": "Zach Duke",
    "Age": "33",
    "Tm": "STL",
    "Lg": "NL",
@@ -8326,7 +8326,7 @@
  },
  {
    "Rk": "217",
-   "Name": "Mike Dunn*",
+   "Name": "Mike Dunn",
    "Age": "31",
    "Tm": "MIA",
    "Lg": "NL",
@@ -8400,7 +8400,7 @@
  },
  {
    "Rk": "219",
-   "Name": "Josh Edgin*",
+   "Name": "Josh Edgin",
    "Age": "29",
    "Tm": "NYM",
    "Lg": "NL",
@@ -8511,7 +8511,7 @@
  },
  {
    "Rk": "222",
-   "Name": "Cody Ege*",
+   "Name": "Cody Ege",
    "Age": "25",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -8548,7 +8548,7 @@
  },
  {
    "Rk": "223",
-   "Name": "Cody Ege*",
+   "Name": "Cody Ege",
    "Age": "25",
    "Tm": "MIA",
    "Lg": "NL",
@@ -8585,7 +8585,7 @@
  },
  {
    "Rk": "224",
-   "Name": "Cody Ege*",
+   "Name": "Cody Ege",
    "Age": "25",
    "Tm": "LAA",
    "Lg": "AL",
@@ -8696,7 +8696,7 @@
  },
  {
    "Rk": "226",
-   "Name": "Roenis Elias*",
+   "Name": "Roenis Elias",
    "Age": "27",
    "Tm": "BOS",
    "Lg": "AL",
@@ -8807,7 +8807,7 @@
  },
  {
    "Rk": "229",
-   "Name": "Robbie Erlin*",
+   "Name": "Robbie Erlin",
    "Age": "25",
    "Tm": "SDP",
    "Lg": "NL",
@@ -8918,7 +8918,7 @@
  },
  {
    "Rk": "232",
-   "Name": "Edwin Escobar*",
+   "Name": "Edwin Escobar",
    "Age": "24",
    "Tm": "ARI",
    "Lg": "NL",
@@ -9029,7 +9029,7 @@
  },
  {
    "Rk": "235",
-   "Name": "Dana Eveland*",
+   "Name": "Dana Eveland",
    "Age": "32",
    "Tm": "TBR",
    "Lg": "AL",
@@ -9177,7 +9177,7 @@
  },
  {
    "Rk": "239",
-   "Name": "Andrew Faulkner*",
+   "Name": "Andrew Faulkner",
    "Age": "23",
    "Tm": "TEX",
    "Lg": "AL",
@@ -9732,7 +9732,7 @@
  },
  {
    "Rk": "253",
-   "Name": "Brandon Finnegan*",
+   "Name": "Brandon Finnegan",
    "Age": "23",
    "Tm": "CIN",
    "Lg": "NL",
@@ -9843,7 +9843,7 @@
  },
  {
    "Rk": "256",
-   "Name": "Yohan Flande*",
+   "Name": "Yohan Flande",
    "Age": "30",
    "Tm": "COL",
    "Lg": "NL",
@@ -9991,7 +9991,7 @@
  },
  {
    "Rk": "260",
-   "Name": "Brian Flynn*",
+   "Name": "Brian Flynn",
    "Age": "26",
    "Tm": "KCR",
    "Lg": "AL",
@@ -10065,7 +10065,7 @@
  },
  {
    "Rk": "262",
-   "Name": "Sam Freeman*",
+   "Name": "Sam Freeman",
    "Age": "29",
    "Tm": "MIL",
    "Lg": "NL",
@@ -10139,7 +10139,7 @@
  },
  {
    "Rk": "264",
-   "Name": "Christian Friedrich*",
+   "Name": "Christian Friedrich",
    "Age": "28",
    "Tm": "SDP",
    "Lg": "NL",
@@ -10361,7 +10361,7 @@
  },
  {
    "Rk": "270",
-   "Name": "Jaime Garcia*",
+   "Name": "Jaime Garcia",
    "Age": "29",
    "Tm": "STL",
    "Lg": "NL",
@@ -10879,7 +10879,7 @@
  },
  {
    "Rk": "283",
-   "Name": "Sean Gilmartin*",
+   "Name": "Sean Gilmartin",
    "Age": "26",
    "Tm": "NYM",
    "Lg": "NL",
@@ -10990,7 +10990,7 @@
  },
  {
    "Rk": "286",
-   "Name": "Chad Girodo*",
+   "Name": "Chad Girodo",
    "Age": "25",
    "Tm": "TOR",
    "Lg": "AL",
@@ -11360,7 +11360,7 @@
  },
  {
    "Rk": "296",
-   "Name": "Gio Gonzalez*",
+   "Name": "Gio Gonzalez",
    "Age": "30",
    "Tm": "WSN",
    "Lg": "NL",
@@ -11508,7 +11508,7 @@
  },
  {
    "Rk": "300",
-   "Name": "Tom Gorzelanny*",
+   "Name": "Tom Gorzelanny",
    "Age": "33",
    "Tm": "CLE",
    "Lg": "AL",
@@ -11619,7 +11619,7 @@
  },
  {
    "Rk": "302",
-   "Name": "Matt Grace*",
+   "Name": "Matt Grace",
    "Age": "27",
    "Tm": "WSN",
    "Lg": "NL",
@@ -12359,7 +12359,7 @@
  },
  {
    "Rk": "322",
-   "Name": "Jason Gurka*",
+   "Name": "Jason Gurka",
    "Age": "28",
    "Tm": "COL",
    "Lg": "NL",
@@ -12581,7 +12581,7 @@
  },
  {
    "Rk": "327",
-   "Name": "Cole Hamels*",
+   "Name": "Cole Hamels",
    "Age": "32",
    "Tm": "TEX",
    "Lg": "AL",
@@ -12655,7 +12655,7 @@
  },
  {
    "Rk": "329",
-   "Name": "Brad Hand*",
+   "Name": "Brad Hand",
    "Age": "26",
    "Tm": "SDP",
    "Lg": "NL",
@@ -12692,7 +12692,7 @@
  },
  {
    "Rk": "330",
-   "Name": "J.A. Happ*",
+   "Name": "J.A. Happ",
    "Age": "33",
    "Tm": "TOR",
    "Lg": "AL",
@@ -12729,7 +12729,7 @@
  },
  {
    "Rk": "331",
-   "Name": "Blaine Hardy*",
+   "Name": "Blaine Hardy",
    "Age": "29",
    "Tm": "DET",
    "Lg": "AL",
@@ -12914,7 +12914,7 @@
  },
  {
    "Rk": "336",
-   "Name": "Donnie Hart*",
+   "Name": "Donnie Hart",
    "Age": "25",
    "Tm": "BAL",
    "Lg": "AL",
@@ -13025,7 +13025,7 @@
  },
  {
    "Rk": "339",
-   "Name": "Steve Hathaway*",
+   "Name": "Steve Hathaway",
    "Age": "25",
    "Tm": "ARI",
    "Lg": "NL",
@@ -13099,7 +13099,7 @@
  },
  {
    "Rk": "341",
-   "Name": "Andrew Heaney*",
+   "Name": "Andrew Heaney",
    "Age": "25",
    "Tm": "LAA",
    "Lg": "AL",
@@ -13580,7 +13580,7 @@
  },
  {
    "Rk": "353",
-   "Name": "Keith Hessler*",
+   "Name": "Keith Hessler",
    "Age": "27",
    "Tm": "TOT",
    "Lg": "NL",
@@ -13617,7 +13617,7 @@
  },
  {
    "Rk": "354",
-   "Name": "Keith Hessler*",
+   "Name": "Keith Hessler",
    "Age": "27",
    "Tm": "ARI",
    "Lg": "NL",
@@ -13654,7 +13654,7 @@
  },
  {
    "Rk": "355",
-   "Name": "Keith Hessler*",
+   "Name": "Keith Hessler",
    "Age": "27",
    "Tm": "SDP",
    "Lg": "NL",
@@ -13728,7 +13728,7 @@
  },
  {
    "Rk": "357",
-   "Name": "Rich Hill*",
+   "Name": "Rich Hill",
    "Age": "36",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -13765,7 +13765,7 @@
  },
  {
    "Rk": "358",
-   "Name": "Rich Hill*",
+   "Name": "Rich Hill",
    "Age": "36",
    "Tm": "OAK",
    "Lg": "AL",
@@ -13802,7 +13802,7 @@
  },
  {
    "Rk": "359",
-   "Name": "Rich Hill*",
+   "Name": "Rich Hill",
    "Age": "36",
    "Tm": "LAD",
    "Lg": "NL",
@@ -14024,7 +14024,7 @@
  },
  {
    "Rk": "365",
-   "Name": "Derek Holland*",
+   "Name": "Derek Holland",
    "Age": "29",
    "Tm": "TEX",
    "Lg": "AL",
@@ -14135,7 +14135,7 @@
  },
  {
    "Rk": "368",
-   "Name": "T.J. House*",
+   "Name": "T.J. House",
    "Age": "26",
    "Tm": "CLE",
    "Lg": "AL",
@@ -14172,7 +14172,7 @@
  },
  {
    "Rk": "369",
-   "Name": "J.P. Howell*",
+   "Name": "J.P. Howell",
    "Age": "33",
    "Tm": "LAD",
    "Lg": "NL",
@@ -14320,7 +14320,7 @@
  },
  {
    "Rk": "373",
-   "Name": "David Huff*",
+   "Name": "David Huff",
    "Age": "31",
    "Tm": "LAA",
    "Lg": "AL",
@@ -15134,7 +15134,7 @@
  },
  {
    "Rk": "394",
-   "Name": "Dan Jennings*",
+   "Name": "Dan Jennings",
    "Age": "29",
    "Tm": "CHW",
    "Lg": "AL",
@@ -15689,7 +15689,7 @@
  },
  {
    "Rk": "408",
-   "Name": "Scott Kazmir*",
+   "Name": "Scott Kazmir",
    "Age": "32",
    "Tm": "LAD",
    "Lg": "NL",
@@ -15948,7 +15948,7 @@
  },
  {
    "Rk": "415",
-   "Name": "Clayton Kershaw*",
+   "Name": "Clayton Kershaw",
    "Age": "28",
    "Tm": "LAD",
    "Lg": "NL",
@@ -15985,7 +15985,7 @@
  },
  {
    "Rk": "416",
-   "Name": "Dallas Keuchel*",
+   "Name": "Dallas Keuchel",
    "Age": "28",
    "Tm": "HOU",
    "Lg": "AL",
@@ -16022,7 +16022,7 @@
  },
  {
    "Rk": "417",
-   "Name": "Dean Kiekhefer*",
+   "Name": "Dean Kiekhefer",
    "Age": "27",
    "Tm": "STL",
    "Lg": "NL",
@@ -16133,7 +16133,7 @@
  },
  {
    "Rk": "420",
-   "Name": "Michael Kirkman*",
+   "Name": "Michael Kirkman",
    "Age": "29",
    "Tm": "TOT",
    "Lg": "NL",
@@ -16170,7 +16170,7 @@
  },
  {
    "Rk": "421",
-   "Name": "Michael Kirkman*",
+   "Name": "Michael Kirkman",
    "Age": "29",
    "Tm": "SDP",
    "Lg": "NL",
@@ -16207,7 +16207,7 @@
  },
  {
    "Rk": "422",
-   "Name": "Michael Kirkman*",
+   "Name": "Michael Kirkman",
    "Age": "29",
    "Tm": "MIL",
    "Lg": "NL",
@@ -16688,7 +16688,7 @@
  },
  {
    "Rk": "434",
-   "Name": "Ian Krol*",
+   "Name": "Ian Krol",
    "Age": "25",
    "Tm": "ATL",
    "Lg": "NL",
@@ -16836,7 +16836,7 @@
  },
  {
    "Rk": "438",
-   "Name": "Ryan LaMarre*",
+   "Name": "Ryan LaMarre",
    "Age": "27",
    "Tm": "BOS",
    "Lg": "AL",
@@ -16873,7 +16873,7 @@
  },
  {
    "Rk": "439",
-   "Name": "John Lamb*",
+   "Name": "John Lamb",
    "Age": "25",
    "Tm": "CIN",
    "Lg": "NL",
@@ -17058,7 +17058,7 @@
  },
  {
    "Rk": "444",
-   "Name": "Tommy Layne*",
+   "Name": "Tommy Layne",
    "Age": "31",
    "Tm": "TOT",
    "Lg": "AL",
@@ -17095,7 +17095,7 @@
  },
  {
    "Rk": "445",
-   "Name": "Tommy Layne*",
+   "Name": "Tommy Layne",
    "Age": "31",
    "Tm": "BOS",
    "Lg": "AL",
@@ -17132,7 +17132,7 @@
  },
  {
    "Rk": "446",
-   "Name": "Tommy Layne*",
+   "Name": "Tommy Layne",
    "Age": "31",
    "Tm": "NYY",
    "Lg": "AL",
@@ -17206,7 +17206,7 @@
  },
  {
    "Rk": "448",
-   "Name": "Wade LeBlanc*",
+   "Name": "Wade LeBlanc",
    "Age": "31",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -17243,7 +17243,7 @@
  },
  {
    "Rk": "449",
-   "Name": "Wade LeBlanc*",
+   "Name": "Wade LeBlanc",
    "Age": "31",
    "Tm": "SEA",
    "Lg": "AL",
@@ -17280,7 +17280,7 @@
  },
  {
    "Rk": "450",
-   "Name": "Wade LeBlanc*",
+   "Name": "Wade LeBlanc",
    "Age": "31",
    "Tm": "PIT",
    "Lg": "NL",
@@ -17465,7 +17465,7 @@
  },
  {
    "Rk": "454",
-   "Name": "Jon Lester*",
+   "Name": "Jon Lester",
    "Age": "32",
    "Tm": "CHC",
    "Lg": "NL",
@@ -17539,7 +17539,7 @@
  },
  {
    "Rk": "456",
-   "Name": "Adam Liberatore*",
+   "Name": "Adam Liberatore",
    "Age": "29",
    "Tm": "LAD",
    "Lg": "NL",
@@ -17724,7 +17724,7 @@
  },
  {
    "Rk": "461",
-   "Name": "Francisco Liriano*",
+   "Name": "Francisco Liriano",
    "Age": "32",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -17761,7 +17761,7 @@
  },
  {
    "Rk": "462",
-   "Name": "Francisco Liriano*",
+   "Name": "Francisco Liriano",
    "Age": "32",
    "Tm": "PIT",
    "Lg": "NL",
@@ -17798,7 +17798,7 @@
  },
  {
    "Rk": "463",
-   "Name": "Francisco Liriano*",
+   "Name": "Francisco Liriano",
    "Age": "32",
    "Tm": "TOR",
    "Lg": "AL",
@@ -17835,7 +17835,7 @@
  },
  {
    "Rk": "464",
-   "Name": "Kyle Lobstein*",
+   "Name": "Kyle Lobstein",
    "Age": "26",
    "Tm": "PIT",
    "Lg": "NL",
@@ -17872,7 +17872,7 @@
  },
  {
    "Rk": "465",
-   "Name": "Jeff Locke*",
+   "Name": "Jeff Locke",
    "Age": "28",
    "Tm": "PIT",
    "Lg": "NL",
@@ -17909,7 +17909,7 @@
  },
  {
    "Rk": "466",
-   "Name": "Adam Loewen*",
+   "Name": "Adam Loewen",
    "Age": "32",
    "Tm": "ARI",
    "Lg": "NL",
@@ -17946,7 +17946,7 @@
  },
  {
    "Rk": "467",
-   "Name": "Boone Logan*",
+   "Name": "Boone Logan",
    "Age": "31",
    "Tm": "COL",
    "Lg": "NL",
@@ -18020,7 +18020,7 @@
  },
  {
    "Rk": "469",
-   "Name": "Javier Lopez*",
+   "Name": "Javier Lopez",
    "Age": "38",
    "Tm": "SFG",
    "Lg": "NL",
@@ -18131,7 +18131,7 @@
  },
  {
    "Rk": "472",
-   "Name": "Aaron Loup*",
+   "Name": "Aaron Loup",
    "Age": "28",
    "Tm": "TOR",
    "Lg": "AL",
@@ -18205,7 +18205,7 @@
  },
  {
    "Rk": "474",
-   "Name": "Cory Luebke*",
+   "Name": "Cory Luebke",
    "Age": "31",
    "Tm": "PIT",
    "Lg": "NL",
@@ -18353,7 +18353,7 @@
  },
  {
    "Rk": "477",
-   "Name": "Tyler Lyons*",
+   "Name": "Tyler Lyons",
    "Age": "28",
    "Tm": "STL",
    "Lg": "NL",
@@ -18538,7 +18538,7 @@
  },
  {
    "Rk": "482",
-   "Name": "Greg Mahle*",
+   "Name": "Greg Mahle",
    "Age": "23",
    "Tm": "LAA",
    "Lg": "AL",
@@ -18575,7 +18575,7 @@
  },
  {
    "Rk": "483",
-   "Name": "Sean Manaea*",
+   "Name": "Sean Manaea",
    "Age": "24",
    "Tm": "OAK",
    "Lg": "AL",
@@ -18686,7 +18686,7 @@
  },
  {
    "Rk": "486",
-   "Name": "Joe Mantiply*",
+   "Name": "Joe Mantiply",
    "Age": "25",
    "Tm": "DET",
    "Lg": "AL",
@@ -18871,7 +18871,7 @@
  },
  {
    "Rk": "491",
-   "Name": "Justin Marks*",
+   "Name": "Justin Marks",
    "Age": "28",
    "Tm": "TBR",
    "Lg": "AL",
@@ -18908,7 +18908,7 @@
  },
  {
    "Rk": "492",
-   "Name": "Matt Marksberry*",
+   "Name": "Matt Marksberry",
    "Age": "25",
    "Tm": "ATL",
    "Lg": "NL",
@@ -19019,7 +19019,7 @@
  },
  {
    "Rk": "495",
-   "Name": "Kelvin Marte*",
+   "Name": "Kelvin Marte",
    "Age": "28",
    "Tm": "PIT",
    "Lg": "NL",
@@ -19204,7 +19204,7 @@
  },
  {
    "Rk": "500",
-   "Name": "Brian Matusz*",
+   "Name": "Brian Matusz",
    "Age": "29",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -19278,7 +19278,7 @@
  },
  {
    "Rk": "501",
-   "Name": "Brian Matusz*",
+   "Name": "Brian Matusz",
    "Age": "29",
    "Tm": "BAL",
    "Lg": "AL",
@@ -19315,7 +19315,7 @@
  },
  {
    "Rk": "502",
-   "Name": "Brian Matusz*",
+   "Name": "Brian Matusz",
    "Age": "29",
    "Tm": "CHC",
    "Lg": "NL",
@@ -19352,7 +19352,7 @@
  },
  {
    "Rk": "503",
-   "Name": "Steven Matz*",
+   "Name": "Steven Matz",
    "Age": "25",
    "Tm": "NYM",
    "Lg": "NL",
@@ -19685,7 +19685,7 @@
  },
  {
    "Rk": "512",
-   "Name": "T.J. McFarland*",
+   "Name": "T.J. McFarland",
    "Age": "27",
    "Tm": "BAL",
    "Lg": "AL",
@@ -19722,7 +19722,7 @@
  },
  {
    "Rk": "513",
-   "Name": "Jake McGee*",
+   "Name": "Jake McGee",
    "Age": "29",
    "Tm": "COL",
    "Lg": "NL",
@@ -19870,7 +19870,7 @@
  },
  {
    "Rk": "517",
-   "Name": "Adalberto Mejia*",
+   "Name": "Adalberto Mejia",
    "Age": "23",
    "Tm": "MIN",
    "Lg": "AL",
@@ -20055,7 +20055,7 @@
  },
  {
    "Rk": "522",
-   "Name": "Yohander Mendez*",
+   "Name": "Yohander Mendez",
    "Age": "21",
    "Tm": "TEX",
    "Lg": "AL",
@@ -20129,7 +20129,7 @@
  },
  {
    "Rk": "524",
-   "Name": "Ryan Merritt*",
+   "Name": "Ryan Merritt",
    "Age": "24",
    "Tm": "CLE",
    "Lg": "AL",
@@ -20314,7 +20314,7 @@
  },
  {
    "Rk": "528",
-   "Name": "Wade Miley*",
+   "Name": "Wade Miley",
    "Age": "29",
    "Tm": "TOT",
    "Lg": "AL",
@@ -20351,7 +20351,7 @@
  },
  {
    "Rk": "529",
-   "Name": "Wade Miley*",
+   "Name": "Wade Miley",
    "Age": "29",
    "Tm": "SEA",
    "Lg": "AL",
@@ -20388,7 +20388,7 @@
  },
  {
    "Rk": "530",
-   "Name": "Wade Miley*",
+   "Name": "Wade Miley",
    "Age": "29",
    "Tm": "BAL",
    "Lg": "AL",
@@ -20425,7 +20425,7 @@
  },
  {
    "Rk": "531",
-   "Name": "Andrew Miller*",
+   "Name": "Andrew Miller",
    "Age": "31",
    "Tm": "TOT",
    "Lg": "AL",
@@ -20462,7 +20462,7 @@
  },
  {
    "Rk": "532",
-   "Name": "Andrew Miller*",
+   "Name": "Andrew Miller",
    "Age": "31",
    "Tm": "NYY",
    "Lg": "AL",
@@ -20499,7 +20499,7 @@
  },
  {
    "Rk": "533",
-   "Name": "Andrew Miller*",
+   "Name": "Andrew Miller",
    "Age": "31",
    "Tm": "CLE",
    "Lg": "AL",
@@ -20647,7 +20647,7 @@
  },
  {
    "Rk": "537",
-   "Name": "Tommy Milone*",
+   "Name": "Tommy Milone",
    "Age": "29",
    "Tm": "MIN",
    "Lg": "AL",
@@ -20721,7 +20721,7 @@
  },
  {
    "Rk": "539",
-   "Name": "Ariel Miranda*",
+   "Name": "Ariel Miranda",
    "Age": "27",
    "Tm": "TOT",
    "Lg": "AL",
@@ -20758,7 +20758,7 @@
  },
  {
    "Rk": "540",
-   "Name": "Ariel Miranda*",
+   "Name": "Ariel Miranda",
    "Age": "27",
    "Tm": "BAL",
    "Lg": "AL",
@@ -20795,7 +20795,7 @@
  },
  {
    "Rk": "541",
-   "Name": "Ariel Miranda*",
+   "Name": "Ariel Miranda",
    "Age": "27",
    "Tm": "SEA",
    "Lg": "AL",
@@ -20980,7 +20980,7 @@
  },
  {
    "Rk": "546",
-   "Name": "Mike Montgomery*",
+   "Name": "Mike Montgomery",
    "Age": "26",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -21017,7 +21017,7 @@
  },
  {
    "Rk": "547",
-   "Name": "Mike Montgomery*",
+   "Name": "Mike Montgomery",
    "Age": "26",
    "Tm": "SEA",
    "Lg": "AL",
@@ -21054,7 +21054,7 @@
  },
  {
    "Rk": "548",
-   "Name": "Mike Montgomery*",
+   "Name": "Mike Montgomery",
    "Age": "26",
    "Tm": "CHC",
    "Lg": "NL",
@@ -21091,7 +21091,7 @@
  },
  {
    "Rk": "549",
-   "Name": "Matt Moore*",
+   "Name": "Matt Moore",
    "Age": "27",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -21128,7 +21128,7 @@
  },
  {
    "Rk": "550",
-   "Name": "Matt Moore*",
+   "Name": "Matt Moore",
    "Age": "27",
    "Tm": "TBR",
    "Lg": "AL",
@@ -21202,7 +21202,7 @@
  },
  {
    "Rk": "551",
-   "Name": "Matt Moore*",
+   "Name": "Matt Moore",
    "Age": "27",
    "Tm": "SFG",
    "Lg": "NL",
@@ -21239,7 +21239,7 @@
  },
  {
    "Rk": "552",
-   "Name": "Franklin Morales*",
+   "Name": "Franklin Morales",
    "Age": "30",
    "Tm": "TOR",
    "Lg": "AL",
@@ -21276,7 +21276,7 @@
  },
  {
    "Rk": "553",
-   "Name": "Adam Morgan*",
+   "Name": "Adam Morgan",
    "Age": "26",
    "Tm": "PHI",
    "Lg": "NL",
@@ -21313,7 +21313,7 @@
  },
  {
    "Rk": "554",
-   "Name": "Shawn Morimando*",
+   "Name": "Shawn Morimando",
    "Age": "23",
    "Tm": "CLE",
    "Lg": "AL",
@@ -21794,7 +21794,7 @@
  },
  {
    "Rk": "567",
-   "Name": "Chris Narveson*",
+   "Name": "Chris Narveson",
    "Age": "34",
    "Tm": "MIA",
    "Lg": "NL",
@@ -22164,7 +22164,7 @@
  },
  {
    "Rk": "576",
-   "Name": "Justin Nicolino*",
+   "Name": "Justin Nicolino",
    "Age": "24",
    "Tm": "MIA",
    "Lg": "NL",
@@ -22201,7 +22201,7 @@
  },
  {
    "Rk": "577",
-   "Name": "Jon Niese*",
+   "Name": "Jon Niese",
    "Age": "29",
    "Tm": "TOT",
    "Lg": "NL",
@@ -22238,7 +22238,7 @@
  },
  {
    "Rk": "578",
-   "Name": "Jon Niese*",
+   "Name": "Jon Niese",
    "Age": "29",
    "Tm": "PIT",
    "Lg": "NL",
@@ -22275,7 +22275,7 @@
  },
  {
    "Rk": "579",
-   "Name": "Jon Niese*",
+   "Name": "Jon Niese",
    "Age": "29",
    "Tm": "NYM",
    "Lg": "NL",
@@ -22571,7 +22571,7 @@
  },
  {
    "Rk": "587",
-   "Name": "Daniel Norris*",
+   "Name": "Daniel Norris",
    "Age": "23",
    "Tm": "DET",
    "Lg": "AL",
@@ -22719,7 +22719,7 @@
  },
  {
    "Rk": "591",
-   "Name": "Vidal Nuno*",
+   "Name": "Vidal Nuno",
    "Age": "28",
    "Tm": "SEA",
    "Lg": "AL",
@@ -22793,7 +22793,7 @@
  },
  {
    "Rk": "593",
-   "Name": "Eric O'Flaherty*",
+   "Name": "Eric O'Flaherty",
    "Age": "31",
    "Tm": "ATL",
    "Lg": "NL",
@@ -22830,7 +22830,7 @@
  },
  {
    "Rk": "594",
-   "Name": "Ryan O'Rourke*",
+   "Name": "Ryan O'Rourke",
    "Age": "28",
    "Tm": "MIN",
    "Lg": "AL",
@@ -22941,7 +22941,7 @@
  },
  {
    "Rk": "597",
-   "Name": "Brett Oberholtzer*",
+   "Name": "Brett Oberholtzer",
    "Age": "26",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -22978,7 +22978,7 @@
  },
  {
    "Rk": "598",
-   "Name": "Brett Oberholtzer*",
+   "Name": "Brett Oberholtzer",
    "Age": "26",
    "Tm": "PHI",
    "Lg": "NL",
@@ -23015,7 +23015,7 @@
  },
  {
    "Rk": "599",
-   "Name": "Brett Oberholtzer*",
+   "Name": "Brett Oberholtzer",
    "Age": "26",
    "Tm": "LAA",
    "Lg": "AL",
@@ -23274,7 +23274,7 @@
  },
  {
    "Rk": "605",
-   "Name": "Steven Okert*",
+   "Name": "Steven Okert",
    "Age": "24",
    "Tm": "SFG",
    "Lg": "NL",
@@ -23311,7 +23311,7 @@
  },
  {
    "Rk": "606",
-   "Name": "Tyler Olson*",
+   "Name": "Tyler Olson",
    "Age": "26",
    "Tm": "NYY",
    "Lg": "AL",
@@ -23385,7 +23385,7 @@
  },
  {
    "Rk": "608",
-   "Name": "Josh Osich*",
+   "Name": "Josh Osich",
    "Age": "27",
    "Tm": "SFG",
    "Lg": "NL",
@@ -23533,7 +23533,7 @@
  },
  {
    "Rk": "612",
-   "Name": "Dillon Overton*",
+   "Name": "Dillon Overton",
    "Age": "24",
    "Tm": "OAK",
    "Lg": "AL",
@@ -23570,7 +23570,7 @@
  },
  {
    "Rk": "613",
-   "Name": "Henry Owens*",
+   "Name": "Henry Owens",
    "Age": "23",
    "Tm": "BOS",
    "Lg": "AL",
@@ -23903,7 +23903,7 @@
  },
  {
    "Rk": "622",
-   "Name": "James Paxton*",
+   "Name": "James Paxton",
    "Age": "27",
    "Tm": "SEA",
    "Lg": "AL",
@@ -23940,7 +23940,7 @@
  },
  {
    "Rk": "623",
-   "Name": "James Pazos*",
+   "Name": "James Pazos",
    "Age": "25",
    "Tm": "NYY",
    "Lg": "AL",
@@ -24310,7 +24310,7 @@
  },
  {
    "Rk": "632",
-   "Name": "Wandy Peralta*",
+   "Name": "Wandy Peralta",
    "Age": "24",
    "Tm": "CIN",
    "Lg": "NL",
@@ -24421,7 +24421,7 @@
  },
  {
    "Rk": "635",
-   "Name": "Martin Perez*",
+   "Name": "Martin Perez",
    "Age": "25",
    "Tm": "TEX",
    "Lg": "AL",
@@ -24458,7 +24458,7 @@
  },
  {
    "Rk": "636",
-   "Name": "Oliver Perez*",
+   "Name": "Oliver Perez",
    "Age": "34",
    "Tm": "WSN",
    "Lg": "NL",
@@ -24532,7 +24532,7 @@
  },
  {
    "Rk": "638",
-   "Name": "Glen Perkins*",
+   "Name": "Glen Perkins",
    "Age": "33",
    "Tm": "MIN",
    "Lg": "AL",
@@ -24717,7 +24717,7 @@
  },
  {
    "Rk": "643",
-   "Name": "Zach Phillips*",
+   "Name": "Zach Phillips",
    "Age": "29",
    "Tm": "PIT",
    "Lg": "NL",
@@ -24865,7 +24865,7 @@
  },
  {
    "Rk": "647",
-   "Name": "Drew Pomeranz*",
+   "Name": "Drew Pomeranz",
    "Age": "27",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -24902,7 +24902,7 @@
  },
  {
    "Rk": "648",
-   "Name": "Drew Pomeranz*",
+   "Name": "Drew Pomeranz",
    "Age": "27",
    "Tm": "SDP",
    "Lg": "NL",
@@ -24939,7 +24939,7 @@
  },
  {
    "Rk": "649",
-   "Name": "Drew Pomeranz*",
+   "Name": "Drew Pomeranz",
    "Age": "27",
    "Tm": "BOS",
    "Lg": "AL",
@@ -25124,7 +25124,7 @@
  },
  {
    "Rk": "653",
-   "Name": "David Price*",
+   "Name": "David Price",
    "Age": "30",
    "Tm": "BOS",
    "Lg": "AL",
@@ -25161,7 +25161,7 @@
  },
  {
    "Rk": "654",
-   "Name": "Matt Purke*",
+   "Name": "Matt Purke",
    "Age": "25",
    "Tm": "CHW",
    "Lg": "AL",
@@ -25309,7 +25309,7 @@
  },
  {
    "Rk": "658",
-   "Name": "Jose Quintana*",
+   "Name": "Jose Quintana",
    "Age": "27",
    "Tm": "CHW",
    "Lg": "AL",
@@ -25790,7 +25790,7 @@
  },
  {
    "Rk": "671",
-   "Name": "Cesar Ramos*",
+   "Name": "Cesar Ramos",
    "Age": "32",
    "Tm": "TEX",
    "Lg": "AL",
@@ -26086,7 +26086,7 @@
  },
  {
    "Rk": "678",
-   "Name": "Robbie Ray*",
+   "Name": "Robbie Ray",
    "Age": "24",
    "Tm": "ARI",
    "Lg": "NL",
@@ -26271,7 +26271,7 @@
  },
  {
    "Rk": "683",
-   "Name": "Cody Reed*",
+   "Name": "Cody Reed",
    "Age": "23",
    "Tm": "CIN",
    "Lg": "NL",
@@ -26345,7 +26345,7 @@
  },
  {
    "Rk": "685",
-   "Name": "Jo-Jo Reyes*",
+   "Name": "Jo-Jo Reyes",
    "Age": "31",
    "Tm": "MIA",
    "Lg": "NL",
@@ -26382,7 +26382,7 @@
  },
  {
    "Rk": "686",
-   "Name": "Matt Reynolds*",
+   "Name": "Matt Reynolds",
    "Age": "31",
    "Tm": "SFG",
    "Lg": "NL",
@@ -26419,7 +26419,7 @@
  },
  {
    "Rk": "687",
-   "Name": "Clayton Richard*",
+   "Name": "Clayton Richard",
    "Age": "32",
    "Tm": "TOT",
    "Lg": "NL",
@@ -26456,7 +26456,7 @@
  },
  {
    "Rk": "688",
-   "Name": "Clayton Richard*",
+   "Name": "Clayton Richard",
    "Age": "32",
    "Tm": "CHC",
    "Lg": "NL",
@@ -26493,7 +26493,7 @@
  },
  {
    "Rk": "689",
-   "Name": "Clayton Richard*",
+   "Name": "Clayton Richard",
    "Age": "32",
    "Tm": "SDP",
    "Lg": "NL",
@@ -26567,7 +26567,7 @@
  },
  {
    "Rk": "691",
-   "Name": "Felipe Rivero*",
+   "Name": "Felipe Rivero",
    "Age": "24",
    "Tm": "TOT",
    "Lg": "NL",
@@ -26604,7 +26604,7 @@
  },
  {
    "Rk": "692",
-   "Name": "Felipe Rivero*",
+   "Name": "Felipe Rivero",
    "Age": "24",
    "Tm": "WSN",
    "Lg": "NL",
@@ -26641,7 +26641,7 @@
  },
  {
    "Rk": "693",
-   "Name": "Felipe Rivero*",
+   "Name": "Felipe Rivero",
    "Age": "24",
    "Tm": "PIT",
    "Lg": "NL",
@@ -27011,7 +27011,7 @@
  },
  {
    "Rk": "702",
-   "Name": "Carlos Rodon*",
+   "Name": "Carlos Rodon",
    "Age": "23",
    "Tm": "CHW",
    "Lg": "AL",
@@ -27048,7 +27048,7 @@
  },
  {
    "Rk": "703",
-   "Name": "Eduardo Rodriguez*",
+   "Name": "Eduardo Rodriguez",
    "Age": "23",
    "Tm": "BOS",
    "Lg": "AL",
@@ -27159,7 +27159,7 @@
  },
  {
    "Rk": "706",
-   "Name": "Joely Rodriguez*",
+   "Name": "Joely Rodriguez",
    "Age": "24",
    "Tm": "PHI",
    "Lg": "NL",
@@ -27307,7 +27307,7 @@
  },
  {
    "Rk": "710",
-   "Name": "Taylor Rogers*",
+   "Name": "Taylor Rogers",
    "Age": "25",
    "Tm": "MIN",
    "Lg": "AL",
@@ -27344,7 +27344,7 @@
  },
  {
    "Rk": "711",
-   "Name": "David Rollins*",
+   "Name": "David Rollins",
    "Age": "26",
    "Tm": "SEA",
    "Lg": "AL",
@@ -27381,7 +27381,7 @@
  },
  {
    "Rk": "712",
-   "Name": "Enny Romero*",
+   "Name": "Enny Romero",
    "Age": "25",
    "Tm": "TBR",
    "Lg": "AL",
@@ -27677,7 +27677,7 @@
  },
  {
    "Rk": "720",
-   "Name": "Robbie Ross*",
+   "Name": "Robbie Ross",
    "Age": "27",
    "Tm": "BOS",
    "Lg": "AL",
@@ -27751,7 +27751,7 @@
  },
  {
    "Rk": "722",
-   "Name": "Michael Roth*",
+   "Name": "Michael Roth",
    "Age": "26",
    "Tm": "TEX",
    "Lg": "AL",
@@ -27825,7 +27825,7 @@
  },
  {
    "Rk": "724",
-   "Name": "Chris Rusin*",
+   "Name": "Chris Rusin",
    "Age": "29",
    "Tm": "COL",
    "Lg": "NL",
@@ -27862,7 +27862,7 @@
  },
  {
    "Rk": "725",
-   "Name": "James Russell*",
+   "Name": "James Russell",
    "Age": "30",
    "Tm": "PHI",
    "Lg": "NL",
@@ -27936,7 +27936,7 @@
  },
  {
    "Rk": "726",
-   "Name": "Kyle Ryan*",
+   "Name": "Kyle Ryan",
    "Age": "24",
    "Tm": "DET",
    "Lg": "AL",
@@ -27973,7 +27973,7 @@
  },
  {
    "Rk": "727",
-   "Name": "Hyun-Jin Ryu*",
+   "Name": "Hyun-Jin Ryu",
    "Age": "29",
    "Tm": "LAD",
    "Lg": "NL",
@@ -28010,7 +28010,7 @@
  },
  {
    "Rk": "728",
-   "Name": "Marc Rzepczynski*",
+   "Name": "Marc Rzepczynski",
    "Age": "30",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -28047,7 +28047,7 @@
  },
  {
    "Rk": "729",
-   "Name": "Marc Rzepczynski*",
+   "Name": "Marc Rzepczynski",
    "Age": "30",
    "Tm": "OAK",
    "Lg": "AL",
@@ -28084,7 +28084,7 @@
  },
  {
    "Rk": "730",
-   "Name": "Marc Rzepczynski*",
+   "Name": "Marc Rzepczynski",
    "Age": "30",
    "Tm": "WSN",
    "Lg": "NL",
@@ -28121,7 +28121,7 @@
  },
  {
    "Rk": "731",
-   "Name": "CC Sabathia*",
+   "Name": "CC Sabathia",
    "Age": "35",
    "Tm": "NYY",
    "Lg": "AL",
@@ -28306,7 +28306,7 @@
  },
  {
    "Rk": "736",
-   "Name": "Chris Sale*",
+   "Name": "Chris Sale",
    "Age": "27",
    "Tm": "CHW",
    "Lg": "AL",
@@ -28565,7 +28565,7 @@
  },
  {
    "Rk": "743",
-   "Name": "Hector Santiago*",
+   "Name": "Hector Santiago",
    "Age": "28",
    "Tm": "TOT",
    "Lg": "AL",
@@ -28602,7 +28602,7 @@
  },
  {
    "Rk": "744",
-   "Name": "Hector Santiago*",
+   "Name": "Hector Santiago",
    "Age": "28",
    "Tm": "LAA",
    "Lg": "AL",
@@ -28639,7 +28639,7 @@
  },
  {
    "Rk": "745",
-   "Name": "Hector Santiago*",
+   "Name": "Hector Santiago",
    "Age": "28",
    "Tm": "MIN",
    "Lg": "AL",
@@ -29046,7 +29046,7 @@
  },
  {
    "Rk": "755",
-   "Name": "Patrick Schuster*",
+   "Name": "Patrick Schuster",
    "Age": "25",
    "Tm": "TOT",
    "Lg": "MLB",
@@ -29083,7 +29083,7 @@
  },
  {
    "Rk": "756",
-   "Name": "Patrick Schuster*",
+   "Name": "Patrick Schuster",
    "Age": "25",
    "Tm": "OAK",
    "Lg": "AL",
@@ -29120,7 +29120,7 @@
  },
  {
    "Rk": "757",
-   "Name": "Patrick Schuster*",
+   "Name": "Patrick Schuster",
    "Age": "25",
    "Tm": "PHI",
    "Lg": "NL",
@@ -29157,7 +29157,7 @@
  },
  {
    "Rk": "758",
-   "Name": "Robby Scott*",
+   "Name": "Robby Scott",
    "Age": "26",
    "Tm": "BOS",
    "Lg": "AL",
@@ -29490,7 +29490,7 @@
  },
  {
    "Rk": "767",
-   "Name": "Chasen Shreve*",
+   "Name": "Chasen Shreve",
    "Age": "25",
    "Tm": "NYY",
    "Lg": "AL",
@@ -29527,7 +29527,7 @@
  },
  {
    "Rk": "768",
-   "Name": "J.B. Shuck*",
+   "Name": "J.B. Shuck",
    "Age": "29",
    "Tm": "CHW",
    "Lg": "AL",
@@ -29564,7 +29564,7 @@
  },
  {
    "Rk": "769",
-   "Name": "Kevin Siegrist*",
+   "Name": "Kevin Siegrist",
    "Age": "26",
    "Tm": "STL",
    "Lg": "NL",
@@ -29675,7 +29675,7 @@
  },
  {
    "Rk": "772",
-   "Name": "Tony Sipp*",
+   "Name": "Tony Sipp",
    "Age": "32",
    "Tm": "HOU",
    "Lg": "AL",
@@ -29712,7 +29712,7 @@
  },
  {
    "Rk": "773",
-   "Name": "Tyler Skaggs*",
+   "Name": "Tyler Skaggs",
    "Age": "24",
    "Tm": "LAA",
    "Lg": "AL",
@@ -30082,7 +30082,7 @@
  },
  {
    "Rk": "782",
-   "Name": "Will Smith*",
+   "Name": "Will Smith",
    "Age": "26",
    "Tm": "TOT",
    "Lg": "NL",
@@ -30119,7 +30119,7 @@
  },
  {
    "Rk": "783",
-   "Name": "Will Smith*",
+   "Name": "Will Smith",
    "Age": "26",
    "Tm": "MIL",
    "Lg": "NL",
@@ -30156,7 +30156,7 @@
  },
  {
    "Rk": "784",
-   "Name": "Will Smith*",
+   "Name": "Will Smith",
    "Age": "26",
    "Tm": "SFG",
    "Lg": "NL",
@@ -30193,7 +30193,7 @@
  },
  {
    "Rk": "785",
-   "Name": "Josh Smoker*",
+   "Name": "Josh Smoker",
    "Age": "27",
    "Tm": "NYM",
    "Lg": "NL",
@@ -30230,7 +30230,7 @@
  },
  {
    "Rk": "786",
-   "Name": "Drew Smyly*",
+   "Name": "Drew Smyly",
    "Age": "27",
    "Tm": "TBR",
    "Lg": "AL",
@@ -30267,7 +30267,7 @@
  },
  {
    "Rk": "787",
-   "Name": "Blake Snell*",
+   "Name": "Blake Snell",
    "Age": "23",
    "Tm": "TBR",
    "Lg": "AL",
@@ -30341,7 +30341,7 @@
  },
  {
    "Rk": "789",
-   "Name": "Sammy Solis*",
+   "Name": "Sammy Solis",
    "Age": "27",
    "Tm": "WSN",
    "Lg": "NL",
@@ -30637,7 +30637,7 @@
  },
  {
    "Rk": "797",
-   "Name": "Matt Strahm*",
+   "Name": "Matt Strahm",
    "Age": "24",
    "Tm": "KCR",
    "Lg": "AL",
@@ -31007,7 +31007,7 @@
  },
  {
    "Rk": "806",
-   "Name": "Daniel Stumpf*",
+   "Name": "Daniel Stumpf",
    "Age": "25",
    "Tm": "PHI",
    "Lg": "NL",
@@ -31118,7 +31118,7 @@
  },
  {
    "Rk": "809",
-   "Name": "Eric Surkamp*",
+   "Name": "Eric Surkamp",
    "Age": "28",
    "Tm": "OAK",
    "Lg": "AL",
@@ -31155,7 +31155,7 @@
  },
  {
    "Rk": "810",
-   "Name": "Brent Suter*",
+   "Name": "Brent Suter",
    "Age": "26",
    "Tm": "MIL",
    "Lg": "NL",
@@ -31599,7 +31599,7 @@
  },
  {
    "Rk": "822",
-   "Name": "Matt Thornton*",
+   "Name": "Matt Thornton",
    "Age": "39",
    "Tm": "SDP",
    "Lg": "NL",
@@ -31710,7 +31710,7 @@
  },
  {
    "Rk": "825",
-   "Name": "Ashur Tolliver*",
+   "Name": "Ashur Tolliver",
    "Age": "28",
    "Tm": "BAL",
    "Lg": "AL",
@@ -31895,7 +31895,7 @@
  },
  {
    "Rk": "829",
-   "Name": "Jose Torres*",
+   "Name": "Jose Torres",
    "Age": "22",
    "Tm": "SDP",
    "Lg": "NL",
@@ -32228,7 +32228,7 @@
  },
  {
    "Rk": "838",
-   "Name": "Julio Urias*",
+   "Name": "Julio Urias",
    "Age": "19",
    "Tm": "LAD",
    "Lg": "NL",
@@ -32339,7 +32339,7 @@
  },
  {
    "Rk": "841",
-   "Name": "Jason Vargas*",
+   "Name": "Jason Vargas",
    "Age": "33",
    "Tm": "KCR",
    "Lg": "AL",
@@ -33190,7 +33190,7 @@
  },
  {
    "Rk": "863",
-   "Name": "Tony Watson*",
+   "Name": "Tony Watson",
    "Age": "31",
    "Tm": "PIT",
    "Lg": "NL",
@@ -33856,7 +33856,7 @@
  },
  {
    "Rk": "880",
-   "Name": "Justin Wilson*",
+   "Name": "Justin Wilson",
    "Age": "28",
    "Tm": "DET",
    "Lg": "AL",
@@ -34115,7 +34115,7 @@
  },
  {
    "Rk": "887",
-   "Name": "Alex Wood*",
+   "Name": "Alex Wood",
    "Age": "25",
    "Tm": "LAD",
    "Lg": "NL",
@@ -34189,7 +34189,7 @@
  },
  {
    "Rk": "889",
-   "Name": "Travis Wood*",
+   "Name": "Travis Wood",
    "Age": "29",
    "Tm": "CHC",
    "Lg": "NL",
@@ -34670,7 +34670,7 @@
  },
  {
    "Rk": "901",
-   "Name": "Rob Zastryzny*",
+   "Name": "Rob Zastryzny",
    "Age": "24",
    "Tm": "CHC",
    "Lg": "NL",
