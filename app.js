@@ -5,13 +5,14 @@ var card = require('./card')
 var PDFDocument = require('pdfkit')
 
 const arg_name = process.argv[2]
+const pitcher_batting_flag = process.argv[3]
 
-var player_stats = player(arg_name)
-var player_card = card(player_stats)
+var player_stats = player(arg_name, pitcher_batting_flag)
+var player_card = card(player_stats, pitcher_batting_flag)
 
 var isPitcher = false
 
-if (player_stats.positions[0] == "P") {
+if (player_stats.positions[0] == "P" && pitcher_batting_flag !== "-b") {
   isPitcher = true
 }
 
@@ -37,13 +38,20 @@ doc.pipe(fs.createWriteStream(_.snakeCase(player_stats.name) + '.pdf'))
 //add clip art
 doc.image('baseball.jpg', 150, 9, {fit: [30, 225]})
 
+var box_num = []
+if (isPitcher == true) {
+  box_num = ['4','5','6']
+} else {
+  box_num = ['1','2','3']
+}
+
 //box 1
 doc.rect(9, 72, 66, 18)
 .fillOpacity(0.2)
 .fill('#cadcf9') 
 .fontSize(12)
 .fill('black')
-.text('1', 38, 76)
+.text(box_num[0], 38, 76)
 
 //box 2
 doc.rect(75, 72, 66, 18)
@@ -51,14 +59,14 @@ doc.rect(75, 72, 66, 18)
 .fill('#cadcf9')
 .fontSize(12)
 .fill('black')
-.text('2', 104, 76)
+.text(box_num[1], 104, 76)
 //box 3
 doc.rect(141, 72, 66, 18)
 .fillOpacity(0.2)
 .fill('#cadcf9')
 .fontSize(12)
 .fill('black')
-.text('3', 170, 76)
+.text(box_num[2], 170, 76)
 
 //lines
 doc.moveTo(9, 72)

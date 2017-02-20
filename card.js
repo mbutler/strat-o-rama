@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-function getCard(playerStatBlock) {
+function getCard(playerStatBlock, pitcher_flag) {
     var isPitcher = false
 
     var card = 
@@ -40,7 +40,7 @@ function getCard(playerStatBlock) {
         {name: '3-12', subchances: 20, total: 20, result: [], index: 32}   
     ]
 
-    if (playerStatBlock.positions[0] == "P") {
+    if (playerStatBlock.positions[0] == "P" && pitcher_flag !== "-b") {
         isPitcher = true
 
         var walks = playerStatBlock.som_walk

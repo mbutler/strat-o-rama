@@ -1,7 +1,7 @@
 var fs = require("fs")
 var _ = require('lodash')
 
-function getPlayer(playerName) {
+function getPlayer(playerName, pitcher_flag) {
 	//the league's average calculated each year.
 	//The ".011" added reflects the frequency that Groundball A++ will also become hits.
 	//2016 stats
@@ -18,7 +18,7 @@ function getPlayer(playerName) {
 	var current_player_name = {'Name': playerName}
 	var player_fielding_stats = _.find(fielding_stats, current_player_name)
 
-	if (player_fielding_stats['Pos Summary'] == "P") {
+	if (player_fielding_stats['Pos Summary'] == "P" && pitcher_flag !== "-b") {
 		isPitcher = true
 		//this set has data about how batters fared against the pitcher. doubles given up, etc
 		var pitching_data = fs.readFileSync("2016-batting-pitching.json")
