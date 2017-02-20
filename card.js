@@ -70,7 +70,8 @@ function getCard(playerStatBlock, pitcher_flag) {
         var gba = playerStatBlock.som_gba
         var gbb = playerStatBlock.som_gbb
         var flya = playerStatBlock.som_flya
-        var flyb = playerStatBlock.som_flyb    
+        var flyb = playerStatBlock.som_flyb
+        var lineout = 20    
         var pop1b = 100
         var pop2b = 100
         var pop3b = 100
@@ -167,9 +168,8 @@ function getCard(playerStatBlock, pitcher_flag) {
                         } else {
                             entry.result.push({'spread': spread, 'lower': lower_range, 'upper': upper_range, 'text': text + " " + lower_range + "-" + upper_range}) 
                         }
-                    }
-                    
-                }          
+                    }                    
+                }   
                 
                 total = 0      
             }
@@ -201,12 +201,13 @@ function getCard(playerStatBlock, pitcher_flag) {
         doubles = assignStat(doubles, "DOUBLE")
         singles = assignStat(singles, "SINGLE")
         walks = assignStat(walks, "WALK")
-        hbp = assignStat(hbp, "HIT BY PITCH")
+        //hbp = assignStat(hbp, "HIT BY PITCH")
         strikeouts = assignStat(strikeouts, "strikeout")
-        gba = assignStat(gba, "ground ball A")
-        gbb = assignStat(gbb, "ground ball B")
         flya = assignStat(flya, "flyball A")
         flyb = assignStat(flyb, "flyball B")
+        lineout = assignStat(lineout, "lineout into as many outs as possible")
+        gba = assignStat(gba, "ground ball A")
+        gbb = assignStat(gbb, "ground ball B")        
         pop1b = assignStat(pop1b, "popout(1b)")
         pop2b = assignStat(pop2b, "popout(2b)")
         pop3b = assignStat(pop3b, "popout(3b)")
