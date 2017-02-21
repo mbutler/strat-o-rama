@@ -1,93 +1,39 @@
-d20 rolls are worth the 2d6 roll minus 1
-e.g.    1 on a d20 in '7' is worth 6 subchances
-        1 on a d20 in '2' is worth 1 subchance
-        1 on a d20 in '4' is worth 3 subchances
-
-{
-    col1: {
-        '2': {subchances: 20, result: ""},
-        '3': {subchances: 40, result: ""},
-        '4': {subchances: 60, result: ""},
-        '5': {subchances: 80, result: ""},
-        '6': {subchances: 100, result: ""},
-        '7': {subchances: 120, result: ""},
-        '8': {subchances: 100, result: ""},
-        '9': {subchances: 80, result: ""},
-        '10': {subchances: 60, result: ""},
-        '11': {subchances: 40, result: ""},
-        '12': {subchances: 20, result: ""}
-    },
-    col2: {
-        '2': {subchances: 20, result: ""},
-        '3': {subchances: 40, result: ""},
-        '4': {subchances: 60, result: ""},
-        '5': {subchances: 80, result: ""},
-        '6': {subchances: 100, result: ""},
-        '7': {subchances: 120, result: ""},
-        '8': {subchances: 100, result: ""},
-        '9': {subchances: 80, result: ""},
-        '10': {subchances: 60, result: ""},
-        '11': {subchances: 40, result: ""},
-        '12': {subchances: 20, result: ""}
-    },
-    col3: {
-        '2': {subchances: 20, result: ""},
-        '3': {subchances: 40, result: ""},
-        '4': {subchances: 60, result: ""},
-        '5': {subchances: 80, result: ""},
-        '6': {subchances: 100, result: ""},
-        '7': {subchances: 120, result: ""},
-        '8': {subchances: 100, result: ""},
-        '9': {subchances: 80, result: ""},
-        '10': {subchances: 60, result: ""},
-        '11': {subchances: 40, result: ""},
-        '12': {subchances: 20, result: ""}
-    }
-}
-
-//add the label
-            if ( upper_range == 1 && entry.result[0] == undefined) {
-                entry.result.push( text + " 1" )
-            } else {
-                //check if there is a first range stored
-                if (entry.result[0] !== undefined && upper_range !==1) {
-                    //get first upper limit and add 1 to get lower limit of second range
-                    let roll_val = _.split( entry.result[0], '-')
-                    var lower_range = _.toInteger(_.last(roll_val)) + 1
-                    upper_range +=  _.toInteger(_.last(roll_val))
-                    entry.result.push( text + " " + lower_range + "-" + upper_range )
-                } else if (entry.result[0] !== undefined && upper_range == 1) {
-                    let roll_val = _.split( entry.result[0], '-')
-                    var lower_range = _.toInteger(_.last(roll_val)) + 1
-                    upper_range +=  _.toInteger(_.last(roll_val))
-                    entry.result.push( text + " " + lower_range )
-                } else {
-                    let roll_val = _.split( _.last(entry.result), '-')
-                    var lower_range = _.toInteger(roll_val) + 1
-                    upper_range +=  _.toInteger(_.last(roll_val))
-                    entry.result.push( text + " 1-" + upper_range )
-
-                }
-                
-            }
+A Strat card is split into three possible columns, each containing 11 results of a 2d6 dice roll. Each column, therefore, has a triangular distribution of numbers from 2-12. There are six chances to roll a '7' for every '2' or '12'. Each result of this 2d6 outcome can also be divided by a d20 roll to create 20 "subchances" for each 2d6 "chance". Therefore, a player's Strat card can be divided into 2,160 possible outcomes. Each at-bat has a 50% chance to come from either the batter card or the pitcher card -- so each plate appearance has a total of 4,320 outcomes to work with. That's quite a bit of granularity. See the table below.
 
 
-                         //add the label
-            if ( spread == 1 ) {
-                entry.result.push( text + " 1" )
-            } else {
-                entry.result.push( text + " 1-" + spread )
-            } 
+DICE ROLL   CHANCES     SUBCHANCES
+2           1 chance    20 subchances
+3           2 chances   40 subchances
+4           3 chances   60 subchances
+5           4 chances   80 subchances
+6           5 chances   100 subchances
+7           6 chances   120 subchances
+8           5 chances   100 subchances
+9           4 chances   80 subchances
+10          3 chances   60 subchances
+11          2 chances   40 subchances
+12          1 chance    20 subchances
+TOTAL       36 chances  720 subchances
+
+    x 3 columns = 2,160 subchances
+    x 6 columns = 4,320 subchances
 
 
+The goal is to accurately distribute the known statistical data for each player across these subchances. A player who hits more home runs whould get more HOMERUN results on their card. However, pitchers can give up more or less homeruns, so this must be accounted for on the pitcher's card as well and factored into the formula for calculating hits for the batter card. The the homerun formula for example.
 
+HR = the batter's actual amount of MLB homeruns for the season
+AB = batter's total at-bats for the season
+W = number of times they were walked
+IW = number of times they were intentionally walked
+HBP = number of times they were hit by a pitch
 
+(4320 * HR) / (AB + (W - IW) + HBP) - 50
 
+The dividend part of this formula (4320 * HR) proportions the total homeruns across all possible subchances. The divisor part of the forumula (AB + (W - IW) + HBP) is used in many of the calculations and is very close to actual plate appearances. The -50 from that total subtracts the average number of homeruns given up by pitchers and must be removed from the batter's card. Other types of hits and outcomes are calculated similarly. A full list of formula (not all are used in the basic version for this application) can be found in Appendix A.
 
+Some outcomes are split and use the d20, others never are. Walks are never split but more extra base hits are. For this application, everything is converted to subchances to maintain a common unit of measurement. The results that never need subchances will divide evenly across chances.
 
-
-
-
+These subchances need to be distributed in priority order. For a batter, this is roughly in order order of best extra base hits through various outs. For a pitcher, it's walks, singles, and strikeouts first and then other outs. Here's a list of distribution priorities for a batter card. This application doesn't follow this exactly.
 
 RESULT          SPLIT                               NOTES
 homerun         1st half only   
@@ -105,19 +51,118 @@ groundball B    never
 lineout         1st half                            only result on single/out split, solid lineout is filler
 popout/foulout  never                               filler
 
-DICE ROLL   CHANCES     SUBCHANCES
-2           1 chance    20 subchances
-3           2 chances   40 subchances
-4           3 chances   60 subchances
-5           4 chances   80 subchances
-6           5 chances   100 subchances
-7           6 chances   120 subchances
-8           5 chances   100 subchances
-9           4 chances   80 subchances
-10          3 chances   60 subchances
-11          2 chances   40 subchances
-12          1 chance    20 subchances
-TOTAL       36 chances  720 subchances
+About the files:
 
-    x 6 columns = 4,320 subchances
-    x 3 columns = 2,160 subchances
+player.js takes the MLB data as input from json files and transforms it into a list of subchances. It then constructs either a batter object or pitcher object that is used by card.js and app.js
+
+card.js takes the calculated player object from player.js and distributes it appropriately across the 33 outcomes on a card. It takes a blank card data model and modifies it with results. That data card object is used by app.js
+
+app.js takes the player object and data card object from player.js and card.js and constructs the view using pdfkit. This file is mostly for layout and design of the final card.
+
+Appendix A: Formulas
+
+All players get 11 chances of Flyball B. If they have 6 full chances (120 subchances) of home runs, then they get 1 Flayball A.
+
+Formula #0: League Average
+leagueBA = BA + 0.11
+
+FORMULA #1: BATTER'S WALK
+somW = (((W - IW) * 216) / (AB + ( W - IW) + HBP)) -9
+
+FORMULA #2: HIT BY PITCH
+somHBP = ((HBP * 216) / (AB + (W - IW) + HBP))
+
+FORMULA #3: BATTER'S HIT
+somH = (( BA - leagueBA ) + BA ) * ( 108 - ( somW + somHBP ))
+
+FORMULA #4: BATTER'S DOUBLE
+somD = ( 4320 * DOUBLE ) / ( AB + ( W - IW ) + HBP ) - 90
+
+FORMULA #5: BATTER'S TRIPLE
+somT = ( 4320 * TRIPLE ) / ( AB + ( W - IW ) + HBP ) - 15
+
+FORMULA #6: BATTER'S HOMERUN
+somHR = (( 4320 * HOMERUN ) / ( AB + ( W - IW ) + HBP ) - 50
+
+FORMULA #7: BATTER'S PATTERN CHART
+see previous articles
+
+FORMULA #8: BATTER'S STRIKEOUT
+somK = (( K * 216 ) / ( AB + ( W - IW ) + HBP )) -17
+
+FORMULA #9a: BATTER'S GBA
+somGBA = ( 1140 * DP ) / ( AB + ( W - IW ) + HBP )
+
+FORMULA #9b: BATTER'S GBB
+somGBB = 31 - someGBA
+(except when strikeouts override)
+
+FORMULA #10: BATTER'S 1ST SB LEAD #
+som1SB = (( SB / ( SB + CS )) + .13 ) * 20
+
+FORMULA #11: BATTER'S 2ND SB LEAD #
+som2SB = (1SB - ( 1SB / 3 )) +1
+
+FORMULA #12: BATTER'S LEAD CHANCES
+somSBlead = (36 * ( SB + CS )) / ((( H + ( W - IW ) + HBP ) * .85 ) - ( D + T + HR ))
+
+FORMULA #13: ASTERISKS
+som* = @IF ( 1SB + SBlead ) > 24
+
+FORMULA #14: FIELDING ERRORS
+somE = ( E * 1458 ) / INNINGS FIELDED ( at that pos )
+NOTE: LF, CF, & RF is all added together to make OUTFIELDER
+
+FORMULA #15: PITCHER'S TBF
+pTBF = ( IP * 2.95 ) + HITS + ( W - IW )
+
+FORMULA #16: PITCHER'S WALK
+somPW = (( W - IW ) * 216 ) / ( TBF - IW )) - 9 
+
+FORMULA #17a: PITCHER'S HIT
+somPH = ((( HIT / TBF ) * 216 ) - 29.4 ) + XF 
+(XF = Xchart FACTOR; DEFAULT = 4.9)
+
+FORMULA #17b: PITCHER'S HIT
+somPH = ((( HIT * ( 168 - somPW ) / (( TBF - IW ) * leagueBA)) + (((( 2 * oppBA ) - leagueBA ) * 30 ) - XF)
+
+FORMULA #18: PITCHER'S DOUBLE
+sompD = (( D * 216 ) / (TBF - IW )) - 90
+
+PRE 1990 FORMULA #18
+psomD = psomHR * 1.8
+
+FORMULA #19: PITCHER'S TRIPLE
+sompT = (( T * 216 ) / (TBF - IW )) - 15
+
+PRE 1990 FORMULA #19
+sompT = somPHR * .4
+
+FORMULA #20: PITCHER'S HOMERUN
+somPHR = (( HR * 216 ) / (TBF - IW)) - 50
+
+FORMULA #20: PITCHER'S PATTERN CHART
+see previous issue
+
+FORMULA #21: PITCHER'S STRIKEOUT
+sompK = (( K * 216 ) / ( TBF - IW ))
+
+FORMULA #22: PITCHER'S HOLD
+somPHOLD = (( SB / ( SB + CS )) - .6666 ) * 20
+
+FORMULA #23: PITCHER'S POINT OF WEAKNESS
+sompPOW = IP / APP
+
+FORMULA #24: PITCHER'S ERROR
+sompERROR = ( E * 1458 ) / IP
+
+FORMULA #25: PITCHER'S BALK
+sompBALK = ( BALK * 290 ) / IP
+FORMULA #26: PITCHER'S WILDPITCH
+somPWILDPITCH = ( WP * 200 ) / IP
+
+FORMULA #27: PITCHER'S CLOSER RATINGS
+sompCLOSE =0=N; 1-3=0; 4-6=1; 7-9=2; 10-14=3; 15-19=4; 20-29=5; >30=6
+
+FORMULA #28:W POWER HR ADJUSTMENT
+somHR = (((leagueHR/leaguePA)*20)*(108-somHBP-somW))+somHR(under 10)
