@@ -1,3 +1,5 @@
+The following information was compiled from Bruce Bundy's website. Thanks to Bruce for his years of trial and error to make this work. For more detailed information visit: http://www.cba-bb.net/Bundy.htm
+
 A Strat card is split into three possible columns, each containing 11 results of a 2d6 dice roll. Each column, therefore, has a triangular distribution of numbers from 2-12. There are six chances to roll a '7' for every '2' or '12'. Each result of this 2d6 outcome can also be divided by a d20 roll to create 20 "subchances" for each 2d6 "chance". Therefore, a player's Strat card can be divided into 2,160 possible outcomes. Each at-bat has a 50% chance to come from either the batter card or the pitcher card -- so each plate appearance has a total of 4,320 outcomes to work with. That's quite a bit of granularity. See the table below.
 
 
@@ -19,7 +21,7 @@ TOTAL       36 chances  720 subchances
     x 6 columns = 4,320 subchances
 
 
-The goal is to accurately distribute the known statistical data for each player across these subchances. A player who hits more home runs whould get more HOMERUN results on their card. However, pitchers can give up more or less homeruns, so this must be accounted for on the pitcher's card as well and factored into the formula for calculating hits for the batter card. The the homerun formula for example.
+The goal is to accurately distribute the known statistical data for each player across these subchances. A player who hits more home runs whould get more HOMERUN results on their card. However, pitchers can give up more or less homeruns, so this must be accounted for on the pitcher's card as well and factored into the formula for calculating hits for the batter card. The homerun formula for example:
 
 HR = the batter's actual amount of MLB homeruns for the season
 AB = batter's total at-bats for the season
@@ -31,7 +33,7 @@ HBP = number of times they were hit by a pitch
 
 The dividend part of this formula (4320 * HR) proportions the total homeruns across all possible subchances. The divisor part of the forumula (AB + (W - IW) + HBP) is used in many of the calculations and is very close to actual plate appearances. The -50 from that total subtracts the average number of homeruns given up by pitchers and must be removed from the batter's card. Other types of hits and outcomes are calculated similarly. A full list of formula (not all are used in the basic version for this application) can be found in Appendix A.
 
-Some outcomes are split and use the d20, others never are. Walks are never split but more extra base hits are. For this application, everything is converted to subchances to maintain a common unit of measurement. The results that never need subchances will divide evenly across chances.
+Some outcomes are split and use the d20, others never are. Walks are never split but extra base hits are. For this application, everything is converted to subchances to maintain a common unit of measurement. The results that never need subchances will divide evenly across chances.
 
 These subchances need to be distributed in priority order. For a batter, this is roughly in order order of best extra base hits through various outs. For a pitcher, it's walks, singles, and strikeouts first and then other outs. Here's a list of distribution priorities for a batter card. This application doesn't follow this exactly.
 
