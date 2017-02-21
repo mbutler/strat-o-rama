@@ -17,6 +17,10 @@ If a pitcher's name is supplied, a pitcher's card will be generated. If you'd pr
 
 `node app "Jake Arrieta" -b`
 
+You can also generate an entire team at once. Pass in the team's capitalized three-letter abbreviation as found on Baseball Reference and it will create a directory with each player in it. E.g.:
+
+`node app "CHC"`
+
 If you'd like to generate cards for a different year, modify the fs.readFileSync function calls towards the beginning of the player.js file to accept new files. You'll need to make four new json files -- standard pitching, standard batting, standard fielding, and batting-pitching. You can export this data on [Baseball Reference](http://www.baseball-reference.com/). You'll need to transform the .csv files into .json files. The [convertcsv site](http://www.convertcsv.com/csv-to-json.htm) works well for this. In the new json files, find and replace all the FIELD1, FIELD2, etc. headings with the correct value. See the included 2016 json files for an example. 
 
 No Warranty
