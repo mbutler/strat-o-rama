@@ -168,7 +168,7 @@ function createCard(data, player_stats, pitcher_batting_flag) {
 
     //position
     doc.fontSize(8)
-        .moveUp()
+        .moveDown(0.2)      
         .font('Helvetica')
         .text(player_stats.positions[0], { align: 'center' })
 
