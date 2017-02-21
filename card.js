@@ -1,6 +1,11 @@
 var _ = require('lodash');
 
 function getCard(playerStatBlock, pitcher_flag) {
+
+    if (playerStatBlock == undefined) {
+        return
+    }
+
     var isPitcher = false
 
     var card = [

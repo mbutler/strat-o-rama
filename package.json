@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
     "pdfkit": "^0.8.0"
   }
 }

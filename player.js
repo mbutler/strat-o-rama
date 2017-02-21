@@ -16,7 +16,12 @@ function getPlayer(playerName, pitcher_flag) {
     var fielding_stats = JSON.parse(fielding_data)
 
     var current_player_name = { 'Name': playerName }
+
     var player_fielding_stats = _.find(fielding_stats, current_player_name)
+
+    if (player_fielding_stats === undefined) {
+        return
+    }
 
     if (player_fielding_stats['Pos Summary'] == "P" && pitcher_flag !== "-b") {
         isPitcher = true
