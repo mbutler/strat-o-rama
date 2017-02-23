@@ -1,6 +1,6 @@
 The following information was compiled from Bruce Bundy's website. Thanks to Bruce for his years of trial and error to make this work. For more detailed information visit: http://www.cba-bb.net/Bundy.htm
 
-A Strat card is split into three possible columns, each containing 11 results of a 2d6 dice roll. Each column, therefore, has a triangular distribution of numbers from 2-12. There are six chances to roll a '7' for every '2' or '12'. Each result of this 2d6 outcome can also be divided by a d20 roll to create 20 "subchances" for each 2d6 "chance". Therefore, a player's Strat card can be divided into 2,160 possible outcomes. Each at-bat has a 50% chance to come from either the batter card or the pitcher card -- so each plate appearance has a total of 4,320 outcomes to work with. That's quite a bit of granularity. See the table below.
+A (basic) Strat card is split into three possible columns, each containing 11 results of a 2d6 dice roll. Each column, therefore, has a triangular distribution of numbers from 2-12. There are six chances to roll a '7' for every '2' or '12'. Each result of this 2d6 outcome can also be divided by a d20 roll to create 20 "subchances" for each 2d6 "chance". Therefore, a player's Strat card can be divided into 2,160 possible outcomes. Each at-bat has a 50% chance to come from either the batter card or the pitcher card -- so each plate appearance has a total of 4,320 outcomes to work with. That's quite a bit of granularity. See the table below.
 
 
 DICE ROLL   CHANCES     SUBCHANCES
