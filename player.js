@@ -1,23 +1,23 @@
-var fs = require("fs")
-var _ = require('lodash')
+const fs = require("fs")
+const _ = require('lodash')
 
 function getPlayer(playerName, pitcher_flag) {
     //the league's average calculated each year.
-    //The ".011" added reflects the frequency that Groundball A++ will also become hits.
+    //The ".011" added reflects the frequency that groundballs will also become hits.
     //2016 stats
-    var isPitcher = false
+    let isPitcher = false
 
     const NLBA = 0.254 + 0.011
     const ALBA = 0.257 + 0.011
     const MLBBA = 0.255 + 0.011 // just use this for now
     const testBA = 0.265 + 0.011 // for Cal Ripkin testing only
 
-    var fielding_data = fs.readFileSync("2016-standard-fielding.json")
-    var fielding_stats = JSON.parse(fielding_data)
+    let fielding_data = fs.readFileSync("2016-standard-fielding.json")
+    let fielding_stats = JSON.parse(fielding_data)
 
-    var current_player_name = { 'Name': playerName }
+    let current_player_name = { 'Name': playerName }
 
-    var player_fielding_stats = _.find(fielding_stats, current_player_name)
+    let player_fielding_stats = _.find(fielding_stats, current_player_name)
 
     if (player_fielding_stats === undefined) {
         return
@@ -47,25 +47,13 @@ function getPlayer(playerName, pitcher_flag) {
         var player_batting_stats = _.find(batting_stats, current_player_name)
     }
 
-    var player_batting = player_batting_stats
-    var player_fielding = player_fielding_stats
+    let player_batting = player_batting_stats
+    let player_fielding = player_fielding_stats
 
-    /*	console.log(
-    		somPW(player_pitching_record), 
-    		somPH(player_pitching_record), 
-    		somPK(player_pitching_record), 
-    		somPD(player_pitching), 
-    		somPT(player_pitching), 
-    		somPHR(player_pitching), 
-    		somPE(player_pitching),
-    		somPWP(player_pitching_record),
-    		somBalk(player_pitching_record)
-    	)*/
-
-    var player
+    let player = {}
 
     if (isPitcher == true) {
-        var pitcher = {
+        let pitcher = {
             'name': playerName,
             'positions': somPos(player_fielding),
             'W': player_pitching_record.W,
@@ -92,7 +80,7 @@ function getPlayer(playerName, pitcher_flag) {
         }
         player = pitcher
     } else {
-        var batter = {
+        let batter = {
             'name': playerName,
             'positions': somPos(player_fielding),
             'avg': player_batting.BA,
@@ -120,27 +108,27 @@ function getPlayer(playerName, pitcher_flag) {
 
     //som's own "plate appearance" number, testing only, not for use
     function somPA(player_batting) {
-        var AB = _.toFinite(player_batting.AB)
-        var W = _.toFinite(player_batting.BB)
-        var IW = _.toFinite(player_batting.IBB)
-        var HBP = _.toFinite(player_batting.HBP)
+        let AB = _.toFinite(player_batting.AB)
+        let W = _.toFinite(player_batting.BB)
+        let IW = _.toFinite(player_batting.IBB)
+        let HBP = _.toFinite(player_batting.HBP)
 
         return (AB + (W - IW) + HBP)
     }
 
     //batter's walk. returns chances
     function somW(player_batting) {
-        var W = _.toFinite(player_batting.BB)
-        var IW = _.toFinite(player_batting.IBB)
-        var AB = _.toFinite(player_batting.AB)
-        var HBP = _.toFinite(player_batting.HBP)
+        let W = _.toFinite(player_batting.BB)
+        let IW = _.toFinite(player_batting.IBB)
+        let AB = _.toFinite(player_batting.AB)
+        let HBP = _.toFinite(player_batting.HBP)
 
         //can't divide by zero
         if (W == 0) {
             return 0
         }
 
-        var walk = (((W - IW) * 216) / (AB + (W - IW) + HBP)) - 9
+        let walk = (((W - IW) * 216) / (AB + (W - IW) + HBP)) - 9
 
         //can't have negative chances on a card.
         if (walk < 0) {
@@ -152,17 +140,17 @@ function getPlayer(playerName, pitcher_flag) {
 
     //batter's hit by pitch. returns chances
     function somHBP(player_batting) {
-        var W = _.toFinite(player_batting.BB)
-        var IW = _.toFinite(player_batting.IBB)
-        var AB = _.toFinite(player_batting.AB)
-        var HBP = _.toFinite(player_batting.HBP)
+        let W = _.toFinite(player_batting.BB)
+        let IW = _.toFinite(player_batting.IBB)
+        let AB = _.toFinite(player_batting.AB)
+        let HBP = _.toFinite(player_batting.HBP)
 
         //can't divide by zero
         if (HBP == 0) {
             return 0
         }
 
-        var hit_by_pitch = ((HBP * 216) / (AB + (W - IW) + HBP))
+        let hit_by_pitch = ((HBP * 216) / (AB + (W - IW) + HBP))
 
         //can't have negative chances on a card.
         if (hit_by_pitch < 0) {
@@ -174,11 +162,11 @@ function getPlayer(playerName, pitcher_flag) {
 
     //batter's hit. returns chances
     function somH(player_batting) {
-        var W = somW(player_batting)
-        var HBP = somHBP(player_batting)
-        var BA = _.toFinite(player_batting.BA)
-        var LG = player_batting.Lg
-        var leagueBA = MLBBA
+        let W = somW(player_batting)
+        let HBP = somHBP(player_batting)
+        let BA = _.toFinite(player_batting.BA)
+        let LG = player_batting.Lg
+        let leagueBA = MLBBA
 
         //can't divide by zero
         if (BA == 0) {
@@ -192,7 +180,7 @@ function getPlayer(playerName, pitcher_flag) {
             leagueBA = ALBA
         }
 
-        var hit = ((BA - leagueBA) + BA) * (108 - (W + HBP))
+        let hit = ((BA - leagueBA) + BA) * (108 - (W + HBP))
 
         //can't have negative chances on a card.
         if (hit < 0) {
@@ -204,18 +192,18 @@ function getPlayer(playerName, pitcher_flag) {
 
     //batter's double. returns subchances
     function somD(player_batting) {
-        var second_bases = _.toFinite(player_batting['2B'])
-        var AB = _.toFinite(player_batting.AB)
-        var W = _.toFinite(player_batting.BB)
-        var IW = _.toFinite(player_batting.IBB)
-        var HBP = _.toFinite(player_batting.HBP)
+        let second_bases = _.toFinite(player_batting['2B'])
+        let AB = _.toFinite(player_batting.AB)
+        let W = _.toFinite(player_batting.BB)
+        let IW = _.toFinite(player_batting.IBB)
+        let HBP = _.toFinite(player_batting.HBP)
 
         //can't divide by zero
         if (second_bases == 0) {
             return 0
         }
 
-        var doubles = (4320 * second_bases) / (AB + (W - IW) + HBP) - 90
+        let doubles = (4320 * second_bases) / (AB + (W - IW) + HBP) - 90
 
         //can't have negative chances on a card. 
         if (doubles < 0) {
@@ -227,18 +215,18 @@ function getPlayer(playerName, pitcher_flag) {
 
     //batter's triple. returns subchances
     function somT(player_batting) {
-        var third_bases = _.toFinite(player_batting['3B'])
-        var AB = _.toFinite(player_batting.AB)
-        var W = _.toFinite(player_batting.BB)
-        var IW = _.toFinite(player_batting.IBB)
-        var HBP = _.toFinite(player_batting.HBP)
+        let third_bases = _.toFinite(player_batting['3B'])
+        let AB = _.toFinite(player_batting.AB)
+        let W = _.toFinite(player_batting.BB)
+        let IW = _.toFinite(player_batting.IBB)
+        let HBP = _.toFinite(player_batting.HBP)
 
         //can't divide by zero
         if (third_bases == 0) {
             return 0
         }
 
-        var triples = (4320 * third_bases) / (AB + (W - IW) + HBP) - 15
+        let triples = (4320 * third_bases) / (AB + (W - IW) + HBP) - 15
 
         //can't have negative chances on a card. 
         if (triples < 0) {
@@ -250,18 +238,18 @@ function getPlayer(playerName, pitcher_flag) {
 
     //batter's home run. returns subchances
     function somHR(player_batting) {
-        var HR = _.toFinite(player_batting.HR)
-        var AB = _.toFinite(player_batting.AB)
-        var W = _.toFinite(player_batting.BB)
-        var IW = _.toFinite(player_batting.IBB)
-        var HBP = _.toFinite(player_batting.HBP)
+        let HR = _.toFinite(player_batting.HR)
+        let AB = _.toFinite(player_batting.AB)
+        let W = _.toFinite(player_batting.BB)
+        let IW = _.toFinite(player_batting.IBB)
+        let HBP = _.toFinite(player_batting.HBP)
 
         //can't divide by zero
         if (HR == 0) {
             return 0
         }
 
-        var home_runs = (4320 * HR) / (AB + (W - IW) + HBP) - 50
+        let home_runs = (4320 * HR) / (AB + (W - IW) + HBP) - 50
 
         //can't have negative chances on a card. 
         if (home_runs < 0) {
@@ -273,18 +261,18 @@ function getPlayer(playerName, pitcher_flag) {
 
     //batter's strike out. returns chances
     function somK(player_batting) {
-        var K = _.toFinite(player_batting.SO)
-        var AB = _.toFinite(player_batting.AB)
-        var W = _.toFinite(player_batting.BB)
-        var IW = _.toFinite(player_batting.IBB)
-        var HBP = _.toFinite(player_batting.HBP)
+        let K = _.toFinite(player_batting.SO)
+        let AB = _.toFinite(player_batting.AB)
+        let W = _.toFinite(player_batting.BB)
+        let IW = _.toFinite(player_batting.IBB)
+        let HBP = _.toFinite(player_batting.HBP)
 
         //can't divide by zero
         if (K == 0) {
             return 0
         }
 
-        var strike_out = ((K * 216) / (AB + (W - IW) + HBP)) - 17
+        let strike_out = ((K * 216) / (AB + (W - IW) + HBP)) - 17
 
         //can't have negative chances on a card. 
         if (strike_out < 0) {
@@ -296,27 +284,27 @@ function getPlayer(playerName, pitcher_flag) {
 
     //batter's ground ball A. returns chances
     function somGBA(player_batting) {
-        var DP = _.toFinite(player_batting.GDP)
-        var AB = _.toFinite(player_batting.AB)
-        var W = _.toFinite(player_batting.BB)
-        var IW = _.toFinite(player_batting.IBB)
-        var HBP = _.toFinite(player_batting.HBP)
+        let DP = _.toFinite(player_batting.GDP)
+        let AB = _.toFinite(player_batting.AB)
+        let W = _.toFinite(player_batting.BB)
+        let IW = _.toFinite(player_batting.IBB)
+        let HBP = _.toFinite(player_batting.HBP)
 
         //can't divide by zero
         if (DP == 0) {
             return 0
         }
 
-        var ground_ball_A = (1140 * DP) / (AB + (W - IW) + HBP)
+        let ground_ball_A = (1140 * DP) / (AB + (W - IW) + HBP)
 
         return _.round(ground_ball_A)
     }
 
     //batter's ground ball B. returns chances.
     function somGBB(player_batting) {
-        var GBA = somGBA(player_batting)
+        let GBA = somGBA(player_batting)
 
-        var ground_ball_B = 31 - GBA
+        let ground_ball_B = 31 - GBA
 
         if (ground_ball_B < 0) {
             ground_ball_B = 0
@@ -334,7 +322,7 @@ function getPlayer(playerName, pitcher_flag) {
 
     //runner's steal rating based on simplified chart
     function somSteal(player_batting) {
-        var SB = _.toFinite(player_batting.SB)
+        let SB = _.toFinite(player_batting.SB)
 
         if (_.inRange(SB, 0, 3)) {
             return "E"
@@ -366,7 +354,7 @@ function getPlayer(playerName, pitcher_flag) {
     }
 
     function somRun(player_batting) {
-        var SB = _.toFinite(player_batting.SB)
+        let SB = _.toFinite(player_batting.SB)
 
         if (_.inRange(SB, 0, 3)) {
             return "1-9"
@@ -399,9 +387,9 @@ function getPlayer(playerName, pitcher_flag) {
 
     //runner's second stolen base. returns upper value of a d20 roll
     function som2SB(player_batting) {
-        var SB1 = som1SB(player_batting)
+        let SB1 = som1SB(player_batting)
 
-        var second_stolen_base = (SB1 - (SB1 / 3)) + 1
+        let second_stolen_base = (SB1 - (SB1 / 3)) + 1
 
         second_stolen_base = _.round(second_stolen_base)
 
@@ -410,25 +398,25 @@ function getPlayer(playerName, pitcher_flag) {
 
     //runner's stolen base lead
     function somSBLead(player_batting) {
-        var SB = _.toFinite(player_batting.SB)
-        var CS = _.toFinite(player_batting.CS)
-        var H = _.toFinite(player_batting.H)
-        var W = _.toFinite(player_batting.BB)
-        var IW = _.toFinite(player_batting.IBB)
-        var HBP = _.toFinite(player_batting.HBP)
-        var second_bases = _.toFinite(player_batting['2B'])
-        var third_bases = _.toFinite(player_batting['3B'])
-        var HR = _.toFinite(player_batting.HR)
+        let SB = _.toFinite(player_batting.SB)
+        let CS = _.toFinite(player_batting.CS)
+        let H = _.toFinite(player_batting.H)
+        let W = _.toFinite(player_batting.BB)
+        let IW = _.toFinite(player_batting.IBB)
+        let HBP = _.toFinite(player_batting.HBP)
+        let second_bases = _.toFinite(player_batting['2B'])
+        let third_bases = _.toFinite(player_batting['3B'])
+        let HR = _.toFinite(player_batting.HR)
 
-        var lead_chances = (36 * (SB + CS)) / (((H + (W - IW) + HBP) * .85) - (second_bases + third_bases + HR))
+        let lead_chances = (36 * (SB + CS)) / (((H + (W - IW) + HBP) * .85) - (second_bases + third_bases + HR))
 
         return lead_chances
     }
 
     //runner's asterisk. returns boolean
     function somAst(player_batting) {
-        var SB1 = som1SB(player_batting)
-        var SBLead = somSBLead(player_batting)
+        let SB1 = som1SB(player_batting)
+        let SBLead = somSBLead(player_batting)
 
         if ((SB1 + SBLead) > 24) {
             //console.log(SB1 + SBLead)
@@ -444,7 +432,7 @@ function getPlayer(playerName, pitcher_flag) {
     }
 
     function somFlyA(player_batting) {
-        var HR = somHR(player_batting)
+        let HR = somHR(player_batting)
 
         if (HR >= 120) {
             return 1
@@ -454,16 +442,16 @@ function getPlayer(playerName, pitcher_flag) {
     }
 
     function somE(player_fielding) {
-        var innings = _.toFinite(player_fielding.Inn)
-        var errors = _.toFinite(player_fielding['E'])
+        let innings = _.toFinite(player_fielding.Inn)
+        let errors = _.toFinite(player_fielding['E'])
 
-        var err = (errors * 1458) / innings
+        let err = (errors * 1458) / innings
 
         return _.round(err)
     }
 
     function somRange(player_fielding) {
-        var rdrs = _.toFinite(player_fielding.Rdrs)
+        let rdrs = _.toFinite(player_fielding.Rdrs)
 
         if (_.inRange(rdrs, 12, Infinity)) {
             return 1
@@ -488,9 +476,9 @@ function getPlayer(playerName, pitcher_flag) {
 
     //player's positions. Returns an array of positions ranked by frequency
     function somPos(player_fielding) {
-        var pos = player_fielding['Pos Summary']
+        let pos = player_fielding['Pos Summary']
 
-        var positions = _.split(pos, "-")
+        let positions = _.split(pos, "-")
 
         return positions
     }
@@ -498,11 +486,11 @@ function getPlayer(playerName, pitcher_flag) {
     //pitcher's walks given up. player_pitching_record. returns chances
     function somPW(player_pitching) {
         //(( W - IW ) * 216 ) / ( TBF - IW )) - 9
-        var W = _.toFinite(player_pitching.BB)
-        var IW = _.toFinite(player_pitching.IBB)
-        var TBF = _.toFinite(player_pitching.BF)
+        let W = _.toFinite(player_pitching.BB)
+        let IW = _.toFinite(player_pitching.IBB)
+        let TBF = _.toFinite(player_pitching.BF)
 
-        var walks = (((W - IW) * 216) / (TBF - IW)) - 9
+        let walks = (((W - IW) * 216) / (TBF - IW)) - 9
 
         //can't have negative chances on a card.
         if (walks < 0) {
@@ -515,10 +503,10 @@ function getPlayer(playerName, pitcher_flag) {
     //pitcher's hits given up. use player_pitching_record. returns chances
     function somPH(player_pitching) {
         //((( HIT / TBF ) * 216 ) - 29.4 ) + XF
-        var HIT = _.toFinite(player_pitching.H)
-        var TBF = _.toFinite(player_pitching.BF)
+        let HIT = _.toFinite(player_pitching.H)
+        let TBF = _.toFinite(player_pitching.BF)
 
-        var hits = (((HIT / TBF) * 216) - 29.4) + 4.9
+        let hits = (((HIT / TBF) * 216) - 29.4) + 4.9
 
         //can't have negative chances on a card.
         if (hits < 0) {
@@ -531,11 +519,11 @@ function getPlayer(playerName, pitcher_flag) {
     //pitcher's doubles given up. use player_pitching. returns chances
     function somPD(player_pitching) {
         //	(( D * 216 ) / (TBF - IW )) - 90
-        var TBF = _.toFinite(player_pitching.PA)
-        var IW = _.toFinite(player_pitching.IBB)
-        var D = _.toFinite(player_pitching['2B'])
+        let TBF = _.toFinite(player_pitching.PA)
+        let IW = _.toFinite(player_pitching.IBB)
+        let D = _.toFinite(player_pitching['2B'])
 
-        var doubles = ((D * 216) / (TBF - IW)) - 90
+        let doubles = ((D * 216) / (TBF - IW)) - 90
 
         //can't have negative chances on a card.
         if (doubles < 0) {
@@ -548,11 +536,11 @@ function getPlayer(playerName, pitcher_flag) {
     //pitcher's triples given up. use player_pitching. returns chances
     function somPT(player_pitching) {
         // (( T * 216 ) / (TBF - IW )) - 15
-        var TBF = _.toFinite(player_pitching.PA)
-        var IW = _.toFinite(player_pitching.IBB)
-        var T = _.toFinite(player_pitching['3B'])
+        let TBF = _.toFinite(player_pitching.PA)
+        let IW = _.toFinite(player_pitching.IBB)
+        let T = _.toFinite(player_pitching['3B'])
 
-        var triples = ((T * 216) / (TBF - IW)) - 15
+        let triples = ((T * 216) / (TBF - IW)) - 15
 
         //can't have negative chances on a card.
         if (triples < 0) {
@@ -565,11 +553,11 @@ function getPlayer(playerName, pitcher_flag) {
     //pitcher's homeruns given up. use player_pitching. returns chances
     function somPHR(player_pitching) {
         // (( HR * 216 ) / (TBF - IW)) - 50
-        var TBF = _.toFinite(player_pitching.PA)
-        var IW = _.toFinite(player_pitching.IBB)
-        var HR = _.toFinite(player_pitching.HR)
+        let TBF = _.toFinite(player_pitching.PA)
+        let IW = _.toFinite(player_pitching.IBB)
+        let HR = _.toFinite(player_pitching.HR)
 
-        var homeruns = ((HR * 216) / (TBF - IW)) - 50
+        let homeruns = ((HR * 216) / (TBF - IW)) - 50
 
         //can't have negative chances on a card.
         if (homeruns < 0) {
@@ -582,11 +570,11 @@ function getPlayer(playerName, pitcher_flag) {
     //pitcher's strikeouts given up. use player_pitching_record. returns chances
     function somPK(player_pitching) {
         // (( K * 216 ) / ( TBF - IW ))
-        var TBF = _.toFinite(player_pitching.BF)
-        var IW = _.toFinite(player_pitching.IBB)
-        var K = _.toFinite(player_pitching.SO)
+        let TBF = _.toFinite(player_pitching.BF)
+        let IW = _.toFinite(player_pitching.IBB)
+        let K = _.toFinite(player_pitching.SO)
 
-        var strikeouts = ((K * 216) / (TBF - IW)) - 16
+        let strikeouts = ((K * 216) / (TBF - IW)) - 16
 
         //can't have negative chances on a card.
         if (strikeouts < 0) {
@@ -598,11 +586,11 @@ function getPlayer(playerName, pitcher_flag) {
 
     //pitcher's errors. use player_pitching. returns subchances
     function somPE(player_pitching) {
-        var E = _.toFinite(player_pitching.ROE)
-        var IP = _.toFinite(player_pitching.IP)
+        let E = _.toFinite(player_pitching.ROE)
+        let IP = _.toFinite(player_pitching.IP)
             //( E * 1458 ) / IP
 
-        var errors = (E * 1458) / IP
+        let errors = (E * 1458) / IP
 
         //can't have negative chances on a card.
         if (errors < 0) {
@@ -618,10 +606,10 @@ function getPlayer(playerName, pitcher_flag) {
     //pitcher's wild pitch. use player_pitching_record. Returns chances
     function somPWP(player_pitching) {
         //( WP * 200 ) / IP
-        var IP = _.toFinite(player_pitching.IP)
-        var WP = _.toFinite(player_pitching.WP)
+        let IP = _.toFinite(player_pitching.IP)
+        let WP = _.toFinite(player_pitching.WP)
 
-        var wildpitch = (WP * 200) / IP
+        let wildpitch = (WP * 200) / IP
 
         //can't have negative chances on card
         if (wildpitch < 0) {
@@ -634,10 +622,10 @@ function getPlayer(playerName, pitcher_flag) {
     //balk. use player_pitching_record. returns chances
     function somBalk(player_pitching) {
         //( BALK * 290 ) / IP
-        var BK = _.toFinite(player_pitching.BK)
-        var IP = _.toFinite(player_pitching.IP)
+        let BK = _.toFinite(player_pitching.BK)
+        let IP = _.toFinite(player_pitching.IP)
 
-        var balk = (BK * 290) / IP
+        let balk = (BK * 290) / IP
 
         //can't have negative chances on card
         if (balk < 0) {
@@ -649,7 +637,7 @@ function getPlayer(playerName, pitcher_flag) {
 
     //pitcher's role. use player_pitching_record. returns starter or relief
     function pitcherRole(player_pitching) {
-        var saves = player_pitching
+        let saves = player_pitching
 
         if (saves > 0) {
             return "relief"

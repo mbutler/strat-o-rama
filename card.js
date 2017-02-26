@@ -1,14 +1,15 @@
-var _ = require('lodash');
+const _ = require('lodash');
 
 function getCard(playerStatBlock, pitcher_flag) {
 
     if (playerStatBlock == undefined) {
+        console.log("No player stats found.")
         return
     }
 
     var isPitcher = false
 
-    var card = [
+    let card = [
         { name: '1-2', subchances: 20, total: 20, result: [], index: 0 },
         { name: '1-3', subchances: 40, total: 40, result: [], index: 1 },
         { name: '1-4', subchances: 60, total: 60, result: [], index: 2 },

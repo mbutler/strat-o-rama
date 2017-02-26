@@ -1,66 +1,37 @@
-var fs = require('fs')
-var mkdirp = require('mkdirp');
-var _ = require('lodash')
-var player = require('./player')
-var card = require('./card')
-var team = require('./team')
-var PDFDocument = require('pdfkit')
+const fs = require('fs')
+const mkdirp = require('mkdirp');
+const _ = require('lodash')
+const player = require('./player')
+const card = require('./card')
+const team = require('./team')
 
-var teams = {
-    ARI: "Arizona Diamondbacks",
-    ATL: "Atlanta Braves",
-    BAL: "Baltimore Orioles",
-    BOS: "Boston Red Sox",
-    CHC: "Chicago Cubs",
-    CHW: "Chicago White Sox",
-    CIN: "Cincinnati Reds",
-    CLE: "Cleveland Indians",
-    COL: "Colorado Rockies",
-    DET: "Detroit Tigers",
-    HOU: "Houston Astros",
-    KCR: "Kansas City Royals",
-    LAA: "Los Angeles Angels of Anaheim",
-    LAD: "Los Angeles Dodgers",
-    MIA: "Miami Marlins",
-    MIL: "Milwaukee Brewers",
-    MIN: "Minnesota Twins",
-    NYM: "New York Mets",
-    NYY: "New York Yankees",
-    OAK: "Oakland Athletics",
-    PHI: "Philadelphia Phillies",
-    PIT: "Pittsburgh Pirates",
-    SDP: "San Diego Padres",
-    SEA: "Seattle Mariners",
-    SFG: "San Francisco Giants",
-    STL: "St. Louis Cardinals",
-    TBR: "Tampa Bay Rays",
-    TEX: "Texas Rangers",
-    TOR: "Toronto Blue Jays",
-    WSN: "Washington Nationals"
-}
+const PDFDocument = require('pdfkit')
+
+//get a list of teams and their 3-letter abbreviation
+const teams = team.teamList
 
 const arg_name = process.argv[2]
 const pitcher_batting_flag = process.argv[3]
-var player_list = []
+const player_list = []
 
-var team_abr = _.keys(teams)
+const team_abr = _.keys(teams)
 
-//if a three letter name is passed in, it's a team
+//if the arg is in the list of 3-letter abbreviations, it's a team
 if (_.includes(team_abr, arg_name)) {
-    var current_team = team(arg_name)
+    const team_roster = team.playerList(arg_name)
 
     //create directory of team name
-    var dir = _.snakeCase(teams[arg_name])
+    let dir = _.snakeCase(teams[arg_name])
     mkdirp.sync(dir);
 
     //loop through the team list and create a card for each player
-    _.forEach(current_team, function(value) {
-        var player_stats = player(value, pitcher_batting_flag)
-        var player_card = card(player_stats, pitcher_batting_flag)
+    _.forEach(team_roster, function(value) {
+        const player_stats = player(value, pitcher_batting_flag)
+        const player_card = card(player_stats, pitcher_batting_flag)
         createCard(player_card, player_stats, pitcher_batting_flag)
     })
 } else if (arg_name.length > 3) {
-    var player_stats = undefined
+    let player_stats = undefined
 
     player_stats = player(arg_name, pitcher_batting_flag)
 
@@ -69,7 +40,7 @@ if (_.includes(team_abr, arg_name)) {
         return
     }
 
-    var player_card = card(player_stats, pitcher_batting_flag)
+    const player_card = card(player_stats, pitcher_batting_flag)
 
     var dir = 'players'
     mkdirp.sync(dir);
@@ -80,22 +51,22 @@ if (_.includes(team_abr, arg_name)) {
 }
 
 function createCard(data, player_stats, pitcher_batting_flag) {
-    var isPitcher = false
+    const isPitcher = false
 
     if (player_stats.positions[0] == "P" && pitcher_batting_flag !== "-b") {
         isPitcher = true
     }
     //loop through player card and make a list of all results
-    var text_list = []
+    let text_list = []
     _.forEach(data, function(value) {
-        var play = ''
+        let play = ''
         _.forEach(value['result'], function(result) {
             play += result.text + ' '
         })
         text_list.push(play)
     });
 
-    var doc = new PDFDocument({
+    const doc = new PDFDocument({
         layout: 'portrait',
         size: [216, 360],
         margin: 9
@@ -107,7 +78,7 @@ function createCard(data, player_stats, pitcher_batting_flag) {
     //add clip art
     doc.image('baseball.jpg', 150, 9, { fit: [30, 225] })
 
-    var box_num = []
+    let box_num = []
     if (isPitcher == true) {
         box_num = ['4', '5', '6']
     } else {
@@ -168,7 +139,7 @@ function createCard(data, player_stats, pitcher_batting_flag) {
 
     //position
     doc.fontSize(8)
-        .moveDown(0.2)      
+        .moveDown(0.2)
         .font('Helvetica')
         .text(player_stats.positions[0], { align: 'center' })
 
