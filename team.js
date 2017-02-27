@@ -51,6 +51,6 @@ const teams = {
 }
 
 module.exports = {
-    playerList: playerList(),
+    playerList: playerList,
     teamList: teams
 }

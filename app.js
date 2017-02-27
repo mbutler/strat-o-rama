@@ -3,25 +3,25 @@ const mkdirp = require('mkdirp');
 const _ = require('lodash')
 const player = require('./player')
 const card = require('./card')
-const team = require('./team')
+let team = require('./team')
 
 const PDFDocument = require('pdfkit')
 
 //get a list of teams and their 3-letter abbreviation
-const teams = team.teamList
+let teams = team.teamList
 
 const arg_name = process.argv[2]
 const pitcher_batting_flag = process.argv[3]
-const player_list = []
+var player_list = []
 
 const team_abr = _.keys(teams)
 
 //if the arg is in the list of 3-letter abbreviations, it's a team
 if (_.includes(team_abr, arg_name)) {
-    const team_roster = team.playerList(arg_name)
+    var team_roster = team.playerList(arg_name)
 
     //create directory of team name
-    let dir = _.snakeCase(teams[arg_name])
+    var dir = _.snakeCase(teams[arg_name])
     mkdirp.sync(dir);
 
     //loop through the team list and create a card for each player
@@ -51,7 +51,7 @@ if (_.includes(team_abr, arg_name)) {
 }
 
 function createCard(data, player_stats, pitcher_batting_flag) {
-    const isPitcher = false
+    var isPitcher = false
 
     if (player_stats.positions[0] == "P" && pitcher_batting_flag !== "-b") {
         isPitcher = true
