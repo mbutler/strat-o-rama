@@ -21,7 +21,7 @@ TOTAL       36 chances  720 subchances
     x 6 columns = 4,320 subchances
 
 
-The goal is to accurately distribute the known statistical data for each player across these subchances. A player who hits more home runs whould get more HOMERUN results on their card. However, pitchers can give up more or less homeruns, so this must be accounted for on the pitcher's card as well and factored into the formula for calculating hits for the batter card. The homerun formula for example:
+The goal is to accurately distribute the known statistical data for each player across these subchances. A player who hits more home runs would get more HOMERUN results on their card. However, pitchers can give up more or less homeruns, so this must be accounted for on the pitcher's card as well and factored into the formula for calculating hits for the batter card. The homerun formula for example:
 
 HR = the batter's actual amount of MLB homeruns for the season
 AB = batter's total at-bats for the season
@@ -35,7 +35,7 @@ The dividend part of this formula (4320 * HR) proportions the total homeruns acr
 
 Some outcomes are split and use the d20, others never are. Walks are never split but extra base hits are. For this application, everything is converted to subchances to maintain a common unit of measurement. The results that never need subchances will divide evenly across chances.
 
-These subchances need to be distributed in priority order. For a batter, this is roughly in order order of best extra base hits through various outs. For a pitcher, it's walks, singles, and strikeouts first and then other outs. Here's a list of distribution priorities for a batter card. This application doesn't follow this exactly.
+These subchances need to be distributed in priority order. For a batter, this is roughly in order of best extra base hits through various outs. For a pitcher, it's walks, singles, and strikeouts first and then other outs. Here's a list of distribution priorities for a batter card. This application doesn't follow this exactly.
 
 RESULT          SPLIT                               NOTES
 homerun         1st half only   
@@ -63,7 +63,7 @@ app.js takes the player object and data card object from player.js and card.js a
 
 Appendix A: Formulas
 
-All players get 11 chances of Flyball B. If they have 6 full chances (120 subchances) of home runs, then they get 1 Flayball A.
+All players get 11 chances of Flyball B. If they have 6 full chances (120 subchances) of home runs, then they get 1 Flyball A.
 
 Formula #0: League Average
 leagueBA = BA + 0.11
