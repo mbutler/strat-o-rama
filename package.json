@@ -9,8 +9,12 @@
   "author": "Matthew Butler",
   "license": "MIT",
   "dependencies": {
+    "convert-csv-to-json": "0.0.14",
+    "csvtojson": "^2.0.8",
+    "i": "^0.3.6",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
+    "npm": "^6.9.0",
     "pdfkit": "^0.8.0"
   }
 }
