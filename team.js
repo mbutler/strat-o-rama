@@ -7,12 +7,8 @@ const paths = require('./config')
 let fielding_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardFieldingPath)
 
 let fielding_stats = []
-_.forEach(fielding_data, player => {
-    let split = _.split(player.Name, '\\')
-    player.Name = split[0]
-    fielding_stats.push(player)
-})
-fielding_stats = _.dropRight(fielding_stats)
+fielding_stats = clean(fielding_data)
+
 function playerList(team) {
     var player_list = []
 
@@ -56,6 +52,26 @@ const teams = {
     TEX: "Texas Rangers",
     TOR: "Toronto Blue Jays",
     WSN: "Washington Nationals"
+}
+
+function clean(playerList) {
+    let newList = []
+    playerList = _.dropRight(playerList)
+    _.forEach(playerList, player => {
+        let split = _.split(player.Name, '\\')
+        player.Name = split[0]
+        let name = split[0]
+        player.Name = name.replace(/[^a-zA-Z ]/g, "")
+        _.forEach(player, stat => {
+            //console.log(stat)
+            if (stat === undefined || stat === '') {
+                
+            }
+        })
+        newList.push(player)
+    })
+
+    return newList
 }
 
 module.exports = {

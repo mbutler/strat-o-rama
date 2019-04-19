@@ -16,12 +16,7 @@ function getPlayer(playerName, pitcher_flag) {
 
     let fielding_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardFieldingPath)
     let fielding_stats = []
-    _.forEach(fielding_data, player => {
-        let split = _.split(player.Name, '\\')
-        player.Name = split[0]
-        fielding_stats.push(player)
-    })
-    //fielding_stats = _.dropRight(fielding_stats)
+    fielding_stats = clean(fielding_data)
     let current_player_name = { 'Name': playerName }
 
     let player_fielding_stats = _.find(fielding_stats, current_player_name)
@@ -35,24 +30,14 @@ function getPlayer(playerName, pitcher_flag) {
         //this set has data about how batters fared against the pitcher. doubles given up, etc
         var pitching_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.battingPitchingPath)
         let pitching_stats = []
-        _.forEach(pitching_data, player => {
-            let split = _.split(player.Name, '\\')
-            player.Name = split[0]
-            pitching_stats.push(player)
-        })
-        //pitching_stats = _.dropRight(pitching_stats)
+        pitching_stats = clean(pitching_data)
         var player_pitching_stats = _.find(pitching_stats, current_player_name)
         var player_pitching = player_pitching_stats
 
         //this set has data about ERA, errors, etc
         var pitching_record_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardPitchingPath)
         let pitching_record_stats = []
-        _.forEach(pitching_record_data, player => {
-            let split = _.split(player.Name, '\\')
-            player.Name = split[0]
-            pitching_record_stats.push(player)
-        })
-        //pitching_record_stats = _.dropRight(pitching_record_stats)
+        pitching_record_stats = clean(pitching_record_data)
         var player_pitching_record_stats = _.find(pitching_record_stats, current_player_name)
         var player_pitching_record = player_pitching_record_stats
 
@@ -60,28 +45,17 @@ function getPlayer(playerName, pitcher_flag) {
         //might want batting stats too
         var batting_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardBattingPath)
         let batting_stats = []
-        _.forEach(batting_data, player => {
-            let split = _.split(player.Name, '\\')
-            player.Name = split[0]
-            batting_stats.push(player)
-        })
-        //batting_stats = _.dropRight(batting_stats)
+        batting_stats = clean(batting_data)
         var player_batting_stats = _.find(batting_stats, current_player_name)
     } else {
         var batting_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardBattingPath)
         let batting_stats = []
-        _.forEach(batting_data, player => {
-            let split = _.split(player.Name, '\\')
-            player.Name = split[0]
-            batting_stats.push(player)
-        })
-        //batting_stats = _.dropRight(batting_stats)
+       batting_stats = clean(batting_data)
         var player_batting_stats = _.find(batting_stats, current_player_name)
+
     }
 
     let player_batting = player_batting_stats
-    let player_bats = []
-    player_batting = player_bats
     let player_fielding = player_fielding_stats
 
     let player = {}
@@ -117,7 +91,7 @@ function getPlayer(playerName, pitcher_flag) {
         let batter = {
             'name': playerName,
             'positions': somPos(player_fielding),
-            'avg': player_batting.BA,
+            'avg': _.toFinite(player_batting.BA),
             'ab': _.toFinite(player_batting.AB),
             'doubles': _.toFinite(player_batting['2B']),
             'triples': _.toFinite(player_batting['3B']),
@@ -453,10 +427,8 @@ function getPlayer(playerName, pitcher_flag) {
         let SBLead = somSBLead(player_batting)
 
         if ((SB1 + SBLead) > 24) {
-            //console.log(SB1 + SBLead)
             return true
         } else {
-            //console.log(SB1 + SBLead)
             return false
         }
     }
@@ -681,6 +653,26 @@ function getPlayer(playerName, pitcher_flag) {
     }
 
     return player
+}
+
+function clean(playerList) {
+    let newList = []
+    playerList = _.dropRight(playerList)
+    _.forEach(playerList, player => {
+        let split = _.split(player.Name, '\\')
+        player.Name = split[0]
+        let name = split[0]
+        player.Name = name.replace(/[^a-zA-Z ]/g, "")
+        _.forEach(player, stat => {
+            //console.log(stat)
+            if (stat === undefined || stat === '') {
+                
+            }
+        })
+        newList.push(player)
+    })
+
+    return newList
 }
 
 module.exports = getPlayer
