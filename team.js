@@ -1,10 +1,18 @@
-var fs = require('fs')
-var _ = require('lodash')
-var player = require('./player')
+const fs = require('fs')
+const _ = require('lodash')
+const player = require('./player')
+const csvToJson = require('convert-csv-to-json')
+const paths = require('./config')
 
-let fielding_data = fs.readFileSync("2016-standard-fielding.json")
-let fielding_stats = JSON.parse(fielding_data)
+let fielding_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardFieldingPath)
 
+let fielding_stats = []
+_.forEach(fielding_data, player => {
+    let split = _.split(player.Name, '\\')
+    player.Name = split[0]
+    fielding_stats.push(player)
+})
+fielding_stats = _.dropRight(fielding_stats)
 function playerList(team) {
     var player_list = []
 

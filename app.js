@@ -87,7 +87,6 @@ function createCard(data, player_stats, pitcher_batting_flag) {
 
     //box 1
     doc.rect(9, 72, 66, 18)
-        .fillOpacity(0.2)
         .fill('#cadcf9')
         .fontSize(12)
         .fill('black')
@@ -95,14 +94,12 @@ function createCard(data, player_stats, pitcher_batting_flag) {
 
     //box 2
     doc.rect(75, 72, 66, 18)
-        .fillOpacity(0.2)
         .fill('#cadcf9')
         .fontSize(12)
         .fill('black')
         .text(box_num[1], 104, 76)
         //box 3
     doc.rect(141, 72, 66, 18)
-        .fillOpacity(0.2)
         .fill('#cadcf9')
         .fontSize(12)
         .fill('black')
@@ -159,7 +156,6 @@ function createCard(data, player_stats, pitcher_batting_flag) {
 
         //blue box
         doc.rect(9, 320, 198, 31)
-            .fillOpacity(0.2)
             .fill('#cadcf9')
 
         //wins
@@ -218,7 +214,6 @@ function createCard(data, player_stats, pitcher_batting_flag) {
 
         //blue box
         doc.rect(9, 320, 198, 31)
-            .fillOpacity(0.2)
             .fill('#cadcf9')
 
         //batting average

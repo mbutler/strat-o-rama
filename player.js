@@ -1,7 +1,7 @@
 const fs = require("fs")
 const _ = require('lodash')
 const csvToJson = require('convert-csv-to-json')
-//const convert = require('./csvtojson')
+const paths = require('./config')
 
 function getPlayer(playerName, pitcher_flag) {
     //the league's average calculated each year.
@@ -14,15 +14,14 @@ function getPlayer(playerName, pitcher_flag) {
     const MLBBA = 0.255 + 0.011 // just use this for now
     const testBA = 0.265 + 0.011 // for Cal Ripkin testing only
 
-    //let fielding_data = fs.readFileSync("2016-standard-fielding.json")
-    let fielding_data
-    //let test = convert('2018-standard-fielding.csv')
-
-    let json = csvToJson.fieldDelimiter(',').getJsonFromCsv('2018-standard-fielding.csv')
-    console.log(json)
-   
-    let fielding_stats = JSON.parse(fielding_data)
-
+    let fielding_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardFieldingPath)
+    let fielding_stats = []
+    _.forEach(fielding_data, player => {
+        let split = _.split(player.Name, '\\')
+        player.Name = split[0]
+        fielding_stats.push(player)
+    })
+    //fielding_stats = _.dropRight(fielding_stats)
     let current_player_name = { 'Name': playerName }
 
     let player_fielding_stats = _.find(fielding_stats, current_player_name)
@@ -31,38 +30,58 @@ function getPlayer(playerName, pitcher_flag) {
         return
     }
 
-    if (player_fielding_stats['Pos Summary'] == "P" && pitcher_flag !== "-b") {
+    if (player_fielding_stats['PosSummary'] == "P" && pitcher_flag !== "-b") {
         isPitcher = true
         //this set has data about how batters fared against the pitcher. doubles given up, etc
-        //var pitching_data = fs.readFileSync("2016-batting-pitching.json")
-        var pitching_data
-        convert('2018-batting-pitching.csv').then((jsonObj) => {pitching_data = jsonObj})
-        var pitching_stats = JSON.parse(pitching_data)
+        var pitching_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.battingPitchingPath)
+        let pitching_stats = []
+        _.forEach(pitching_data, player => {
+            let split = _.split(player.Name, '\\')
+            player.Name = split[0]
+            pitching_stats.push(player)
+        })
+        //pitching_stats = _.dropRight(pitching_stats)
         var player_pitching_stats = _.find(pitching_stats, current_player_name)
         var player_pitching = player_pitching_stats
 
         //this set has data about ERA, errors, etc
-        //var pitching_record_data = fs.readFileSync("2016-standard-pitching.json")
-        var pitching_record_data
-        convert('2018-standard-pitching.csv').then((jsonObj) => {pitching_record_data = jsonObj})
-        var pitching_record_stats = JSON.parse(pitching_record_data)
+        var pitching_record_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardPitchingPath)
+        let pitching_record_stats = []
+        _.forEach(pitching_record_data, player => {
+            let split = _.split(player.Name, '\\')
+            player.Name = split[0]
+            pitching_record_stats.push(player)
+        })
+        //pitching_record_stats = _.dropRight(pitching_record_stats)
         var player_pitching_record_stats = _.find(pitching_record_stats, current_player_name)
         var player_pitching_record = player_pitching_record_stats
 
+
         //might want batting stats too
-        //var batting_data = fs.readFileSync("2016-standard-batting.json")
-        var batting_data
-        convert('2018-standard-batting.csv').then((jsonObj) => {batting_data = jsonObj})
-        var batting_stats = JSON.parse(batting_data)
+        var batting_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardBattingPath)
+        let batting_stats = []
+        _.forEach(batting_data, player => {
+            let split = _.split(player.Name, '\\')
+            player.Name = split[0]
+            batting_stats.push(player)
+        })
+        //batting_stats = _.dropRight(batting_stats)
         var player_batting_stats = _.find(batting_stats, current_player_name)
     } else {
-        var batting_data
-        convert('2018-standard-batting.csv').then((jsonObj) => {batting_data = jsonObj})
-        var batting_stats = JSON.parse(batting_data)
+        var batting_data = csvToJson.fieldDelimiter(',').getJsonFromCsv(paths.standardBattingPath)
+        let batting_stats = []
+        _.forEach(batting_data, player => {
+            let split = _.split(player.Name, '\\')
+            player.Name = split[0]
+            batting_stats.push(player)
+        })
+        //batting_stats = _.dropRight(batting_stats)
         var player_batting_stats = _.find(batting_stats, current_player_name)
     }
 
     let player_batting = player_batting_stats
+    let player_bats = []
+    player_batting = player_bats
     let player_fielding = player_fielding_stats
 
     let player = {}
@@ -491,7 +510,7 @@ function getPlayer(playerName, pitcher_flag) {
 
     //player's positions. Returns an array of positions ranked by frequency
     function somPos(player_fielding) {
-        let pos = player_fielding['Pos Summary']
+        let pos = player_fielding['PosSummary']
 
         let positions = _.split(pos, "-")
 
@@ -663,11 +682,5 @@ function getPlayer(playerName, pitcher_flag) {
 
     return player
 }
-
-async function convert(filePath) {
-    let result = csv().fromFile(filePath)
-    let json = await Promise.all([result])
-    return json
-  }
 
 module.exports = getPlayer
