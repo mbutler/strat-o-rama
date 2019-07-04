@@ -21,7 +21,7 @@ You can also generate an entire team at once. Pass in the team's capitalized thr
 
 `node app "CHC"`
 
-If you'd like to generate cards for a different year, modify the CSV names in the config.js file. You'll need four CSV files from [Baseball Reference](http://www.baseball-reference.com/). [Standard pitching](https://www.baseball-reference.com/leagues/MLB/2018-standard-pitching.shtml), [standard batting](https://www.baseball-reference.com/leagues/MLB/2018-standard-batting.shtml), [standard fielding](https://www.baseball-reference.com/leagues/MLB/2018-standard-fielding.shtml), and [batting pitching](https://www.baseball-reference.com/leagues/MLB/2018-batting-pitching.shtml). 
+If you'd like to generate cards for a different year, modify the CSV names in the config.js file. You'll need to download four CSV files from [Baseball Reference](http://www.baseball-reference.com/). [Standard pitching](https://www.baseball-reference.com/leagues/MLB/2018-standard-pitching.shtml), [standard batting](https://www.baseball-reference.com/leagues/MLB/2018-standard-batting.shtml), [standard fielding](https://www.baseball-reference.com/leagues/MLB/2018-standard-fielding.shtml), and [batting pitching](https://www.baseball-reference.com/leagues/MLB/2018-batting-pitching.shtml). Place these CSV files in the same directory as the app.
 
 No Warranty
 
