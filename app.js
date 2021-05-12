@@ -222,7 +222,7 @@ function createCard(data, player_stats, pitcher_batting_flag) {
             .font('Helvetica')
             .text('AVG', 15, 326)
             .moveDown(0.2)
-            .text(player_stats.avg)
+            .text(`.${player_stats.avg * 1000}`)
 
         //at bats
         doc.fontSize(8)
