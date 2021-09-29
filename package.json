@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "convert-csv-to-json": "0.0.14",
-    "i": "^0.3.6",
+    "i": "^0.3.7",
     "lodash": "^4.17.21",
     "mkdirp": "^0.5.1",
     "npm": "^6.14.6",
