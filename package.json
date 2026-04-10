@@ -11,7 +11,7 @@
   "dependencies": {
     "convert-csv-to-json": "0.0.14",
     "i": "^0.3.7",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "mkdirp": "^0.5.1",
     "pdfkit": "^0.14.0"
   }
